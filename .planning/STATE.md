@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in_progress
-last_updated: "2026-05-17T06:57:27Z"
+status: unknown
+last_updated: "2026-05-17T07:04:35.937Z"
 progress:
-  total_phases: 5
-  completed_phases: 1
-  total_plans: 3
-  completed_plans: 1
+  total_phases: 2
+  completed_phases: 2
+  total_plans: 4
+  completed_plans: 4
 ---
 
 # Project State
@@ -23,31 +23,32 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 2 of 5 (Skill Injection Bridge)
-Plan: 1 of 3 in current phase (02-01 complete)
+Plan: 2 of 2 in current phase (02-02 complete — phase complete)
 Status: In progress
-Last activity: 2026-05-17 — Plan 02-01 complete: SkillDefinition + ValidationCorrectionRequest Pydantic models, jsonschema pinned
+Last activity: 2026-05-17 — Plan 02-02 complete: SkillInjector TDD — ADK BaseTool subclass, schema normalization, JSON Schema validation, SKILL.md fetch
 
-Progress: [███░░░░░░░] 20%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 6 min
-- Total execution time: 11 min
+- Total plans completed: 4
+- Average duration: 4 min
+- Total execution time: 14 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-deno-execution-channel | 2 | 11 min | 5.5 min |
-| 02-skill-injection-bridge | 1 | 2 min | 2 min |
+| 02-skill-injection-bridge | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8min), 01-02 (3min), 02-01 (2min)
+- Last 5 plans: 01-01 (8min), 01-02 (3min), 02-01 (2min), 02-02 (3min)
 - Trend: Accelerating
 
 *Updated after each plan completion*
+| Phase 02-skill-injection-bridge P02 | 3 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,10 @@ Recent decisions affecting current work:
 - 02-01: SkillDefinition.path stores bare skill name (no 'skills/' prefix) — prefix added at URL construction time in skill_injector.py
 - 02-01: SkillDefinition.input_schema stored raw — normalization (additionalProperties:false) happens in SkillInjector._normalize_schema()
 - 02-01: jsonschema 4.26.0 pinned explicitly despite being transitively present via google-adk==1.33.0
+- [Phase 02-skill-injection-bridge]: 02-02: BaseTool subclass used (not FunctionTool) — FunctionTool drops **kwargs args in ADK 1.33.0
+- [Phase 02-skill-injection-bridge]: 02-02: additionalProperties:false injected only on object schemas — non-object sub-schemas must not receive it per ADK types.Schema
+- [Phase 02-skill-injection-bridge]: 02-02: Missing/extra field validation computed directly from schema, not from jsonschema e.path — required validator e.path unreliable
+- [Phase 02-skill-injection-bridge]: 02-02: ValidationCorrectionRequest returned as .model_dump() dict for consistent ADK serialization
 
 ### Pending Todos
 
@@ -78,6 +83,7 @@ None yet.
 ### Blockers/Concerns
 
 - Phase 2: ADK FunctionTool dynamic callable construction is MEDIUM confidence — plan for live ADK experimentation; fallback is BaseTool subclass with explicit `_get_declaration()`
+  RESOLVED: BaseTool subclass with explicit _get_declaration() confirmed working in 02-02 — FunctionTool NOT used (drops args in ADK 1.33.0)
 - Phase 3: Confidence score extraction from Pass 1 requires explicit Gemini structured JSON output design — ADK provides no built-in confidence score API
 - Phase 1: Deno redirect behavior with `--allow-net` is LOW confidence — verify against Deno 2.6.7 changelog during Phase 1
   RESOLVED: test_valid_domain_passes_validation passed with --allow-net=github.com — Deno 2.6.7 honors flag correctly
@@ -85,5 +91,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 02-01-PLAN.md — Skill domain models defined. Ready for Plan 02-02 (SkillInjector TDD).
-Resume file: .planning/phases/02-skill-injection-bridge/02-01-SUMMARY.md
+Stopped at: Completed 02-02-PLAN.md — SkillInjector TDD complete. 28 tests pass (18 new + 10 Phase 1). Phase 2 complete. Ready for Phase 3 (Coordinating Agent).
+Resume file: .planning/phases/02-skill-injection-bridge/02-02-SUMMARY.md
