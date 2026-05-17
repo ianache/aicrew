@@ -297,6 +297,69 @@ class TestPass1Vocabulary:
 
 
 # ---------------------------------------------------------------------------
+# TestStatusCallback — status_cb parameter on run()
+# ---------------------------------------------------------------------------
+
+class TestStatusCallback:
+
+    async def test_run_accepts_status_cb_none_by_default(
+        self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path
+    ):
+        """run(prompt) with no status_cb kwarg works without error (default None)."""
+        agent = _build_agent_with_mocks(
+            mock_catalog_explorer, mock_skill_injector, sample_config,
+            confidence=0.85, tags=["test"],
+        )
+        # Must not raise — status_cb defaults to None
+        result = await agent.run("What is 2 + 2?")
+        assert isinstance(result, str)
+
+    async def test_status_cb_update_called_on_catalog_route(
+        self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path, sample_skill_def
+    ):
+        """On low-confidence catalog route, status_cb.update('Running skill...') is called."""
+        agent = _build_agent_with_mocks(
+            mock_catalog_explorer, mock_skill_injector, sample_config,
+            confidence=0.4, tags=["evaluation"],
+        )
+
+        mock_status_cb = MagicMock()
+        await agent.run("Evaluate this test case", status_cb=mock_status_cb)
+
+        mock_status_cb.update.assert_called_once_with("Running skill...")
+
+    async def test_status_cb_not_called_on_high_confidence(
+        self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path
+    ):
+        """On high-confidence direct-answer path, status_cb.update is NOT called."""
+        agent = _build_agent_with_mocks(
+            mock_catalog_explorer, mock_skill_injector, sample_config,
+            confidence=0.9, tags=["general"],
+        )
+
+        mock_status_cb = MagicMock()
+        await agent.run("What is 2 + 2?", status_cb=mock_status_cb)
+
+        mock_status_cb.update.assert_not_called()
+
+    async def test_status_cb_not_called_on_no_skill_found(
+        self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path
+    ):
+        """When no skill is found (None from catalog), status_cb.update is NOT called."""
+        mock_catalog_explorer.find = AsyncMock(return_value=None)
+
+        agent = _build_agent_with_mocks(
+            mock_catalog_explorer, mock_skill_injector, sample_config,
+            confidence=0.3, tags=["unknown"],
+        )
+
+        mock_status_cb = MagicMock()
+        await agent.run("Do something obscure", status_cb=mock_status_cb)
+
+        mock_status_cb.update.assert_not_called()
+
+
+# ---------------------------------------------------------------------------
 # TestToolIsolation — tool not shared across consecutive run() calls
 # ---------------------------------------------------------------------------
 

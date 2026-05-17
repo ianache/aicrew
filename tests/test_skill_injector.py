@@ -207,22 +207,31 @@ class TestSkillBaseTool:
         assert result == {"answer": 42}
 
     async def test_timeout_error_returns_string(self, sample_skill_def):
-        """Test 12: runner returns TimeoutError(elapsed_ms=5123) → returns string 'Skill timed out after 5123ms'."""
+        """Test 12: runner returns TimeoutError → returns fixed string 'Skill timed out after 5s.'"""
         runner = AsyncMock()
         runner.execute.return_value = SkillTimeoutError(elapsed_ms=5123)
         injector = SkillInjector(runner)
         tool, _ = await injector.build_tool(sample_skill_def)
         result = await tool.run_async(args={"query": "hello"}, tool_context=MagicMock())
-        assert result == "Skill timed out after 5123ms"
+        assert result == "Skill timed out after 5s."
 
     async def test_execution_error_returns_string(self, sample_skill_def):
-        """Test 13: runner returns ExecutionError(stderr='boom') → returns 'Skill execution failed: boom'."""
+        """Test 13: runner returns ExecutionError → returns 'Skill failed (exit N): {first stderr line}'."""
         runner = AsyncMock()
-        runner.execute.return_value = ExecutionError(exit_code=1, stderr="boom")
+        runner.execute.return_value = ExecutionError(exit_code=1, stderr="boom\nmore details")
         injector = SkillInjector(runner)
         tool, _ = await injector.build_tool(sample_skill_def)
         result = await tool.run_async(args={"query": "hello"}, tool_context=MagicMock())
-        assert result == "Skill execution failed: boom"
+        assert result == "Skill failed (exit 1): boom"
+
+    async def test_execution_error_single_line_stderr(self, sample_skill_def):
+        """Test 13b: single-line stderr → full stderr used as message."""
+        runner = AsyncMock()
+        runner.execute.return_value = ExecutionError(exit_code=2, stderr="single line error")
+        injector = SkillInjector(runner)
+        tool, _ = await injector.build_tool(sample_skill_def)
+        result = await tool.run_async(args={"query": "hello"}, tool_context=MagicMock())
+        assert result == "Skill failed (exit 2): single line error"
 
     async def test_validation_failure_returns_string(self, sample_skill_def):
         """Test 14: runner returns ValidationFailure(invalid_domain='bad') → returns 'Skill domain validation failed: bad'."""
