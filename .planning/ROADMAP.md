@@ -45,7 +45,11 @@ Plans:
   2. A call with all required parameters passes validation and reaches DenoRunner
   3. A call with missing required parameters is rejected before Deno fires and returns a structured correction request
   4. SKILL.md content fetched from GitHub is injected into the agent context alongside the tool registration
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Contract definitions: SkillDefinition + ValidationCorrectionRequest models, jsonschema dependency
+- [ ] 02-02-PLAN.md — SkillInjector TDD: BaseTool subclass, schema normalization, JSON Schema validation, SKILL.md fetch
 
 ### Phase 3: Coordinating Agent + Two-Pass Routing
 **Goal**: An ADK-backed agent extracts tags from a user prompt, evaluates confidence, and routes to CatalogExplorer when confidence falls below the externalized threshold — with every routing decision logged
@@ -89,7 +93,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
-| 2. Skill Injection Bridge | 0/? | Not started | - |
+| 2. Skill Injection Bridge | 0/2 | Not started | - |
 | 3. Coordinating Agent + Two-Pass Routing | 0/? | Not started | - |
 | 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |
 | 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |
