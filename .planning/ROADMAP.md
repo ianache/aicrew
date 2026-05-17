@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — Project scaffold: Python packages, Pydantic result models, TypeScript test fixtures
-- [ ] 01-02-PLAN.md — DenoRunner TDD: asyncio subprocess, 5000ms timeout, Windows process kill, typed results
+- [x] 01-02-PLAN.md — DenoRunner TDD: asyncio subprocess, 5000ms timeout, Windows process kill, typed results
 
 ### Phase 2: Skill Injection Bridge
 **Goal**: A SkillDefinition parsed from skill.json becomes a live ADK FunctionTool that validates LLM-supplied parameters against JSON Schema before delegating to DenoRunner
@@ -88,7 +88,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deno Execution Channel | 1/2 | In progress | - |
+| 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
 | 2. Skill Injection Bridge | 0/? | Not started | - |
 | 3. Coordinating Agent + Two-Pass Routing | 0/? | Not started | - |
 | 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |

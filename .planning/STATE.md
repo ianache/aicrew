@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 1 of 5 (Deno Execution Channel)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-05-17 — Plan 01-01 complete: Python package scaffold, Pydantic result models, TypeScript test fixtures
+Last activity: 2026-05-17 — Plan 01-02 complete: DenoRunner TDD — asyncio subprocess, 5000ms timeout, taskkill zombie cleanup, domain validation
 
-Progress: [█░░░░░░░░░] 7%
+Progress: [██░░░░░░░░] 13%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 8 min
-- Total execution time: 8 min
+- Total plans completed: 2
+- Average duration: 6 min
+- Total execution time: 11 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-deno-execution-channel | 1 | 8 min | 8 min |
+| 01-deno-execution-channel | 2 | 11 min | 5.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8min)
+- Last 5 plans: 01-01 (8min), 01-02 (3min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -48,6 +48,10 @@ Recent decisions affecting current work:
 - 01-01: TimeoutError Pydantic model intentionally shadows Python built-in — callers import from src.models.results
 - 01-01: ExecutionResult is Union type alias (not a class) — callers use isinstance() dispatch on variants
 - 01-01: asyncio_mode = "auto" in pyproject.toml eliminates @pytest.mark.asyncio boilerplate for all async tests
+- 01-02: asyncio.wait_for(proc.communicate(), 5.0) — never proc.wait() which deadlocks on large Deno stdout
+- 01-02: After timeout kill: mandatory second await proc.communicate() to drain pipes and prevent zombie processes
+- 01-02: _DOMAIN_RE fullmatch rejects IPs (192.168.x.x) and wildcards (*.example.com) before subprocess spawn
+- 01-02: pyproject.toml fixed: [project] table added + build-backend changed to setuptools.build_meta (was legacy path)
 
 ### Pending Todos
 
@@ -58,9 +62,10 @@ None yet.
 - Phase 2: ADK FunctionTool dynamic callable construction is MEDIUM confidence — plan for live ADK experimentation; fallback is BaseTool subclass with explicit `_get_declaration()`
 - Phase 3: Confidence score extraction from Pass 1 requires explicit Gemini structured JSON output design — ADK provides no built-in confidence score API
 - Phase 1: Deno redirect behavior with `--allow-net` is LOW confidence — verify against Deno 2.6.7 changelog during Phase 1
+  RESOLVED: test_valid_domain_passes_validation passed with --allow-net=github.com — Deno 2.6.7 honors flag correctly
 
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 01-01-PLAN.md — Python scaffold, result models, TS fixtures
-Resume file: .planning/phases/01-deno-execution-channel/01-02-PLAN.md
+Stopped at: Completed 01-02-PLAN.md — DenoRunner TDD (10 tests all passing), zombie cleanup verified
+Resume file: .planning/phases/01-deno-execution-channel/01-03-PLAN.md

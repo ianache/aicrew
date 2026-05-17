@@ -20,7 +20,7 @@
 
 ### Execution
 
-- [ ] **EXEC-01**: Matched skill executes via Deno subprocess with `--allow-net=<validated-domain>` (domain validated against regex before flag construction), no file I/O permissions, hard 5000ms timeout; process group killed on timeout with no zombie processes
+- [x] **EXEC-01**: Matched skill executes via Deno subprocess with `--allow-net=<validated-domain>` (domain validated against regex before flag construction), no file I/O permissions, hard 5000ms timeout; process group killed on timeout with no zombie processes
 - [x] **EXEC-02**: Execution errors return typed structured results (timeout / validation_failure / execution_error) — not generic Python exceptions propagated raw to the user
 - [ ] **EXEC-03**: CLI shows a progress indicator during the Deno execution window so the user knows the skill is running
 
@@ -68,7 +68,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXEC-01 | Phase 1 | Pending |
+| EXEC-01 | Phase 1 | Complete (01-02) |
 | EXEC-02 | Phase 1 | Complete (01-01) |
 | INJS-01 | Phase 2 | Pending |
 | INJS-02 | Phase 2 | Pending |
@@ -92,4 +92,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after roadmap creation*
+*Last updated: 2026-05-17 after 01-02 completion*
