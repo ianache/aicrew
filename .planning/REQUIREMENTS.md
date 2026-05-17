@@ -68,28 +68,28 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DISC-01 | — | Pending |
-| DISC-02 | — | Pending |
-| DISC-03 | — | Pending |
-| DISC-04 | — | Pending |
-| INJS-01 | — | Pending |
-| INJS-02 | — | Pending |
-| INJS-03 | — | Pending |
-| EXEC-01 | — | Pending |
-| EXEC-02 | — | Pending |
-| EXEC-03 | — | Pending |
-| RELI-01 | — | Pending |
-| RELI-02 | — | Pending |
-| RELI-03 | — | Pending |
-| RELI-04 | — | Pending |
-| CLI-01 | — | Pending |
-| CLI-02 | — | Pending |
+| EXEC-01 | Phase 1 | Pending |
+| EXEC-02 | Phase 1 | Pending |
+| INJS-01 | Phase 2 | Pending |
+| INJS-02 | Phase 2 | Pending |
+| INJS-03 | Phase 2 | Pending |
+| DISC-01 | Phase 3 | Pending |
+| DISC-02 | Phase 3 | Pending |
+| RELI-03 | Phase 3 | Pending |
+| RELI-04 | Phase 3 | Pending |
+| DISC-03 | Phase 4 | Pending |
+| DISC-04 | Phase 4 | Pending |
+| RELI-01 | Phase 4 | Pending |
+| RELI-02 | Phase 4 | Pending |
+| EXEC-03 | Phase 5 | Pending |
+| CLI-01 | Phase 5 | Pending |
+| CLI-02 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
-- Mapped to phases: 0 (updated by roadmapper)
-- Unmapped: 16 ⚠️
+- Mapped to phases: 16
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after initial definition*
+*Last updated: 2026-05-17 after roadmap creation*
