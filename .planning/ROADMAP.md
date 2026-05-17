@@ -110,8 +110,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — SkillCache TDD: git clone lifecycle, file-based TTL, partial-clone guard; Config cache fields
-- [ ] 06-02-PLAN.md — CatalogExplorer + SkillInjector refactor: local file reads, --allow-read flag, main.py wiring
+- [x] 06-01-PLAN.md — SkillCache TDD: git clone lifecycle, file-based TTL, partial-clone guard; Config cache fields
+- [x] 06-02-PLAN.md — CatalogExplorer + SkillInjector refactor: local file reads, --allow-read flag, main.py wiring
 - [ ] 06-03-PLAN.md — Test updates: conftest fixtures, catalog explorer unit tests, skill injector local-path tests
 
 ## Progress
@@ -126,4 +126,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete | 2026-05-17 |
 | 4. CatalogExplorer Integration + Caching | 1/1 | Complete | 2026-05-17 |
 | 5. CLI Entry Point + End-to-End Validation | 2/2 | Complete | 2026-05-17 |
-| 6. Local Skill Cache — Git Clone Architecture | 1/3 | In Progress|  |
+| 6. Local Skill Cache — Git Clone Architecture | 2/3 | In Progress|  |

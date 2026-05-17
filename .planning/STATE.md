@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: local-skill-cache
 status: in_progress
-last_updated: "2026-05-17T18:39:04.000Z"
+last_updated: "2026-05-17T18:44:05.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
-  total_plans: 9
-  completed_plans: 9
+  total_plans: 11
+  completed_plans: 10
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** A user types any prompt and the right skill executes automatically — no manual configuration, no redeployment, just dynamic discovery and execution.
-**Current focus:** Phase 6 in progress — Local Skill Cache (git clone architecture). Plan 06-01 complete.
+**Current focus:** Phase 6 in progress — Local Skill Cache (git clone architecture). Plan 06-02 complete.
 
 ## Current Position
 
 Phase: 6 of 6 (Local Skill Cache — git clone architecture)
-Plan: 1 of 1 in current phase (06-01 complete — SkillCache TDD + Config extension)
+Plan: 2 of 3 in current phase (06-02 complete — CatalogExplorer + SkillInjector local path refactor)
 Status: In Progress
-Last activity: 2026-05-17 — Plan 06-01 complete: SkillCache git lifecycle manager, Config extended with skills_cache_dir/skills_cache_ttl, 65 non-live tests passing
+Last activity: 2026-05-17 — Plan 06-02 complete: CatalogExplorer reads catalog.yaml and skills.json from local git clone; SkillInjector reads SKILL.md via pathlib; main.py wires SkillCache; 38 non-live tests passing
 
-Progress: [█████████░] 90%
+Progress: [█████████░] 95%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 10
 - Average duration: 4 min
-- Total execution time: 27 min
+- Total execution time: 31 min
 
 **By Phase:**
 
@@ -56,6 +56,8 @@ Progress: [█████████░] 90%
 | Phase 04-catalog-explorer-integration-caching P01 | 5 | 2 tasks | 2 files |
 | Phase 05-cli-entry-point-end-to-end-validation P01 | 7 | 2 tasks | 7 files |
 | Phase 05-cli-entry-point-end-to-end-validation P02 | 8 | 1 task | 1 file |
+| Phase 06-local-skill-cache-git-clone-architecture P01 | 4 | 2 tasks | 7 files |
+| Phase 06-local-skill-cache-git-clone-architecture P02 | 4 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -100,6 +102,9 @@ Recent decisions affecting current work:
 - [Phase 06-local-skill-cache-git-clone-architecture]: 06-01: SkillCache._clone() calls mkdir(parents=True, exist_ok=True) before _write_sync_timestamp() — real git creates cache_dir but mocked subprocess does not; explicit mkdir unifies both paths
 - [Phase 06-local-skill-cache-git-clone-architecture]: 06-01: Config fields skills_cache_dir/skills_cache_ttl are required (not Optional) — preserves fail-fast dataclass pattern; all 3 test files with local Config constructors updated
 - [Phase 06-local-skill-cache-git-clone-architecture]: 06-01: GITHUB_TOKEN explicitly NOT passed to git subprocess — skills-catalog is public; token stays in Config for legacy httpx fetch only (REPO-03)
+- [Phase 06-local-skill-cache-git-clone-architecture]: 06-02: SkillDefinition.path is absolute local .ts path (not a URL) — Phase 6 contract; CatalogExplorer sets path=str(skill_dir / entry_point)
+- [Phase 06-local-skill-cache-git-clone-architecture]: 06-02: cache_root = Path(skill_def.path).parents[2] — .skills-cache/ root is always 3 path levels above the .ts entry point
+- [Phase 06-local-skill-cache-git-clone-architecture]: 06-02: IndexError guard on parents[2] for bare skill names in tests — empty extra_flags returned for backward compat
 
 ### Pending Todos
 
@@ -117,5 +122,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 06-01-PLAN.md — SkillCache TDD + Config extension
-Resume file: .planning/phases/06-local-skill-cache-git-clone-architecture/06-01-SUMMARY.md
+Stopped at: Completed 06-02-PLAN.md — CatalogExplorer + SkillInjector local path refactor
+Resume file: .planning/phases/06-local-skill-cache-git-clone-architecture/06-02-SUMMARY.md

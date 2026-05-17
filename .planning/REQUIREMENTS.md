@@ -38,10 +38,10 @@
 
 ### Repository Cache (Phase 6)
 
-- [ ] **REPO-01**: Skills catalog cloned to local `.skills-cache/` on first use via `git clone`; subsequent runs within TTL (default 5 min, configurable via `SKILLS_CACHE_TTL` env var) read from local clone without any network operation
-- [ ] **REPO-02**: All skill assets (TypeScript entry point, Python helpers, config files, SKILL.md) accessible as local files after sync — zero per-file HTTP calls during routing or execution
-- [ ] **REPO-03**: `GITHUB_TOKEN` env var supported for authenticated `git clone` / `git pull` — same token already used for HTTP fetches in Phase 4
-- [ ] **REPO-04**: Deno executes TypeScript skills from local clone path (`skills/{name}/index.ts`) — eliminates remote URL downloads and GitHub URL format fragility at execution time
+- [x] **REPO-01**: Skills catalog cloned to local `.skills-cache/` on first use via `git clone`; subsequent runs within TTL (default 5 min, configurable via `SKILLS_CACHE_TTL` env var) read from local clone without any network operation
+- [x] **REPO-02**: All skill assets (TypeScript entry point, Python helpers, config files, SKILL.md) accessible as local files after sync — zero per-file HTTP calls during routing or execution
+- [x] **REPO-03**: `GITHUB_TOKEN` env var supported for authenticated `git clone` / `git pull` — same token already used for HTTP fetches in Phase 4
+- [x] **REPO-04**: Deno executes TypeScript skills from local clone path (`skills/{name}/index.ts`) — eliminates remote URL downloads and GitHub URL format fragility at execution time
 
 ## v2 Requirements
 
@@ -92,10 +92,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLI-01 | Phase 5 | Complete (05-01) |
 | CLI-02 | Phase 5 | Pending (05-02) |
 
-| REPO-01 | Phase 6 | Not started |
-| REPO-02 | Phase 6 | Not started |
-| REPO-03 | Phase 6 | Not started |
-| REPO-04 | Phase 6 | Not started |
+| REPO-01 | Phase 6 | Complete (06-01) |
+| REPO-02 | Phase 6 | Complete (06-02) |
+| REPO-03 | Phase 6 | Complete (06-01) |
+| REPO-04 | Phase 6 | Complete (06-02) |
 
 **Coverage:**
 - v1 requirements: 20 total (16 original + 4 Phase 6)
@@ -104,4 +104,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after 04-01 completion*
+*Last updated: 2026-05-17 after 06-02 completion*
