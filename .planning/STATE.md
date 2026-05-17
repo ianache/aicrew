@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 1 of 5 (Deno Execution Channel)
-Plan: 0 of ? in current phase
-Status: Ready to plan
-Last activity: 2026-05-17 — Roadmap created, phases derived from requirements, 16/16 requirements mapped
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-05-17 — Plan 01-01 complete: Python package scaffold, Pydantic result models, TypeScript test fixtures
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 7%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
+- Total plans completed: 1
+- Average duration: 8 min
+- Total execution time: 8 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-deno-execution-channel | 1 | 8 min | 8 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-01 (8min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -45,6 +45,9 @@ Recent decisions affecting current work:
 - Roadmap: Build order is DenoRunner → SkillInjector → CoordinatingAgent → CatalogExplorer → CLI (architecturally mandated by dependency chain)
 - Phase 1: Windows subprocess cleanup must use `taskkill /F /T /PID` (os.killpg not available on Windows 11)
 - Phase 1: Always use `proc.communicate()` not `proc.wait()` to avoid pipe deadlock on large Deno stdout
+- 01-01: TimeoutError Pydantic model intentionally shadows Python built-in — callers import from src.models.results
+- 01-01: ExecutionResult is Union type alias (not a class) — callers use isinstance() dispatch on variants
+- 01-01: asyncio_mode = "auto" in pyproject.toml eliminates @pytest.mark.asyncio boilerplate for all async tests
 
 ### Pending Todos
 
@@ -59,5 +62,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Phase 1 context gathered. Ready to run `/gsd:plan-phase 1`.
-Resume file: .planning/phases/01-deno-execution-channel/01-CONTEXT.md
+Stopped at: Completed 01-01-PLAN.md — Python scaffold, result models, TS fixtures
+Resume file: .planning/phases/01-deno-execution-channel/01-02-PLAN.md
