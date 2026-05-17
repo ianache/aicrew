@@ -17,6 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Coordinating Agent + Two-Pass Routing** - CoordinatingAgent wires confidence-gated routing, tag extraction, and JSONL logging (completed 2026-05-17)
 - [x] **Phase 4: CatalogExplorer Integration + Caching** - Wire existing catalog into agent with TTL cache, GITHUB_TOKEN, and rate-limit protection (completed 2026-05-17)
 - [x] **Phase 5: CLI Entry Point + End-to-End Validation** - Thin CLI shell closes the full prompt-to-output loop with one real skill (completed 2026-05-17)
+- [ ] **Phase 6: Local Skill Cache — Git Clone Architecture** - Replace all per-file HTTP fetches with a managed local git clone of the skills catalog, enabling multi-file skills and eliminating URL fragility
 
 ## Phase Details
 
@@ -95,15 +96,29 @@ Plans:
 - [x] 05-01-PLAN.md — CLI wiring: rich dep, error string alignment, status_cb on agent.run(), main.py REPL
 - [x] 05-02-PLAN.md — E2E test: smoke + live full-pipeline test with real skill
 
+### Phase 6: Local Skill Cache — Git Clone Architecture
+**Goal**: All skill assets are available as local files via a managed git clone of the skills catalog — no per-file HTTP calls during routing or execution, no URL fragility, and full support for multi-file skills
+**Depends on**: Phase 5
+**Requirements**: REPO-01, REPO-02, REPO-03, REPO-04
+**Success Criteria** (what must be TRUE):
+  1. On first use, the skills catalog is cloned to `.skills-cache/` (or `SKILLS_CACHE_DIR` env var) without any manual setup
+  2. A second run within the TTL reads `catalog.yaml` and all skill files from the local clone — no git network operation, no HTTP call
+  3. A run after TTL expiry triggers `git pull` and updates the local clone before serving requests
+  4. Deno executes `skills/{name}/index.ts` from the local clone path — no remote URL download at execution time
+  5. Deleting `.skills-cache/` triggers a fresh clone on the next run (self-healing)
+  6. All 57 existing non-live tests continue to pass (no regression)
+**Plans**: TBD
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
 | 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
-| 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete   | 2026-05-17 |
+| 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete | 2026-05-17 |
 | 4. CatalogExplorer Integration + Caching | 1/1 | Complete | 2026-05-17 |
 | 5. CLI Entry Point + End-to-End Validation | 2/2 | Complete | 2026-05-17 |
+| 6. Local Skill Cache — Git Clone Architecture | 0/? | Not started | - |
