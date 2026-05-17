@@ -89,7 +89,11 @@ Plans:
   3. At least one real TypeScript skill (`evaluar-test-case` or `especificar_user_story`) completes successfully end-to-end
   4. A progress indicator is visible in the terminal during the Deno execution window
   5. Timeout, validation failure, and execution error each produce a distinct user-readable message (not a raw Python traceback)
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — CLI wiring: rich dep, error string alignment, status_cb on agent.run(), main.py REPL
+- [ ] 05-02-PLAN.md — E2E test: smoke + live full-pipeline test with real skill
 
 ## Progress
 
@@ -102,4 +106,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
 | 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete   | 2026-05-17 |
 | 4. CatalogExplorer Integration + Caching | 1/1 | Complete | 2026-05-17 |
-| 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |
+| 5. CLI Entry Point + End-to-End Validation | 0/2 | Not started | - |
