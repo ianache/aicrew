@@ -32,7 +32,7 @@ def sample_skill_def() -> SkillDefinition:
     return SkillDefinition(
         name="test_skill",
         description="A test skill",
-        path="evaluar_test_case",
+        path="/fake/.skills-cache/skills/evaluar_test_case/index.ts",
         input_schema={
             "type": "object",
             "properties": {"query": {"type": "string"}},
@@ -262,16 +262,16 @@ class TestSkillInjectorBuildTool:
         assert isinstance(skill_md, str)
 
     async def test_build_tool_skill_md_fetch_success_returns_content(self, sample_skill_def):
-        """Test 16: SKILL.md fetch success → second element is non-empty string content.
+        """Test 16: _fetch_skill_md reads local SKILL.md — returns "" for non-existent path.
 
-        Uses real HTTP to live GitHub catalog: https://github.com/ianache/skills-catalog
+        sample_skill_def.path is a fake path with no SKILL.md on disk — expect empty string.
         """
         runner = AsyncMock()
         injector = SkillInjector(runner)
         _, skill_md = await injector.build_tool(sample_skill_def)
-        # evaluar_test_case skill exists in the live catalog — should return non-empty content
+        # skill_def.path is a fake path with no SKILL.md on disk — empty string is valid
         assert isinstance(skill_md, str)
-        assert len(skill_md) > 0
+        # Empty string is acceptable for a path that does not have SKILL.md locally
 
     async def test_build_tool_missing_skill_md_returns_empty_string(self):
         """Test 17: SKILL.md fetch 404 / network error → second element is '', tool still usable."""
@@ -293,23 +293,31 @@ class TestSkillInjectorBuildTool:
         # tool should still be usable (BaseTool instance)
         assert isinstance(tool, BaseTool)
 
-    async def test_build_tool_url_construction(self, sample_skill_def):
-        """Test 18: skill_def.path 'evaluar_test_case' constructs URL
-        'https://raw.githubusercontent.com/ianache/skills-catalog/main/skills/evaluar_test_case/SKILL.md'
+    async def test_build_tool_local_path_reads_skill_md(self, sample_skill_def, tmp_path):
+        """Test 18: _fetch_skill_md reads SKILL.md from Path(skill_def.path).parent.
+
+        Creates a real SKILL.md in tmp_path to verify local read works end-to-end.
         """
+        # Create a fake skill dir structure in tmp_path
+        skill_dir = tmp_path / "skills" / "evaluar_test_case"
+        skill_dir.mkdir(parents=True)
+        skill_md_file = skill_dir / "SKILL.md"
+        skill_md_file.write_text("# Test Skill Guide", encoding="utf-8")
+        ts_path = skill_dir / "index.ts"
+        ts_path.write_text("// fake ts", encoding="utf-8")
+
+        local_skill_def = SkillDefinition(
+            name="evaluar_test_case",
+            description="test",
+            path=str(ts_path),  # absolute path pointing to real tmp_path file
+            input_schema={
+                "type": "object",
+                "properties": {"q": {"type": "string"}},
+                "required": ["q"],
+            },
+            allow_net_domains=[],
+        )
         runner = AsyncMock()
         injector = SkillInjector(runner)
-        # We verify by checking that the fetch actually returns content for the real path
-        # (which confirms the URL was constructed correctly)
-        _, skill_md = await injector.build_tool(sample_skill_def)
-        # If URL was wrong, skill_md would be "" — a non-empty result confirms correct URL
-        assert isinstance(skill_md, str)
-        # The correct URL produces content; wrong URL produces ""
-        # This is verified by the fact that test_16 passes with non-empty content
-        # Verify path used is the bare name (no prefix) by checking the expected URL pattern
-        expected_url = (
-            f"https://raw.githubusercontent.com/ianache/skills-catalog/main/"
-            f"skills/{sample_skill_def.path}/SKILL.md"
-        )
-        assert "evaluar_test_case" in expected_url
-        assert expected_url.startswith("https://raw.githubusercontent.com")
+        _, skill_md = await injector.build_tool(local_skill_def)
+        assert skill_md == "# Test Skill Guide"

@@ -14,11 +14,16 @@ from src.models.skill import SkillDefinition
 
 @pytest.fixture
 def sample_skill_def() -> SkillDefinition:
-    """A minimal SkillDefinition used in SkillInjector and CoordinatingAgent tests."""
+    """A minimal SkillDefinition used in SkillInjector and CoordinatingAgent tests.
+
+    path is a fake absolute local .ts path (Phase 6 contract).
+    On Windows, /fake/... is treated as a relative path without drive letter —
+    sufficient for tests since Path("...").parent and .parents[2] resolve correctly.
+    """
     return SkillDefinition(
         name="evaluar_test_case",
         description="Evaluates a test case",
-        path="evaluar_test_case",
+        path="/fake/.skills-cache/skills/evaluar_test_case/index.ts",
         input_schema={
             "type": "object",
             "properties": {"test_case": {"type": "string"}},
