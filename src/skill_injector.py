@@ -10,7 +10,9 @@ Design constraints:
 - Missing/extra field validation computed directly from schema, NOT from jsonschema e.path.
   jsonschema 'required' validator errors do NOT reliably populate e.path (pitfall verified).
 - run_async always returns str or dict — never raises. Callers (ADK) receive serializable output.
-- build_tool() is async — httpx.AsyncClient used for SKILL.md fetch with soft-fail on any error.
+- build_tool() is async — SKILL.md is now read from the local git clone (no HTTP).
+- _fetch_skill_md reads SKILL.md via pathlib.Path(path).parent / "SKILL.md" (Phase 6 contract).
+- run_async passes --allow-read={cache_root} in extra_flags to DenoRunner for local .ts access.
 
 Anti-patterns avoided:
 - Never use FunctionTool (drops **kwargs args in ADK 1.33.0)
@@ -19,7 +21,8 @@ Anti-patterns avoided:
 - Never raise exceptions from run_async (return strings or dicts)
 - Never use e.path for required field extraction (use schema-based computation)
 """
-import httpx
+from pathlib import Path
+
 from jsonschema import Draft7Validator
 from google.adk.tools import BaseTool
 from google.adk.tools.tool_context import ToolContext
@@ -126,24 +129,18 @@ def _normalize_schema(schema: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 async def _fetch_skill_md(path: str, timeout: float = 5.0) -> str:
-    """Fetch the SKILL.md cognitive guide from the GitHub skills catalog.
+    """Read SKILL.md from the local clone.
 
-    URL pattern: https://raw.githubusercontent.com/ianache/skills-catalog/main/skills/{path}/SKILL.md
-
-    Returns the SKILL.md content as a string on success (HTTP 200).
-    Returns "" on any exception (network error, timeout) or non-200 status.
-    Never raises — soft-fail design ensures the tool remains usable even when GitHub is unreachable.
+    path is an absolute local .ts path (Phase 6 contract).
+    Derives SKILL.md: Path(path).parent / "SKILL.md".
+    timeout parameter kept for signature compat — no longer used (no network call).
+    Returns "" on any failure (file not found, permission error) — soft-fail.
     """
-    url = (
-        f"https://raw.githubusercontent.com/ianache/skills-catalog/main/"
-        f"skills/{path}/SKILL.md"
-    )
     try:
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            response = await client.get(url)
-            if response.status_code == 200:
-                return response.text
-            return ""
+        skill_md_path = Path(path).parent / "SKILL.md"
+        if skill_md_path.exists():
+            return skill_md_path.read_text(encoding="utf-8")
+        return ""
     except Exception:
         return ""
 
@@ -172,14 +169,29 @@ class _SkillBaseTool(BaseTool):
         self._runner = runner
         self._normalized_schema = normalized_schema
 
+    @staticmethod
+    def _strip_additional_properties(schema: dict) -> dict:
+        """Recursively remove additionalProperties — Gemini API rejects it in function schemas."""
+        result = {k: v for k, v in schema.items() if k != "additionalProperties"}
+        if "properties" in result and isinstance(result["properties"], dict):
+            result["properties"] = {
+                k: _SkillBaseTool._strip_additional_properties(v)
+                for k, v in result["properties"].items()
+                if isinstance(v, dict)
+            }
+        if "items" in result and isinstance(result["items"], dict):
+            result["items"] = _SkillBaseTool._strip_additional_properties(result["items"])
+        return result
+
     def _get_declaration(self) -> types.FunctionDeclaration:
         """Return the ADK FunctionDeclaration with the normalized schema as parameters.
 
-        types.Schema.model_validate() requires a clean schema — must be normalized before
-        this call. The normalized_schema was already produced by _normalize_schema() in
-        SkillInjector.build_tool() so we validate directly here.
+        additionalProperties is stripped before passing to Gemini — the API rejects it.
+        The full schema (with additionalProperties) is kept in self._normalized_schema for
+        jsonschema validation in run_async().
         """
-        parameters = types.Schema.model_validate(self._normalized_schema)
+        gemini_schema = self._strip_additional_properties(self._normalized_schema)
+        parameters = types.Schema.model_validate(gemini_schema)
         return types.FunctionDeclaration(
             name=self._skill_def.name,
             description=self._skill_def.description,
@@ -222,10 +234,20 @@ class _SkillBaseTool(BaseTool):
             ).model_dump()
 
         # Step 3: Execute via DenoRunner
+        # Derive cache root from absolute .ts path: parents[2] = .skills-cache/
+        # For bare paths (tests), Path.parents[2] may not exist — guard with try/except
+        try:
+            cache_root = Path(self._skill_def.path).parents[2]
+            allow_read_flag = f"--allow-read={cache_root.as_posix()}"
+            extra_flags = [allow_read_flag]
+        except IndexError:
+            extra_flags = []
+
         result = await self._runner.execute(
             self._skill_def.path,
             args,
             self._skill_def.allow_net_domains,
+            extra_flags=extra_flags,
         )
 
         # Step 4: Dispatch on result type

@@ -26,6 +26,7 @@ from rich.console import Console
 from src.config import Config
 from src.agent import CoordinatingAgent
 from src.catalog_explorer import CatalogExplorer
+from src.skill_cache import SkillCache
 from src.skill_injector import SkillInjector
 from src.execution.deno_runner import DenoRunner
 
@@ -57,7 +58,12 @@ async def main() -> None:
     # Dependency wiring (matching architecture layer diagram from CLAUDE.md)
     runner = DenoRunner()
     injector = SkillInjector(runner)
-    explorer = CatalogExplorer(config)
+    skill_cache = SkillCache(
+        repo_url="https://github.com/ianache/skills-catalog",
+        cache_dir=config.skills_cache_dir,
+        ttl_seconds=config.skills_cache_ttl,
+    )
+    explorer = CatalogExplorer(config, skill_cache)
     agent = CoordinatingAgent(explorer, injector, config)
 
     # Banner
