@@ -7,8 +7,8 @@ last_updated: "2026-05-17T14:17:39.000Z"
 progress:
   total_phases: 5
   completed_phases: 5
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 8
+  completed_plans: 8
 ---
 
 # Project State
@@ -23,18 +23,18 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 5 of 5 (CLI Entry Point + E2E Validation)
-Plan: 1 of 1 in current phase (05-01 complete — phase complete)
+Plan: 2 of 2 in current phase (05-02 complete — phase complete)
 Status: Complete
-Last activity: 2026-05-17 — Plan 05-01 complete: CLI REPL with Rich spinner, status_cb protocol, error string alignment
+Last activity: 2026-05-17 — Plan 05-02 complete: E2E test suite (smoke + live @pytest.mark.live), CLI-02 satisfied
 
 Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 8
 - Average duration: 4 min
-- Total execution time: 19 min
+- Total execution time: 27 min
 
 **By Phase:**
 
@@ -44,10 +44,10 @@ Progress: [██████████] 100%
 | 02-skill-injection-bridge | 2 | 5 min | 2.5 min |
 | 03-coordinating-agent-two-pass-routing | 1 | 3 min | 3 min |
 | 04-catalog-explorer-integration-caching | 1 | 5 min | 5 min |
-| 05-cli-entry-point-end-to-end-validation | 1 | 7 min | 7 min |
+| 05-cli-entry-point-end-to-end-validation | 2 | 15 min | 7.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (2min), 02-02 (3min), 03-01 (3min), 04-01 (5min), 05-01 (7min)
+- Last 5 plans: 02-02 (3min), 03-01 (3min), 04-01 (5min), 05-01 (7min), 05-02 (8min)
 - Trend: Steady
 
 *Updated after each plan completion*
@@ -55,6 +55,7 @@ Progress: [██████████] 100%
 | Phase 03-coordinating-agent-two-pass-routing P01 | 3 | 2 tasks | 4 files |
 | Phase 04-catalog-explorer-integration-caching P01 | 5 | 2 tasks | 2 files |
 | Phase 05-cli-entry-point-end-to-end-validation P01 | 7 | 2 tasks | 7 files |
+| Phase 05-cli-entry-point-end-to-end-validation P02 | 8 | 1 task | 1 file |
 
 ## Accumulated Context
 
@@ -93,6 +94,9 @@ Recent decisions affecting current work:
 - [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: console.print() always called after with console.status() block exits — avoids Rich pitfall 3 (output hidden by live display)
 - [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: load_dotenv() is the first statement in main() before any Config or os.environ reads (CLAUDE.md constraint)
 - [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: TestFindLive class missing @pytest.mark.live marker — added in Rule 1 fix so -m "not live" correctly excludes live integration tests
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-02: live_config fixture uses Config.from_env() in try/except KeyError with pytest.skip() — identical to test_catalog_explorer.py pattern
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-02: Live test redirects agent_module._LOG_PATH to tmp_path via try/finally — isolates test from real logs/ directory
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-02: Smoke test patches CoordinatingAgent.run entirely — verifies type contract only, avoids ADK session machinery in CI
 
 ### Pending Todos
 
@@ -110,5 +114,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 05-01-PLAN.md — CLI REPL complete. 56 tests pass. All 5 phases complete. v1.0 milestone reached.
-Resume file: .planning/phases/05-cli-entry-point-end-to-end-validation/05-01-SUMMARY.md
+Stopped at: Completed 05-02-PLAN.md — E2E test suite complete. 57 tests pass (4 deselected live). All 5 phases + 8 plans complete. v1.0 milestone reached.
+Resume file: .planning/phases/05-cli-entry-point-end-to-end-validation/05-02-SUMMARY.md

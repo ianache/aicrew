@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Skill Injection Bridge** - SkillInjector converts SkillDefinition to live ADK FunctionTool with JSON Schema validation (completed 2026-05-17)
 - [x] **Phase 3: Coordinating Agent + Two-Pass Routing** - CoordinatingAgent wires confidence-gated routing, tag extraction, and JSONL logging (completed 2026-05-17)
 - [x] **Phase 4: CatalogExplorer Integration + Caching** - Wire existing catalog into agent with TTL cache, GITHUB_TOKEN, and rate-limit protection (completed 2026-05-17)
-- [x] **Phase 5: CLI Entry Point + End-to-End Validation** - Thin CLI shell closes the full prompt-to-output loop with one real skill (in progress — 05-01 complete)
+- [x] **Phase 5: CLI Entry Point + End-to-End Validation** - Thin CLI shell closes the full prompt-to-output loop with one real skill (completed 2026-05-17)
 
 ## Phase Details
 
@@ -93,7 +93,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md — CLI wiring: rich dep, error string alignment, status_cb on agent.run(), main.py REPL
-- [ ] 05-02-PLAN.md — E2E test: smoke + live full-pipeline test with real skill
+- [x] 05-02-PLAN.md — E2E test: smoke + live full-pipeline test with real skill
 
 ## Progress
 
@@ -106,4 +106,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
 | 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete   | 2026-05-17 |
 | 4. CatalogExplorer Integration + Caching | 1/1 | Complete | 2026-05-17 |
-| 5. CLI Entry Point + End-to-End Validation | 1/2 | In progress | - |
+| 5. CLI Entry Point + End-to-End Validation | 2/2 | Complete | 2026-05-17 |

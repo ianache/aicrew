@@ -34,7 +34,7 @@
 ### CLI
 
 - [x] **CLI-01**: User runs `python main.py` from terminal, enters a natural-language prompt, receives a result
-- [ ] **CLI-02**: End-to-end happy path verified with at least one real TypeScript skill from the GitHub catalog (`evaluar-test-case` or `especificar_user_story`)
+- [x] **CLI-02**: End-to-end happy path verified with at least one real TypeScript skill from the GitHub catalog (`evaluar-test-case` or `especificar_user_story`)
 
 ## v2 Requirements
 
