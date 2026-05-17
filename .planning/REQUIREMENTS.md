@@ -22,7 +22,7 @@
 
 - [x] **EXEC-01**: Matched skill executes via Deno subprocess with `--allow-net=<validated-domain>` (domain validated against regex before flag construction), no file I/O permissions, hard 5000ms timeout; process group killed on timeout with no zombie processes
 - [x] **EXEC-02**: Execution errors return typed structured results (timeout / validation_failure / execution_error) — not generic Python exceptions propagated raw to the user
-- [ ] **EXEC-03**: CLI shows a progress indicator during the Deno execution window so the user knows the skill is running
+- [x] **EXEC-03**: CLI shows a progress indicator during the Deno execution window so the user knows the skill is running
 
 ### Reliability
 
@@ -33,7 +33,7 @@
 
 ### CLI
 
-- [ ] **CLI-01**: User runs `python main.py` from terminal, enters a natural-language prompt, receives a result
+- [x] **CLI-01**: User runs `python main.py` from terminal, enters a natural-language prompt, receives a result
 - [ ] **CLI-02**: End-to-end happy path verified with at least one real TypeScript skill from the GitHub catalog (`evaluar-test-case` or `especificar_user_story`)
 
 ## v2 Requirements
@@ -81,9 +81,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DISC-04 | Phase 4 | Complete (04-01) |
 | RELI-01 | Phase 4 | Complete (04-01) |
 | RELI-02 | Phase 4 | Complete (04-01) |
-| EXEC-03 | Phase 5 | Pending |
-| CLI-01 | Phase 5 | Pending |
-| CLI-02 | Phase 5 | Pending |
+| EXEC-03 | Phase 5 | Complete (05-01) |
+| CLI-01 | Phase 5 | Complete (05-01) |
+| CLI-02 | Phase 5 | Pending (05-02) |
 
 **Coverage:**
 - v1 requirements: 16 total

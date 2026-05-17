@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-05-17T13:56:11.016Z"
+status: complete
+last_updated: "2026-05-17T14:17:39.000Z"
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 6
-  completed_plans: 6
+  total_phases: 5
+  completed_phases: 5
+  total_plans: 7
+  completed_plans: 7
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** A user types any prompt and the right skill executes automatically — no manual configuration, no redeployment, just dynamic discovery and execution.
-**Current focus:** Phase 4 complete — CatalogExplorer Integration. Ready for Phase 5 (CLI Entry Point + E2E).
+**Current focus:** Phase 5 complete — CLI Entry Point + E2E. All 5 phases complete. v1.0 milestone reached.
 
 ## Current Position
 
-Phase: 4 of 5 (CatalogExplorer Integration + Caching)
-Plan: 1 of 1 in current phase (04-01 complete — phase complete)
-Status: In progress
-Last activity: 2026-05-17 — Plan 04-01 complete: CatalogExplorer TDD — TTL cache, tag/description matching, GITHUB_TOKEN auth, soft-catch error logging
+Phase: 5 of 5 (CLI Entry Point + E2E Validation)
+Plan: 1 of 1 in current phase (05-01 complete — phase complete)
+Status: Complete
+Last activity: 2026-05-17 — Plan 05-01 complete: CLI REPL with Rich spinner, status_cb protocol, error string alignment
 
-Progress: [████████░░] 80%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -44,15 +44,17 @@ Progress: [████████░░] 80%
 | 02-skill-injection-bridge | 2 | 5 min | 2.5 min |
 | 03-coordinating-agent-two-pass-routing | 1 | 3 min | 3 min |
 | 04-catalog-explorer-integration-caching | 1 | 5 min | 5 min |
+| 05-cli-entry-point-end-to-end-validation | 1 | 7 min | 7 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (3min), 02-01 (2min), 02-02 (3min), 03-01 (3min), 04-01 (5min)
+- Last 5 plans: 02-01 (2min), 02-02 (3min), 03-01 (3min), 04-01 (5min), 05-01 (7min)
 - Trend: Steady
 
 *Updated after each plan completion*
 | Phase 02-skill-injection-bridge P02 | 3 | 2 tasks | 2 files |
 | Phase 03-coordinating-agent-two-pass-routing P01 | 3 | 2 tasks | 4 files |
 | Phase 04-catalog-explorer-integration-caching P01 | 5 | 2 tasks | 2 files |
+| Phase 05-cli-entry-point-end-to-end-validation P01 | 7 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -87,6 +89,10 @@ Recent decisions affecting current work:
 - [Phase 04-catalog-explorer-integration-caching]: 04-01: catalog.yaml has no 'tags' field per entry — _best_match falls back to description-word matching for tag overlap scoring
 - [Phase 04-catalog-explorer-integration-caching]: 04-01: live_config fixture loads .env via python-dotenv and uses placeholder GEMINI_API_KEY — CatalogExplorer tests only hit GitHub, not Gemini
 - [Phase 04-catalog-explorer-integration-caching]: 04-01: get_all_tags() returns description-word vocabulary when explicit tags absent — preserves CoordinatingAgent Pass 1 tag-vocabulary contract
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: status_cb passed as keyword-only arg with None default — all existing callers unchanged; status_cb.update() called after build_tool() but before pass2_agent construction
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: console.print() always called after with console.status() block exits — avoids Rich pitfall 3 (output hidden by live display)
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: load_dotenv() is the first statement in main() before any Config or os.environ reads (CLAUDE.md constraint)
+- [Phase 05-cli-entry-point-end-to-end-validation]: 05-01: TestFindLive class missing @pytest.mark.live marker — added in Rule 1 fix so -m "not live" correctly excludes live integration tests
 
 ### Pending Todos
 
@@ -104,5 +110,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 04-01-PLAN.md — CatalogExplorer TDD complete. 54 tests pass (16 new + 38 Phases 1-3). Phase 4 complete. Ready for Phase 5 (CLI Entry Point + E2E).
-Resume file: .planning/phases/04-catalog-explorer-integration-caching/04-01-SUMMARY.md
+Stopped at: Completed 05-01-PLAN.md — CLI REPL complete. 56 tests pass. All 5 phases complete. v1.0 milestone reached.
+Resume file: .planning/phases/05-cli-entry-point-end-to-end-validation/05-01-SUMMARY.md
