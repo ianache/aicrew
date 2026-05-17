@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: complete
-last_updated: "2026-05-17T14:17:39.000Z"
+milestone: v2.0
+milestone_name: local-skill-cache
+status: in_progress
+last_updated: "2026-05-17T18:39:04.000Z"
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 5
-  total_plans: 8
-  completed_plans: 8
+  total_plans: 9
+  completed_plans: 9
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** A user types any prompt and the right skill executes automatically — no manual configuration, no redeployment, just dynamic discovery and execution.
-**Current focus:** Phase 5 complete — CLI Entry Point + E2E. All 5 phases complete. v1.0 milestone reached.
+**Current focus:** Phase 6 in progress — Local Skill Cache (git clone architecture). Plan 06-01 complete.
 
 ## Current Position
 
-Phase: 5 of 5 (CLI Entry Point + E2E Validation)
-Plan: 2 of 2 in current phase (05-02 complete — phase complete)
-Status: Complete
-Last activity: 2026-05-17 — Plan 05-02 complete: E2E test suite (smoke + live @pytest.mark.live), CLI-02 satisfied
+Phase: 6 of 6 (Local Skill Cache — git clone architecture)
+Plan: 1 of 1 in current phase (06-01 complete — SkillCache TDD + Config extension)
+Status: In Progress
+Last activity: 2026-05-17 — Plan 06-01 complete: SkillCache git lifecycle manager, Config extended with skills_cache_dir/skills_cache_ttl, 65 non-live tests passing
 
-Progress: [██████████] 100%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -97,6 +97,9 @@ Recent decisions affecting current work:
 - [Phase 05-cli-entry-point-end-to-end-validation]: 05-02: live_config fixture uses Config.from_env() in try/except KeyError with pytest.skip() — identical to test_catalog_explorer.py pattern
 - [Phase 05-cli-entry-point-end-to-end-validation]: 05-02: Live test redirects agent_module._LOG_PATH to tmp_path via try/finally — isolates test from real logs/ directory
 - [Phase 05-cli-entry-point-end-to-end-validation]: 05-02: Smoke test patches CoordinatingAgent.run entirely — verifies type contract only, avoids ADK session machinery in CI
+- [Phase 06-local-skill-cache-git-clone-architecture]: 06-01: SkillCache._clone() calls mkdir(parents=True, exist_ok=True) before _write_sync_timestamp() — real git creates cache_dir but mocked subprocess does not; explicit mkdir unifies both paths
+- [Phase 06-local-skill-cache-git-clone-architecture]: 06-01: Config fields skills_cache_dir/skills_cache_ttl are required (not Optional) — preserves fail-fast dataclass pattern; all 3 test files with local Config constructors updated
+- [Phase 06-local-skill-cache-git-clone-architecture]: 06-01: GITHUB_TOKEN explicitly NOT passed to git subprocess — skills-catalog is public; token stays in Config for legacy httpx fetch only (REPO-03)
 
 ### Pending Todos
 
@@ -114,5 +117,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Phase 6 context gathered — ready to plan
-Resume file: .planning/phases/06-local-skill-cache-git-clone-architecture/06-CONTEXT.md
+Stopped at: Completed 06-01-PLAN.md — SkillCache TDD + Config extension
+Resume file: .planning/phases/06-local-skill-cache-git-clone-architecture/06-01-SUMMARY.md
