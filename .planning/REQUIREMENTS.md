@@ -9,8 +9,8 @@
 
 - [x] **DISC-01**: Coordinating Agent routes user prompt via confidence-gated fallback — if confidence < configurable threshold (default 0.72), delegates to CatalogExplorer
 - [x] **DISC-02**: Pass 1 tag extraction constrains output to the catalog's actual tag vocabulary to prevent open-vocabulary mismatch
-- [ ] **DISC-03**: CatalogExplorer fetches `catalog.yaml` from GitHub SSOT and filters skills by tag intersection (already built — this requirement covers contract verification against new SkillInjector)
-- [ ] **DISC-04**: Matched skill's `skill.json` is lazy-loaded from GitHub SSOT per request (already built — this requirement covers integration into the v1 pipeline)
+- [x] **DISC-03**: CatalogExplorer fetches `catalog.yaml` from GitHub SSOT and filters skills by tag intersection (already built — this requirement covers contract verification against new SkillInjector)
+- [x] **DISC-04**: Matched skill's `skill.json` is lazy-loaded from GitHub SSOT per request (already built — this requirement covers integration into the v1 pipeline)
 
 ### Injection
 
@@ -26,8 +26,8 @@
 
 ### Reliability
 
-- [ ] **RELI-01**: `catalog.yaml` responses are TTL-cached in-memory (5-minute TTL) to prevent GitHub rate limit exhaustion during active development
-- [ ] **RELI-02**: `GITHUB_TOKEN` env var supported for authenticated GitHub fetches (5000 req/hr vs 60 unauthenticated)
+- [x] **RELI-01**: `catalog.yaml` responses are TTL-cached in-memory (5-minute TTL) to prevent GitHub rate limit exhaustion during active development
+- [x] **RELI-02**: `GITHUB_TOKEN` env var supported for authenticated GitHub fetches (5000 req/hr vs 60 unauthenticated)
 - [x] **RELI-03**: Confidence threshold is externalized to config (env var or config file) — re-calibratable without code change
 - [x] **RELI-04**: Each routing decision logged to JSONL (prompt hash, extracted tags, confidence score, routing decision, matched skill name if any)
 
@@ -77,10 +77,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DISC-02 | Phase 3 | Complete |
 | RELI-03 | Phase 3 | Complete |
 | RELI-04 | Phase 3 | Complete |
-| DISC-03 | Phase 4 | Pending |
-| DISC-04 | Phase 4 | Pending |
-| RELI-01 | Phase 4 | Pending |
-| RELI-02 | Phase 4 | Pending |
+| DISC-03 | Phase 4 | Complete (04-01) |
+| DISC-04 | Phase 4 | Complete (04-01) |
+| RELI-01 | Phase 4 | Complete (04-01) |
+| RELI-02 | Phase 4 | Complete (04-01) |
 | EXEC-03 | Phase 5 | Pending |
 | CLI-01 | Phase 5 | Pending |
 | CLI-02 | Phase 5 | Pending |
@@ -92,4 +92,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after 01-02 completion*
+*Last updated: 2026-05-17 after 04-01 completion*

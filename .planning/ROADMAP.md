@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 1: Deno Execution Channel** - Isolated DenoRunner with timeout enforcement, process cleanup, and typed error results
 - [ ] **Phase 2: Skill Injection Bridge** - SkillInjector converts SkillDefinition to live ADK FunctionTool with JSON Schema validation
 - [x] **Phase 3: Coordinating Agent + Two-Pass Routing** - CoordinatingAgent wires confidence-gated routing, tag extraction, and JSONL logging (completed 2026-05-17)
-- [ ] **Phase 4: CatalogExplorer Integration + Caching** - Wire existing catalog into agent with TTL cache, GITHUB_TOKEN, and rate-limit protection
+- [x] **Phase 4: CatalogExplorer Integration + Caching** - Wire existing catalog into agent with TTL cache, GITHUB_TOKEN, and rate-limit protection (completed 2026-05-17)
 - [ ] **Phase 5: CLI Entry Point + End-to-End Validation** - Thin CLI shell closes the full prompt-to-output loop with one real skill
 
 ## Phase Details
@@ -63,7 +63,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 03-01-PLAN.md — CoordinatingAgent TDD: Config dataclass, two-pass routing, JSONL log, CatalogExplorer stub
+- [x] 03-01-PLAN.md — CoordinatingAgent TDD: Config dataclass, two-pass routing, JSONL log, CatalogExplorer stub
 
 ### Phase 4: CatalogExplorer Integration + Caching
 **Goal**: The agent discovers and loads real skills from the GitHub catalog with in-memory caching, GITHUB_TOKEN support, and no silent rate-limit failures
@@ -77,7 +77,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 04-01-PLAN.md — CatalogExplorer TDD: httpx GitHub fetch, OR-logic tag matching, TTL cache, GITHUB_TOKEN auth, catalog_error logging
+- [x] 04-01-PLAN.md — CatalogExplorer TDD: httpx GitHub fetch, OR-logic tag matching, TTL cache, GITHUB_TOKEN auth, catalog_error logging
 
 ### Phase 5: CLI Entry Point + End-to-End Validation
 **Goal**: A user types `python main.py`, enters a natural-language prompt, sees a progress indicator during execution, and receives the skill result or a user-readable error message
@@ -101,5 +101,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
 | 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
 | 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete   | 2026-05-17 |
-| 4. CatalogExplorer Integration + Caching | 0/1 | Not started | - |
+| 4. CatalogExplorer Integration + Caching | 1/1 | Complete | 2026-05-17 |
 | 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |

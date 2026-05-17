@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-05-17T12:45:28.290Z"
+status: in_progress
+last_updated: "2026-05-17T13:49:23Z"
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 5
-  completed_plans: 5
+  total_phases: 5
+  completed_phases: 4
+  total_plans: 6
+  completed_plans: 6
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** A user types any prompt and the right skill executes automatically — no manual configuration, no redeployment, just dynamic discovery and execution.
-**Current focus:** Phase 3 — Coordinating Agent + Two-Pass Routing
+**Current focus:** Phase 4 complete — CatalogExplorer Integration. Ready for Phase 5 (CLI Entry Point + E2E).
 
 ## Current Position
 
-Phase: 3 of 5 (Coordinating Agent + Two-Pass Routing)
-Plan: 1 of 1 in current phase (03-01 complete — phase complete)
+Phase: 4 of 5 (CatalogExplorer Integration + Caching)
+Plan: 1 of 1 in current phase (04-01 complete — phase complete)
 Status: In progress
-Last activity: 2026-05-17 — Plan 03-01 complete: CoordinatingAgent TDD — LlmAgent two-pass routing, Config dataclass, JSONL decision log
+Last activity: 2026-05-17 — Plan 04-01 complete: CatalogExplorer TDD — TTL cache, tag/description matching, GITHUB_TOKEN auth, soft-catch error logging
 
-Progress: [██████░░░░] 60%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 6
 - Average duration: 4 min
-- Total execution time: 14 min
+- Total execution time: 19 min
 
 **By Phase:**
 
@@ -43,14 +43,16 @@ Progress: [██████░░░░] 60%
 | 01-deno-execution-channel | 2 | 11 min | 5.5 min |
 | 02-skill-injection-bridge | 2 | 5 min | 2.5 min |
 | 03-coordinating-agent-two-pass-routing | 1 | 3 min | 3 min |
+| 04-catalog-explorer-integration-caching | 1 | 5 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8min), 01-02 (3min), 02-01 (2min), 02-02 (3min), 03-01 (3min)
+- Last 5 plans: 01-02 (3min), 02-01 (2min), 02-02 (3min), 03-01 (3min), 04-01 (5min)
 - Trend: Steady
 
 *Updated after each plan completion*
 | Phase 02-skill-injection-bridge P02 | 3 | 2 tasks | 2 files |
 | Phase 03-coordinating-agent-two-pass-routing P01 | 3 | 2 tasks | 4 files |
+| Phase 04-catalog-explorer-integration-caching P01 | 5 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -81,6 +83,10 @@ Recent decisions affecting current work:
 - [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Fresh LlmAgent per run() for all paths — never mutate agent.tools (prevents tool carryover)
 - [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Optional _runner/_session_service constructor params — avoids monkey-patching; enables clean test injection
 - [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Tag vocabulary fetched via get_all_tags() per run() call and injected into Pass 1 instruction — ensures currency; DISC-02 compliance
+- [Phase 04-catalog-explorer-integration-caching]: 04-01: skills.json (plural) is the correct skill metadata filename — skill.json (singular) returns 404 in the live catalog
+- [Phase 04-catalog-explorer-integration-caching]: 04-01: catalog.yaml has no 'tags' field per entry — _best_match falls back to description-word matching for tag overlap scoring
+- [Phase 04-catalog-explorer-integration-caching]: 04-01: live_config fixture loads .env via python-dotenv and uses placeholder GEMINI_API_KEY — CatalogExplorer tests only hit GitHub, not Gemini
+- [Phase 04-catalog-explorer-integration-caching]: 04-01: get_all_tags() returns description-word vocabulary when explicit tags absent — preserves CoordinatingAgent Pass 1 tag-vocabulary contract
 
 ### Pending Todos
 
@@ -98,5 +104,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 03-01-PLAN.md — CoordinatingAgent TDD complete. 38 tests pass (10 new + 28 Phases 1+2). Phase 3 complete. Ready for Phase 4 (CatalogExplorer Integration).
-Resume file: .planning/phases/03-coordinating-agent-two-pass-routing/03-01-SUMMARY.md
+Stopped at: Completed 04-01-PLAN.md — CatalogExplorer TDD complete. 54 tests pass (16 new + 38 Phases 1-3). Phase 4 complete. Ready for Phase 5 (CLI Entry Point + E2E).
+Resume file: .planning/phases/04-catalog-explorer-integration-caching/04-01-SUMMARY.md
