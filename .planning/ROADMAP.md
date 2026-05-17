@@ -74,7 +74,10 @@ Plans:
   2. A matched skill's skill.json is lazy-loaded from GitHub per request without pre-fetching the full catalog
   3. A second catalog fetch within 5 minutes returns the cached result without making a GitHub network call
   4. When GITHUB_TOKEN is set in the environment, catalog fetches use authenticated requests (5000 req/hr limit)
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 04-01-PLAN.md — CatalogExplorer TDD: httpx GitHub fetch, OR-logic tag matching, TTL cache, GITHUB_TOKEN auth, catalog_error logging
 
 ### Phase 5: CLI Entry Point + End-to-End Validation
 **Goal**: A user types `python main.py`, enters a natural-language prompt, sees a progress indicator during execution, and receives the skill result or a user-readable error message
@@ -98,5 +101,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
 | 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
 | 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete   | 2026-05-17 |
-| 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |
+| 4. CatalogExplorer Integration + Caching | 0/1 | Not started | - |
 | 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |
