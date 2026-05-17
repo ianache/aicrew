@@ -30,7 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A skill with an invalid `--allow-net` domain value is rejected before the subprocess is created
   4. After timeout or crash, no zombie Deno processes remain in the process tree
   5. A skill that exits non-zero returns a typed `execution_error` result with the stderr content
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold: Python packages, Pydantic result models, TypeScript test fixtures
+- [ ] 01-02-PLAN.md — DenoRunner TDD: asyncio subprocess, 5000ms timeout, Windows process kill, typed results
 
 ### Phase 2: Skill Injection Bridge
 **Goal**: A SkillDefinition parsed from skill.json becomes a live ADK FunctionTool that validates LLM-supplied parameters against JSON Schema before delegating to DenoRunner
@@ -84,7 +88,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deno Execution Channel | 0/? | Not started | - |
+| 1. Deno Execution Channel | 0/2 | Not started | - |
 | 2. Skill Injection Bridge | 0/? | Not started | - |
 | 3. Coordinating Agent + Two-Pass Routing | 0/? | Not started | - |
 | 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |
