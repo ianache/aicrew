@@ -45,9 +45,13 @@ def sample_config():
     """A Config instance with test-safe defaults (no GEMINI_API_KEY env read)."""
     from src.config import Config
 
+    from pathlib import Path
+
     return Config(
         gemini_api_key="test-api-key",
         github_token=None,
         confidence_threshold=0.72,
         model_version="gemini-2.5-flash-001",
+        skills_cache_dir=Path(".skills-cache"),
+        skills_cache_ttl=300,
     )

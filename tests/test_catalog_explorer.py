@@ -29,22 +29,30 @@ from src.models.skill import SkillDefinition
 @pytest.fixture
 def config_with_token() -> Config:
     """Config with a fake GitHub token — used to test auth header injection."""
+    from pathlib import Path
+
     return Config(
         gemini_api_key="test-key",
         github_token="fake-token-abc123",
         confidence_threshold=0.72,
         model_version="gemini-2.5-flash-001",
+        skills_cache_dir=Path(".skills-cache"),
+        skills_cache_ttl=300,
     )
 
 
 @pytest.fixture
 def config_no_token() -> Config:
     """Config without a GitHub token — used to test absent auth header."""
+    from pathlib import Path
+
     return Config(
         gemini_api_key="test-key",
         github_token=None,
         confidence_threshold=0.72,
         model_version="gemini-2.5-flash-001",
+        skills_cache_dir=Path(".skills-cache"),
+        skills_cache_ttl=300,
     )
 
 
@@ -58,12 +66,15 @@ def live_config() -> Config:
     """
     import os
     from dotenv import load_dotenv
+    from pathlib import Path
     load_dotenv()
     return Config(
         gemini_api_key=os.environ.get("GEMINI_API_KEY", "placeholder-not-needed-for-catalog"),
         github_token=os.environ.get("GITHUB_TOKEN"),
         confidence_threshold=0.72,
         model_version="gemini-2.5-flash-001",
+        skills_cache_dir=Path(".skills-cache"),
+        skills_cache_ttl=300,
     )
 
 

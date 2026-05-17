@@ -17,6 +17,7 @@ Anti-patterns avoided:
 """
 import os
 from dataclasses import dataclass
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -28,12 +29,16 @@ class Config:
         github_token: Optional. GitHub PAT for authenticated catalog fetches (5000 req/hr).
         confidence_threshold: Routing gate — prompts below this threshold trigger catalog lookup.
         model_version: Gemini model version string passed to ADK LlmAgent.
+        skills_cache_dir: Local directory for the git-cloned skills catalog. Default: .skills-cache
+        skills_cache_ttl: Seconds before a git pull refresh is attempted. Default: 300
     """
 
     gemini_api_key: str
     github_token: str | None
     confidence_threshold: float
     model_version: str
+    skills_cache_dir: Path
+    skills_cache_ttl: int
 
     @classmethod
     def from_env(cls) -> "Config":
@@ -50,5 +55,11 @@ class Config:
             ),
             model_version=os.environ.get(
                 "MODEL_VERSION", "gemini-2.5-flash-001"
+            ),
+            skills_cache_dir=Path(
+                os.environ.get("SKILLS_CACHE_DIR", ".skills-cache")
+            ),
+            skills_cache_ttl=int(
+                os.environ.get("SKILLS_CACHE_TTL", "300")
             ),
         )

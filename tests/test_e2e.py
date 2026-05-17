@@ -37,11 +37,15 @@ import src.agent as agent_module
 @pytest.fixture
 def config_stub() -> Config:
     """Config with a fake API key — no real env file needed for smoke tests."""
+    from pathlib import Path
+
     return Config(
         gemini_api_key="test-key-stub",
         github_token=None,
         confidence_threshold=0.72,
         model_version="gemini-2.5-flash-001",
+        skills_cache_dir=Path(".skills-cache"),
+        skills_cache_ttl=300,
     )
 
 
