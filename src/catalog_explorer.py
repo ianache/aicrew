@@ -1,13 +1,10 @@
 """
-CatalogExplorer — GitHub-backed skill discovery with 5-minute TTL cache.
+CatalogExplorer — local skill discovery from git-cloned cache with 5-minute TTL.
 
-Fetches catalog.yaml from the GitHub SSOT at raw.githubusercontent.com/ianache/skills-catalog
-(CDN-backed, no API rate limit). Caches the result for _TTL_SECONDS to avoid rate exhaustion.
+Reads catalog.yaml from the local SkillCache-managed git clone at
+.skills-cache/catalog.yaml (no HTTP — file is read via pathlib.Path.read_text()).
 
-GITHUB_TOKEN is injected via Config — when set, all HTTP requests include an
-Authorization: Bearer header (raises GitHub rate limit from 60 to 5000 req/hr).
-
-All failures (non-200, network exception, parse error) are soft-caught: find() returns None,
+All failures (clone error, missing file, parse error) are soft-caught: find() returns None,
 get_all_tags() returns []. Every failure is logged as a catalog_error record to routing.jsonl.
 
 Tag matching uses OR logic (any overlap qualifies) with the highest overlap count winning.
@@ -18,6 +15,8 @@ embedded in descriptions rather than a dedicated field.
 Skill metadata is loaded from skills/<path>/skills.json (note plural). The first tool in
 the 'tools' array provides the name, description, and input_schema for SkillDefinition.
 allow_net_domains is read from the skill's top-level key if present, otherwise defaults to [].
+
+SkillDefinition.path is an absolute local .ts path (not a URL) — Phase 6 contract.
 """
 
 import json
@@ -26,11 +25,11 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-import httpx
 import yaml
 
 from src.config import Config
 from src.models.skill import SkillDefinition
+from src.skill_cache import SkillCache
 
 # ---------------------------------------------------------------------------
 # Module-level constants
@@ -38,25 +37,26 @@ from src.models.skill import SkillDefinition
 
 _LOG_PATH = Path("logs/routing.jsonl")
 _TTL_SECONDS = 300  # 5-minute TTL for catalog.yaml cache
-_BASE_URL = "https://raw.githubusercontent.com/ianache/skills-catalog/main"
 
 # Regex to split description text into individual words for tag matching fallback
 _WORD_RE = re.compile(r"[a-zA-Z0-9]+")
 
 
 class CatalogExplorer:
-    """Discovers skills from the GitHub catalog, with TTL caching and GITHUB_TOKEN support.
+    """Discovers skills from the local git clone of the skills catalog.
 
     Constructor args:
-        config: Config — provides github_token for auth headers.
+        config: Config — kept for backward compat (not used for auth in local path).
+        skill_cache: SkillCache — manages git clone lifecycle and returns local root path.
 
     Public interface (duck-typed by CoordinatingAgent):
         async find(tags: list[str]) -> SkillDefinition | None
         async get_all_tags() -> list[str]
     """
 
-    def __init__(self, config: Config) -> None:
+    def __init__(self, config: Config, skill_cache: SkillCache) -> None:
         self._config = config
+        self._skill_cache = skill_cache
         # Cache tuple: (expiry_monotonic, skills_list) or None when empty/expired
         self._catalog_cache: tuple[float, list[dict]] | None = None
 
@@ -115,16 +115,6 @@ class CatalogExplorer:
         return sorted(all_tags)
 
     # ------------------------------------------------------------------
-    # Auth helpers
-    # ------------------------------------------------------------------
-
-    def _auth_headers(self) -> dict:
-        """Return Authorization header dict when github_token is configured, else {}."""
-        if self._config.github_token:
-            return {"Authorization": f"Bearer {self._config.github_token}"}
-        return {}
-
-    # ------------------------------------------------------------------
     # Catalog fetching and caching
     # ------------------------------------------------------------------
 
@@ -140,20 +130,20 @@ class CatalogExplorer:
         return skills
 
     async def _fetch_catalog_yaml(self) -> list[dict]:
-        """Fetch and parse catalog.yaml from GitHub. Returns [] on any failure."""
-        url = f"{_BASE_URL}/catalog.yaml"
+        """Read and parse catalog.yaml from the local git clone. Returns [] on any failure."""
         try:
-            async with httpx.AsyncClient(timeout=5.0) as client:
-                response = await client.get(url, headers=self._auth_headers())
-            if response.status_code != 200:
-                self._log_error(url, f"HTTP {response.status_code}")
-                return []
-            data = yaml.safe_load(response.text)
+            cache_root = await self._skill_cache.ensure_synced()
+        except Exception as exc:
+            self._log_error(".skills-cache/catalog.yaml", str(exc))
+            return []
+        catalog_path = cache_root / "catalog.yaml"
+        try:
+            data = yaml.safe_load(catalog_path.read_text(encoding="utf-8"))
             if isinstance(data, dict):
                 return data.get("skills", [])
             return []
         except Exception as exc:
-            self._log_error(url, str(exc))
+            self._log_error(str(catalog_path), str(exc))
             return []
 
     # ------------------------------------------------------------------
@@ -161,21 +151,23 @@ class CatalogExplorer:
     # ------------------------------------------------------------------
 
     async def _fetch_skill_json(self, skill_path: str) -> SkillDefinition | None:
-        """Fetch skills.json for a given skill path. Returns None on failure.
+        """Read skills.json for a given skill path from the local clone. Returns None on failure.
 
-        The GitHub catalog stores skill metadata in skills/<path>/skills.json (plural).
+        The local clone stores skill metadata in skills/<path>/skills.json (plural).
         The first tool in the 'tools' array provides the input_schema.
+        SkillDefinition.path is set to the absolute local .ts path (Phase 6 contract).
         """
-        url = f"{_BASE_URL}/skills/{skill_path}/skills.json"
         try:
-            async with httpx.AsyncClient(timeout=5.0) as client:
-                response = await client.get(url, headers=self._auth_headers())
-            if response.status_code != 200:
-                self._log_error(url, f"HTTP {response.status_code}")
-                return None
-            data: dict = json.loads(response.text)
+            cache_root = await self._skill_cache.ensure_synced()
         except Exception as exc:
-            self._log_error(url, str(exc))
+            self._log_error(f".skills-cache/skills/{skill_path}/skills.json", str(exc))
+            return None
+        skill_dir = cache_root / "skills" / skill_path
+        json_path = skill_dir / "skills.json"
+        try:
+            data: dict = json.loads(json_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            self._log_error(str(json_path), str(exc))
             return None
 
         # Extract from top-level or first tool entry
@@ -196,10 +188,14 @@ class CatalogExplorer:
         )
         allow_net_domains: list[str] = data.get("allow_net_domains") or []
 
+        # KEY CHANGE: absolute local path (not a URL)
+        entry_point: str = data.get("entry_point") or "index.ts"
+        absolute_ts_path = skill_dir / entry_point
+
         return SkillDefinition(
             name=name,
             description=description,
-            path=skill_path,  # Bare name — no 'skills/' prefix (02-01 decision)
+            path=str(absolute_ts_path),  # absolute local path — Phase 6 contract
             input_schema=input_schema,
             allow_net_domains=allow_net_domains,
         )
@@ -242,11 +238,14 @@ class CatalogExplorer:
     # Error logging
     # ------------------------------------------------------------------
 
-    def _log_error(self, url: str, reason: str) -> None:
-        """Append a catalog_error record to routing.jsonl (synchronous, append-mode)."""
+    def _log_error(self, source: str, reason: str) -> None:
+        """Append a catalog_error record to routing.jsonl (synchronous, append-mode).
+
+        The JSONL record uses key "url" (not "source") for backward compat with log parsers.
+        """
         record = {
             "type": "catalog_error",
-            "url": url,
+            "url": source,
             "reason": reason,
             "ts": datetime.now(timezone.utc).isoformat(),
         }
