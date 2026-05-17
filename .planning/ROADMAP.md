@@ -49,7 +49,7 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md — Contract definitions: SkillDefinition + ValidationCorrectionRequest models, jsonschema dependency
-- [ ] 02-02-PLAN.md — SkillInjector TDD: BaseTool subclass, schema normalization, JSON Schema validation, SKILL.md fetch
+- [x] 02-02-PLAN.md — SkillInjector TDD: BaseTool subclass, schema normalization, JSON Schema validation, SKILL.md fetch
 
 ### Phase 3: Coordinating Agent + Two-Pass Routing
 **Goal**: An ADK-backed agent extracts tags from a user prompt, evaluates confidence, and routes to CatalogExplorer when confidence falls below the externalized threshold — with every routing decision logged
@@ -60,7 +60,10 @@ Plans:
   2. A prompt with confidence < 0.72 triggers tag extraction constrained to the catalog's actual tag vocabulary
   3. The confidence threshold is read from config (env var or config file) — changing it requires no code edit
   4. Every routing decision writes a JSONL record containing prompt hash, extracted tags, confidence score, routing decision, and matched skill name
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 03-01-PLAN.md — CoordinatingAgent TDD: Config dataclass, two-pass routing, JSONL log, CatalogExplorer stub
 
 ### Phase 4: CatalogExplorer Integration + Caching
 **Goal**: The agent discovers and loads real skills from the GitHub catalog with in-memory caching, GITHUB_TOKEN support, and no silent rate-limit failures
@@ -93,7 +96,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
-| 2. Skill Injection Bridge | 1/2 | In progress | - |
-| 3. Coordinating Agent + Two-Pass Routing | 0/? | Not started | - |
+| 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
+| 3. Coordinating Agent + Two-Pass Routing | 0/1 | Not started | - |
 | 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |
 | 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |
