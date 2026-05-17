@@ -48,7 +48,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Contract definitions: SkillDefinition + ValidationCorrectionRequest models, jsonschema dependency
+- [x] 02-01-PLAN.md — Contract definitions: SkillDefinition + ValidationCorrectionRequest models, jsonschema dependency
 - [ ] 02-02-PLAN.md — SkillInjector TDD: BaseTool subclass, schema normalization, JSON Schema validation, SKILL.md fetch
 
 ### Phase 3: Coordinating Agent + Two-Pass Routing
@@ -93,7 +93,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
-| 2. Skill Injection Bridge | 0/2 | Not started | - |
+| 2. Skill Injection Bridge | 1/2 | In progress | - |
 | 3. Coordinating Agent + Two-Pass Routing | 0/? | Not started | - |
 | 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |
 | 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |

@@ -14,9 +14,9 @@
 
 ### Injection
 
-- [ ] **INJS-01**: SkillInjector converts `SkillDefinition` (from `skill.json`) to a live ADK `FunctionTool` via `BaseToolset.get_tools()` for runtime injection into the agent's active tool context
-- [ ] **INJS-02**: LLM payload is validated against `skill.json` `input_schema` (JSON Schema) before Deno fires — missing required fields block the call and return a structured correction request to the agent (no infrastructure call made)
-- [ ] **INJS-03**: `SKILL.md` cognitive guide content is fetched from GitHub and injected into agent context alongside `skill.json`
+- [x] **INJS-01**: SkillInjector converts `SkillDefinition` (from `skill.json`) to a live ADK `FunctionTool` via `BaseToolset.get_tools()` for runtime injection into the agent's active tool context
+- [x] **INJS-02**: LLM payload is validated against `skill.json` `input_schema` (JSON Schema) before Deno fires — missing required fields block the call and return a structured correction request to the agent (no infrastructure call made)
+- [x] **INJS-03**: `SKILL.md` cognitive guide content is fetched from GitHub and injected into agent context alongside `skill.json`
 
 ### Execution
 
@@ -70,9 +70,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | EXEC-01 | Phase 1 | Complete (01-02) |
 | EXEC-02 | Phase 1 | Complete (01-01) |
-| INJS-01 | Phase 2 | Pending |
-| INJS-02 | Phase 2 | Pending |
-| INJS-03 | Phase 2 | Pending |
+| INJS-01 | Phase 2 | Complete |
+| INJS-02 | Phase 2 | Complete |
+| INJS-03 | Phase 2 | Complete |
 | DISC-01 | Phase 3 | Pending |
 | DISC-02 | Phase 3 | Pending |
 | RELI-03 | Phase 3 | Pending |
