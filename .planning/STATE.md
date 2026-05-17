@@ -80,5 +80,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 01-02-PLAN.md — DenoRunner TDD (10 tests all passing), zombie cleanup verified
-Resume file: .planning/phases/01-deno-execution-channel/01-03-PLAN.md
+Stopped at: Phase 2 context gathered. Ready to run `/gsd:plan-phase 2`.
+Resume file: .planning/phases/02-skill-injection-bridge/02-CONTEXT.md
