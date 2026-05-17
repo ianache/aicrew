@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-05-17T07:04:35.937Z"
+status: in_progress
+last_updated: "2026-05-17T07:20:00.000Z"
 progress:
-  total_phases: 2
+  total_phases: 5
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 5
+  completed_plans: 5
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** A user types any prompt and the right skill executes automatically — no manual configuration, no redeployment, just dynamic discovery and execution.
-**Current focus:** Phase 2 — Skill Injection Bridge
+**Current focus:** Phase 3 — Coordinating Agent + Two-Pass Routing
 
 ## Current Position
 
-Phase: 2 of 5 (Skill Injection Bridge)
-Plan: 2 of 2 in current phase (02-02 complete — phase complete)
+Phase: 3 of 5 (Coordinating Agent + Two-Pass Routing)
+Plan: 1 of 1 in current phase (03-01 complete — phase complete)
 Status: In progress
-Last activity: 2026-05-17 — Plan 02-02 complete: SkillInjector TDD — ADK BaseTool subclass, schema normalization, JSON Schema validation, SKILL.md fetch
+Last activity: 2026-05-17 — Plan 03-01 complete: CoordinatingAgent TDD — LlmAgent two-pass routing, Config dataclass, JSONL decision log
 
-Progress: [████░░░░░░] 40%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
@@ -42,13 +42,15 @@ Progress: [████░░░░░░] 40%
 |-------|-------|-------|----------|
 | 01-deno-execution-channel | 2 | 11 min | 5.5 min |
 | 02-skill-injection-bridge | 2 | 5 min | 2.5 min |
+| 03-coordinating-agent-two-pass-routing | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8min), 01-02 (3min), 02-01 (2min), 02-02 (3min)
-- Trend: Accelerating
+- Last 5 plans: 01-01 (8min), 01-02 (3min), 02-01 (2min), 02-02 (3min), 03-01 (3min)
+- Trend: Steady
 
 *Updated after each plan completion*
 | Phase 02-skill-injection-bridge P02 | 3 | 2 tasks | 2 files |
+| Phase 03-coordinating-agent-two-pass-routing P01 | 3 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -75,6 +77,10 @@ Recent decisions affecting current work:
 - [Phase 02-skill-injection-bridge]: 02-02: additionalProperties:false injected only on object schemas — non-object sub-schemas must not receive it per ADK types.Schema
 - [Phase 02-skill-injection-bridge]: 02-02: Missing/extra field validation computed directly from schema, not from jsonschema e.path — required validator e.path unreliable
 - [Phase 02-skill-injection-bridge]: 02-02: ValidationCorrectionRequest returned as .model_dump() dict for consistent ADK serialization
+- [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Three routing paths (not two) — Pass 1 extraction, direct-answer LlmAgent (high-confidence), Pass 2 tool-injected (low-confidence) — because output_schema always returns JSON not natural language
+- [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Fresh LlmAgent per run() for all paths — never mutate agent.tools (prevents tool carryover)
+- [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Optional _runner/_session_service constructor params — avoids monkey-patching; enables clean test injection
+- [Phase 03-coordinating-agent-two-pass-routing]: 03-01: Tag vocabulary fetched via get_all_tags() per run() call and injected into Pass 1 instruction — ensures currency; DISC-02 compliance
 
 ### Pending Todos
 
@@ -85,11 +91,12 @@ None yet.
 - Phase 2: ADK FunctionTool dynamic callable construction is MEDIUM confidence — plan for live ADK experimentation; fallback is BaseTool subclass with explicit `_get_declaration()`
   RESOLVED: BaseTool subclass with explicit _get_declaration() confirmed working in 02-02 — FunctionTool NOT used (drops args in ADK 1.33.0)
 - Phase 3: Confidence score extraction from Pass 1 requires explicit Gemini structured JSON output design — ADK provides no built-in confidence score API
+  RESOLVED: output_schema=TagExtractionResult + output_key='routing' stores structured dict in session.state; confidence accessed via routing.get('confidence', 0.0)
 - Phase 1: Deno redirect behavior with `--allow-net` is LOW confidence — verify against Deno 2.6.7 changelog during Phase 1
   RESOLVED: test_valid_domain_passes_validation passed with --allow-net=github.com — Deno 2.6.7 honors flag correctly
 
 ## Session Continuity
 
 Last session: 2026-05-17
-Stopped at: Completed 02-02-PLAN.md — SkillInjector TDD complete. 28 tests pass (18 new + 10 Phase 1). Phase 2 complete. Ready for Phase 3 (Coordinating Agent).
-Resume file: .planning/phases/02-skill-injection-bridge/02-02-SUMMARY.md
+Stopped at: Completed 03-01-PLAN.md — CoordinatingAgent TDD complete. 38 tests pass (10 new + 28 Phases 1+2). Phase 3 complete. Ready for Phase 4 (CatalogExplorer Integration).
+Resume file: .planning/phases/03-coordinating-agent-two-pass-routing/03-01-SUMMARY.md

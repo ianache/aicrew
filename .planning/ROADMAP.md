@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Deno Execution Channel** - Isolated DenoRunner with timeout enforcement, process cleanup, and typed error results
 - [ ] **Phase 2: Skill Injection Bridge** - SkillInjector converts SkillDefinition to live ADK FunctionTool with JSON Schema validation
-- [ ] **Phase 3: Coordinating Agent + Two-Pass Routing** - CoordinatingAgent wires confidence-gated routing, tag extraction, and JSONL logging
+- [x] **Phase 3: Coordinating Agent + Two-Pass Routing** - CoordinatingAgent wires confidence-gated routing, tag extraction, and JSONL logging (completed 2026-05-17)
 - [ ] **Phase 4: CatalogExplorer Integration + Caching** - Wire existing catalog into agent with TTL cache, GITHUB_TOKEN, and rate-limit protection
 - [ ] **Phase 5: CLI Entry Point + End-to-End Validation** - Thin CLI shell closes the full prompt-to-output loop with one real skill
 
@@ -97,6 +97,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Deno Execution Channel | 2/2 | Complete | 2026-05-17 |
 | 2. Skill Injection Bridge | 2/2 | Complete | 2026-05-17 |
-| 3. Coordinating Agent + Two-Pass Routing | 0/1 | Not started | - |
+| 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete   | 2026-05-17 |
 | 4. CatalogExplorer Integration + Caching | 0/? | Not started | - |
 | 5. CLI Entry Point + End-to-End Validation | 0/? | Not started | - |
