@@ -50,8 +50,21 @@ def config_no_token() -> Config:
 
 @pytest.fixture
 def live_config() -> Config:
-    """Config loaded from real environment — used for live GitHub tests."""
-    return Config.from_env()
+    """Config loaded from real environment — used for live GitHub tests.
+
+    Loads .env via python-dotenv so GITHUB_TOKEN is available for authenticated
+    catalog fetches. Uses a placeholder GEMINI_API_KEY when not set (live catalog
+    tests only hit GitHub, not Gemini).
+    """
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+    return Config(
+        gemini_api_key=os.environ.get("GEMINI_API_KEY", "placeholder-not-needed-for-catalog"),
+        github_token=os.environ.get("GITHUB_TOKEN"),
+        confidence_threshold=0.72,
+        model_version="gemini-2.5-flash-001",
+    )
 
 
 def _make_skill_entries(*names_and_descs: tuple[str, str, str]) -> list[dict]:
