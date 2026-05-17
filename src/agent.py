@@ -215,7 +215,7 @@ class CoordinatingAgent:
             return f"{base}\n\n---\n{skill_md}"
         return base
 
-    async def run(self, prompt: str) -> str:
+    async def run(self, prompt: str, *, status_cb=None) -> str:
         """Route a user prompt through the two-pass confidence-gated loop.
 
         Returns a natural language response string in all cases.
@@ -277,6 +277,9 @@ class CoordinatingAgent:
                 tool, skill_md = await self._skill_injector.build_tool(skill_def)
                 skill_name = skill_def.name
                 decision = "catalog_route"
+
+                if status_cb is not None:
+                    status_cb.update("Running skill...")
 
                 pass2_agent = LlmAgent(
                     name="coordinating_agent_pass2",

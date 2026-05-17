@@ -187,6 +187,7 @@ class TestTagMatching:
 # find() — live GitHub integration
 # ---------------------------------------------------------------------------
 
+@pytest.mark.live
 class TestFindLive:
     """Live GitHub hits — requires network and GITHUB_TOKEN in .env for rate limit headroom."""
 

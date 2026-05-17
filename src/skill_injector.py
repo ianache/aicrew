@@ -232,9 +232,10 @@ class _SkillBaseTool(BaseTool):
         if isinstance(result, ExecutionSuccess):
             return result.data
         elif isinstance(result, SkillTimeoutError):
-            return f"Skill timed out after {result.elapsed_ms}ms"
+            return "Skill timed out after 5s."
         elif isinstance(result, ExecutionError):
-            return f"Skill execution failed: {result.stderr}"
+            first_line = result.stderr.splitlines()[0] if result.stderr.strip() else result.stderr
+            return f"Skill failed (exit {result.exit_code}): {first_line}"
         elif isinstance(result, ValidationFailure):
             return f"Skill domain validation failed: {result.invalid_domain}"
         else:
