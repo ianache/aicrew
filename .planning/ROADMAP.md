@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Coordinating Agent + Two-Pass Routing** - CoordinatingAgent wires confidence-gated routing, tag extraction, and JSONL logging (completed 2026-05-17)
 - [x] **Phase 4: CatalogExplorer Integration + Caching** - Wire existing catalog into agent with TTL cache, GITHUB_TOKEN, and rate-limit protection (completed 2026-05-17)
 - [x] **Phase 5: CLI Entry Point + End-to-End Validation** - Thin CLI shell closes the full prompt-to-output loop with one real skill (completed 2026-05-17)
-- [ ] **Phase 6: Local Skill Cache — Git Clone Architecture** - Replace all per-file HTTP fetches with a managed local git clone of the skills catalog, enabling multi-file skills and eliminating URL fragility
+- [x] **Phase 6: Local Skill Cache — Git Clone Architecture** - Replace all per-file HTTP fetches with a managed local git clone of the skills catalog, enabling multi-file skills and eliminating URL fragility (completed 2026-05-17)
 
 ## Phase Details
 
@@ -112,7 +112,7 @@ Plans:
 Plans:
 - [x] 06-01-PLAN.md — SkillCache TDD: git clone lifecycle, file-based TTL, partial-clone guard; Config cache fields
 - [x] 06-02-PLAN.md — CatalogExplorer + SkillInjector refactor: local file reads, --allow-read flag, main.py wiring
-- [ ] 06-03-PLAN.md — Test updates: conftest fixtures, catalog explorer unit tests, skill injector local-path tests
+- [x] 06-03-PLAN.md — Test updates: conftest fixtures, catalog explorer unit tests, skill injector local-path tests
 
 ## Progress
 
@@ -126,4 +126,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Coordinating Agent + Two-Pass Routing | 1/1 | Complete | 2026-05-17 |
 | 4. CatalogExplorer Integration + Caching | 1/1 | Complete | 2026-05-17 |
 | 5. CLI Entry Point + End-to-End Validation | 2/2 | Complete | 2026-05-17 |
-| 6. Local Skill Cache — Git Clone Architecture | 2/3 | In Progress|  |
+| 6. Local Skill Cache — Git Clone Architecture | 3/3 | Complete | 2026-05-17 |
