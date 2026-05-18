@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A personal agentic platform built on Google AI ADK that dynamically discovers and executes skills without redeploying the core agent. Skills live in a GitHub-hosted catalog (`catalog.yaml` + per-skill `skill.json`); the Coordinating Agent fetches, filters, and injects them at runtime based on what the user's prompt needs. Interaction happens via CLI — type a prompt, the agent figures out which skill fits and runs it.
+A personal agentic platform built on Google AI ADK that dynamically discovers and executes TypeScript skills without redeploying the core agent. Skills live in a GitHub-hosted catalog (`catalog.yaml` + per-skill `skills.json`); the Coordinating Agent fetches, filters, and injects them at runtime based on what the user's prompt needs. Interaction happens via CLI — type a prompt, the agent figures out which skill fits and runs it via a local git-cloned Deno sandbox. Shipped v1.0 with a 6-phase, 11-plan build from scratch in one day.
 
 ## Core Value
 
@@ -12,52 +12,62 @@ A user types any prompt and the right skill executes automatically — no manual
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Coordinating Agent built on Google AI ADK responds to user prompts via CLI — v1.0
+- ✓ Agent extracts 1-3 tags from user prompt and triggers CatalogExplorer when confidence < 0.72 — v1.0
+- ✓ CatalogExplorer reads `catalog.yaml` from local git clone, filters skills by tag intersection, lazy-loads matching `skills.json` — v1.0
+- ✓ Skill parameters are validated against `skills.json` input_schema before execution (hard block on missing required fields) — v1.0
+- ✓ Validated skill executes via Deno sandbox with strict 5000ms timeout and `--allow-net` flag control — v1.0
+- ✓ Full end-to-end loop works for at least one TypeScript skill — v1.0
+- ✓ CLI entry point runnable with a single command (`uv run python main.py`) — v1.0
+- ✓ Skills catalog cloned to `.skills-cache/` with 5-min TTL git pull refresh — v1.0
+- ✓ Zero per-file HTTP calls during routing or execution after initial clone — v1.0
+- ✓ Deno executes from local clone path with `--allow-read=.skills-cache/` — v1.0
 
 ### Active
 
-- [ ] Coordinating Agent built on Google AI ADK responds to user prompts via CLI
-- [ ] Agent extracts 1-3 tags from user prompt and triggers CatalogExplorer when confidence < 0.72
-- [ ] CatalogExplorer fetches `catalog.yaml` from GitHub, filters skills by tag intersection, lazy-loads matching `skill.json`
-- [ ] Skill parameters are validated against `skill.json` input_schema before execution (hard block on missing required fields)
-- [ ] Validated skill executes via Deno sandbox with strict 5000ms timeout and `--allow-net` flag control
-- [ ] Full end-to-end loop works for at least one TypeScript skill (e.g., `evaluar-test-case` or `especificar_user_story`)
-- [ ] CLI entry point runnable with a single command
+- [ ] Multi-skill DAG chaining — single prompt triggers sequential execution of multiple skills
+- [ ] FastAPI endpoint — expose agent as HTTP service for programmatic use
 
 ### Out of Scope
 
 - WebAssembly/Extism channel — v2, after Deno channel is proven
 - MCP channel (Qdrant) — v2
 - Docker execution channel — future
-- Multi-skill DAG chaining — v2 (discovery loop must work first)
-- Vector cache auto-curation (REQ-05) — v2
+- Vector cache auto-curation — v2
 - ISO 27001 immutable logging — v2
-- Web UI / FastAPI endpoint — v2 (CLI is sufficient for v1 validation)
 - Open-source packaging / other users — may ship later, not a v1 concern
 
 ## Context
 
-- **Existing code:** `CatalogExplorer` (`src/catalog_explorer.py`) handles catalog fetching, tag filtering, and lazy-loading of `skill.json`. Pydantic models in `src/models/skill.py` define `CatalogManifest`, `CatalogSkill`, `SkillDefinition`, `InputSchema`. Tests hit the live GitHub repo (`https://github.com/ianache/skills-catalog`) — no mocks.
-- **GitHub SSOT:** Skills catalog lives at `https://github.com/ianache/skills-catalog`. Skills follow two-level structure: `catalog.yaml` (root manifest) + `skills/<name>/skill.json` (Anthropic Tool Definition Schema).
-- **Skills follow Anthropic Tool Standard:** `skill.json` is a JSON Schema that defines the contract the LLM must populate before any execution channel fires.
-- **Personal use first:** The primary user is the developer (Ilver Anache). Enterprise/team scenarios are in the PRD for future reference but don't constrain v1 scope.
+- **v1.0 shipped 2026-05-17** — 6 phases, 11 plans, 66 commits, ~3,200 lines Python, 62 non-live tests passing
+- **Tech stack:** Python 3.13, Google AI ADK 1.33.0, google-genai ≥1.72, Deno 2.6.7, pytest 8+, Rich
+- **GitHub SSOT:** Skills catalog at `https://github.com/ianache/skills-catalog`. Structure: `catalog.yaml` + `skills/<name>/skills.json` (plural) + `skills/<name>/index.ts` + `skills/<name>/SKILL.md`
+- **Local cache:** `.skills-cache/` — git clone of the catalog, 5-min TTL, lazy (first skill use), self-healing on delete
+- **Routing:** Two-pass — Pass 1 extracts tags with confidence score, Pass 2 injects tool and re-runs when confidence < 0.72
+- **Personal use first:** Primary user is the developer (Ilver Anache)
 
 ## Constraints
 
-- **Tech stack:** Python 3.11 + Google AI ADK (`google-genai`) — non-negotiable, core architecture choice
-- **Agent standard:** Skills must follow the Anthropic Tool Definition Schema (`skill.json` = JSON Schema with `name`, `description`, `input_schema`)
-- **Execution sandbox:** Deno process invoked as subprocess with `--allow-net=<specific-domain>` and hard 5000ms timeout — no file read/write, no V8 escape
-- **GitHub as SSOT:** Catalog and skills live in GitHub; no database, no local registry for v1
+- **Tech stack:** Python 3.13 + Google AI ADK (`google-genai ≥1.72,<2`) — hard upper bound on google-genai (v2 breaks ADK 1.33.0)
+- **ADK note:** `FunctionTool` drops `**kwargs` args in ADK 1.33.0 — use `BaseTool` subclass with explicit `_get_declaration()`
+- **Execution sandbox:** Deno invoked with `--allow-net=<domain>`, `--allow-read=.skills-cache/`, hard 5000ms timeout — no write access, no V8 escape
+- **Windows:** `taskkill /F /T /PID` for process cleanup (no `os.killpg`); always `proc.communicate()` not `proc.wait()` (pipe deadlock on large stdout)
+- **GitHub as SSOT:** Catalog and skills live in GitHub; local clone is a cache, not a registry
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Google AI ADK as agent framework | Core requirement; Gemini models + ADK tool-calling integrates with skill injection | — Pending |
-| Deno sandbox for TypeScript skills (not Node) | Security-first: Deno's deny-by-default permissions + V8 isolation + 5000ms timeout are non-negotiable | — Pending |
-| GitHub as skills SSOT | No infra to manage; public repo = zero-cost distribution; `catalog.yaml` is the index | — Pending |
-| CLI interface for v1 | Fastest path to validate the discovery loop; web/API surface is v2 | — Pending |
-| CatalogExplorer already built | Fetch, filter, lazy-load logic is done and tested; Agent layer is the missing piece | — Pending |
+| Google AI ADK as agent framework | Core requirement; Gemini models + ADK tool-calling | ✓ Works — two-pass routing pattern effective |
+| Deno sandbox for TypeScript skills | Security-first: deny-by-default permissions + V8 isolation | ✓ Works — `--allow-net` + `--allow-read` scoped correctly |
+| GitHub as skills SSOT + local clone | Zero infra; git clone eliminates URL fragility and per-file HTTP | ✓ Works — `.last-sync` TTL file survives restarts |
+| CLI interface for v1 | Fastest path to validate the discovery loop | ✓ Works — Rich spinner + structured error strings |
+| `BaseTool` subclass not `FunctionTool` | `FunctionTool` drops `**kwargs` args in ADK 1.33.0 | ✓ Confirmed — `_get_declaration()` explicit schema required |
+| `proc.communicate()` never `proc.wait()` | `proc.wait()` deadlocks on large Deno stdout (Windows) | ✓ Confirmed — mandatory pattern |
+| Three routing paths not two | `output_schema` always returns JSON, not natural language | ✓ Confirmed — Pass 1 extraction, direct-answer, Pass 2 tool-injected |
+| `additionalProperties:false` strip for Gemini | ADK types.Schema rejects extra keys at `_get_declaration()` time | ✓ Fixed post-Phase-5 — required for live E2E |
+| `skills.json` plural not `skill.json` | Actual filename in the live catalog returns 404 for singular | ✓ Confirmed — live catalog inspection required |
+| `entry_point` field in `skills.json` | Multi-file skills need explicit entry point; defaults to `index.ts` | ✓ Works — `SkillCache` reads field, builds absolute path |
 
 ---
-*Last updated: 2026-05-16 after initialization*
+*Last updated: 2026-05-17 after v1.0 milestone*
