@@ -50,11 +50,15 @@ class PlanAndExecuteOrchestrator:
 
         # ADK infrastructure
         self._APP_NAME = "plan_execute_orchestrator"
-        self._session_service = InMemorySessionService()
-        self._runner = _runner or Runner(
-            app_name=self._APP_NAME,
-            session_service=self._session_service,
-        )
+        if _runner is not None:
+            self._session_service = _runner.session_service
+            self._runner = _runner
+        else:
+            self._session_service = InMemorySessionService()
+            self._runner = Runner(
+                app_name=self._APP_NAME,
+                session_service=self._session_service,
+            )
 
     def _build_planner_agent(self) -> LlmAgent:
         """Create the Pass 1 planning agent with structured ExecutionPlan output."""

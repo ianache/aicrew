@@ -215,6 +215,14 @@ async def test_orchestrator_approval_flow_approved(sample_config):
     
     custom_config = dataclasses.replace(sample_config, approve_plan=True)
     mock_runner = MagicMock()
+    mock_session_service = MagicMock()
+    mock_session = MagicMock()
+    mock_session.id = "session_123"
+    mock_session.state = {"plan": {}}
+    mock_session_service.create_session = AsyncMock(return_value=mock_session)
+    mock_session_service.get_session = AsyncMock(return_value=mock_session)
+    mock_runner.session_service = mock_session_service
+    
     orchestrator = PlanAndExecuteOrchestrator(config=custom_config, _runner=mock_runner)
     
     # Mock planning and execution methods to isolate approval test
@@ -262,6 +270,13 @@ async def test_orchestrator_approval_flow_rejected(sample_config):
     
     custom_config = dataclasses.replace(sample_config, approve_plan=True)
     mock_runner = MagicMock()
+    mock_session_service = MagicMock()
+    mock_session = MagicMock()
+    mock_session.id = "session_123"
+    mock_session_service.create_session = AsyncMock(return_value=mock_session)
+    mock_session_service.get_session = AsyncMock(return_value=mock_session)
+    mock_runner.session_service = mock_session_service
+    
     orchestrator = PlanAndExecuteOrchestrator(config=custom_config, _runner=mock_runner)
     
     orchestrator.generate_plan = AsyncMock(return_value=ExecutionPlan(
