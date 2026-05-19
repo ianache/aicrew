@@ -49,11 +49,12 @@ class PlanAndExecuteOrchestrator:
         self._update_tool = UpdateTaskStatusTool(self._store)
 
         # ADK infrastructure
-        self._APP_NAME = "plan_execute_orchestrator"
         if _runner is not None:
             self._session_service = _runner.session_service
             self._runner = _runner
+            self._APP_NAME = getattr(_runner, "app_name", "plan_execute_orchestrator")
         else:
+            self._APP_NAME = "plan_execute_orchestrator"
             self._session_service = InMemorySessionService()
             self._runner = Runner(
                 app_name=self._APP_NAME,
