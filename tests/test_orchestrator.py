@@ -200,3 +200,82 @@ async def test_orchestrator_task_failure_and_replanning_loop(sample_config, samp
     assert final_plan.global_status == PlanStatus.COMPLETED
     assert final_plan.tasks[0].status == TaskStatus.COMPLETED
     assert final_plan.tasks[0].retry_count == 1
+
+
+# ---------------------------------------------------------------------------
+# TestPlanApproval — tests interactive plan approval and rejection (PRD-004)
+# ---------------------------------------------------------------------------
+
+async def test_orchestrator_approval_flow_approved(sample_config):
+    """If approve_plan=True and user inputs 's', plan is executed successfully."""
+    from unittest.mock import patch, AsyncMock
+    from src.orchestrator import PlanAndExecuteOrchestrator
+    from src.models.plan import ExecutionPlan, PlanStatus
+    import dataclasses
+    
+    custom_config = dataclasses.replace(sample_config, approve_plan=True)
+    mock_runner = MagicMock()
+    orchestrator = PlanAndExecuteOrchestrator(config=custom_config, _runner=mock_runner)
+    
+    # Mock planning and execution methods to isolate approval test
+    plan_to_approve = ExecutionPlan(
+        plan_id="plan_appr_01",
+        global_status=PlanStatus.PENDING,
+        created_at="2026-05-19T02:00:00Z",
+        updated_at="2026-05-19T02:00:00Z",
+        tasks=[]
+    )
+    orchestrator.generate_plan = AsyncMock(return_value=plan_to_approve)
+    
+    # Mock the store's get_plan to return COMPLETED so the execution loop exits immediately
+    orchestrator._store.get_plan = AsyncMock(return_value=ExecutionPlan(
+        plan_id="plan_appr_01",
+        global_status=PlanStatus.COMPLETED,
+        created_at="2026-05-19T02:00:00Z",
+        updated_at="2026-05-19T02:00:00Z",
+        tasks=[]
+    ))
+    
+    # Mock synthesis to prevent hitting live system
+    mock_synth_res = AsyncMock()
+    mock_synth_res.is_final_response.return_value = True
+    mock_synth_res.content.parts = [MagicMock(text="Plan Executed and Synthesized", thought=False)]
+    
+    async def dummy_run_async(*args, **kwargs):
+        yield mock_synth_res
+        
+    orchestrator._runner.run_async = dummy_run_async
+    
+    # Test approval path by mocking input to return 's' (approved)
+    with patch("builtins.input", return_value="s"):
+        result = await orchestrator.run("Test prompt")
+        
+    assert "Plan Executed and Synthesized" in result
+
+
+async def test_orchestrator_approval_flow_rejected(sample_config):
+    """If approve_plan=True and user inputs 'n', execution is aborted instantly."""
+    from unittest.mock import patch, AsyncMock
+    from src.orchestrator import PlanAndExecuteOrchestrator
+    from src.models.plan import ExecutionPlan, PlanStatus
+    import dataclasses
+    
+    custom_config = dataclasses.replace(sample_config, approve_plan=True)
+    mock_runner = MagicMock()
+    orchestrator = PlanAndExecuteOrchestrator(config=custom_config, _runner=mock_runner)
+    
+    orchestrator.generate_plan = AsyncMock(return_value=ExecutionPlan(
+        plan_id="plan_appr_02",
+        global_status=PlanStatus.PENDING,
+        created_at="2026-05-19T02:00:00Z",
+        updated_at="2026-05-19T02:00:00Z",
+        tasks=[]
+    ))
+    
+    # Test rejection path by mocking input to return 'n' (rejected)
+    with patch("builtins.input", return_value="n"):
+        result = await orchestrator.run("Test prompt")
+        
+    assert "Plan de Ejecución Cancelado" in result
+    assert "rechazado por el usuario" in result
+

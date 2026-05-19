@@ -167,6 +167,50 @@ class PlanAndExecuteOrchestrator:
         plan = await self.generate_plan(prompt)
         plan_id = plan.plan_id
         
+        # Check if plan approval is enabled (approve_plan = True)
+        if self._config.approve_plan:
+            if status_cb is not None:
+                status_cb.stop()
+                
+            from rich.console import Console
+            from rich.table import Table
+            
+            c = Console()
+            c.print("\n[bold gold1]========================================================================[/bold gold1]")
+            c.print("[bold gold1]                  PROPUESTA DE PLAN DE EJECUCIÓN MULTIAGENTE            [/bold gold1]")
+            c.print("[bold gold1]========================================================================[/bold gold1]")
+            c.print(f"[bold cyan]ID del Plan:[/bold cyan] {plan.plan_id}")
+            c.print(f"[bold cyan]Estado Global:[/bold cyan] {plan.global_status.value}")
+            c.print("\n[bold]Tareas en el Grafo de Ejecución (DAG):[/bold]")
+            
+            table = Table(show_header=True, header_style="bold blue")
+            table.add_column("ID", style="dim", width=10)
+            table.add_column("Nombre", style="bold", width=20)
+            table.add_column("Especialista", style="magenta", width=18)
+            table.add_column("Dependencias", style="yellow", width=15)
+            table.add_column("Descripción", width=40)
+            
+            for t in plan.tasks:
+                deps = ", ".join(t.dependencies) if t.dependencies else "-"
+                table.add_row(t.task_id, t.name, t.agent_type, deps, t.description)
+                
+            c.print(table)
+            c.print("[bold gold1]========================================================================[/bold gold1]")
+            
+            try:
+                user_choice = input("\n[?] ¿Desea aprobar y ejecutar este plan? (s/n) [s]: ").strip().lower()
+            except (EOFError, KeyboardInterrupt):
+                user_choice = "n"
+                
+            if user_choice not in ("", "s", "si", "y", "yes"):
+                c.print("[red]✗ Ejecución del plan cancelada por el usuario.[/red]\n")
+                return "### ✗ Plan de Ejecución Cancelado\n\nEl plan de ejecución multiagente propuesto fue rechazado por el usuario. No se realizaron cambios ni ejecuciones de subagentes."
+                
+            c.print("[green]✓ Plan aprobado. Iniciando ejecución de tareas...[/green]\n")
+            
+            if status_cb is not None:
+                status_cb.start()
+
         # 2. Register plan via CreatePlanTool
         class DummySession:
             state: dict = {}

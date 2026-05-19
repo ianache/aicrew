@@ -48,9 +48,28 @@ async def main() -> None:
     # FIRST: load .env before any Config or os.environ reads (CLAUDE.md constraint)
     load_dotenv()
 
+    # Parse CLI arguments (PRD-004 approve_plan override)
+    # Using parse_known_args() to gracefully ignore Deno-specific flags like --allow-env
+    import argparse
+    parser = argparse.ArgumentParser(description="AI Agents Crew CLI REPL")
+    parser.add_argument(
+        "--approve-plan",
+        dest="approve_plan",
+        action="store_true",
+        default=None,
+        help="Require user approval for plans before execution (default: enabled)",
+    )
+    parser.add_argument(
+        "--no-approve-plan",
+        dest="approve_plan",
+        action="store_false",
+        help="Execute plans without user approval",
+    )
+    args, unknown = parser.parse_known_args()
+
     # Config construction — raises KeyError if GEMINI_API_KEY not set
     try:
-        config = Config.from_env()
+        config = Config.from_env(approve_plan_override=args.approve_plan)
     except KeyError:
         console.print("[red]Error: GEMINI_API_KEY not set. Add it to .env or export it.[/red]")
         return

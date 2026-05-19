@@ -84,15 +84,18 @@ uv run pytest tests/path/test_foo.py::test_name    # single test
 aiagentscrew/
 │
 ├── main.py                       # Entry: load_dotenv(), asyncio.run(main()),
+│                                 #   argparse for --approve-plan/--no-approve-plan,
 │                                 #   Rich spinner, structured error messages
 ├── src/
 │   ├── __init__.py
 │   ├── config.py                 # All env reads: GEMINI_API_KEY, GITHUB_TOKEN,
-│   │                             #   CONFIDENCE_THRESHOLD (0.72), MODEL_VERSION
+│   │                             #   CONFIDENCE_THRESHOLD (0.72), MODEL_VERSION,
+│   │                             #   APPROVE_PLAN (defaults to True, configures plan interactive approval)
 │   ├── agent.py                  # CoordinatingAgent: wraps ADK LlmAgent + Runner,
 │   │                             #   two-pass routing, tools reset per run() call,
 │   │                             #   JSONL routing log to logs/routing.jsonl
-│   ├── orchestrator.py           # PlanAndExecuteOrchestrator: deterministic Multi-Agent Coordinator (PRD-004)
+│   ├── orchestrator.py           # PlanAndExecuteOrchestrator: Multi-Agent Coordinator (PRD-004) with
+│   │                             #   interactive plan approval presentation before execution
 │   ├── catalog_explorer.py       # CatalogExplorer: fetch catalog.yaml (5-min TTL
 │   │                             #   in-memory cache), tag intersection, lazy-load
 │   │                             #   skill.json — uses raw.githubusercontent.com

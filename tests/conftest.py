@@ -59,4 +59,5 @@ def sample_config():
         model_version="gemini-2.5-flash",
         skills_cache_dir=Path(".skills-cache"),
         skills_cache_ttl=300,
+        approve_plan=False,
     )

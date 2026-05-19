@@ -39,9 +39,10 @@ class Config:
     model_version: str
     skills_cache_dir: Path
     skills_cache_ttl: int
+    approve_plan: bool = True
 
     @classmethod
-    def from_env(cls) -> "Config":
+    def from_env(cls, approve_plan_override: bool | None = None) -> "Config":
         """Construct Config by reading all required and optional environment variables.
 
         Raises:
@@ -51,6 +52,11 @@ class Config:
         # be a non-Gemini key globally set on the host machine. We pop it so GEMINI_API_KEY is used.
         import os
         os.environ.pop("GOOGLE_API_KEY", None)
+
+        approve_plan_env = os.environ.get("APPROVE_PLAN", "true").lower()
+        approve_plan = approve_plan_env in ("true", "1", "yes", "si", "s")
+        if approve_plan_override is not None:
+            approve_plan = approve_plan_override
 
         return cls(
             gemini_api_key=os.environ["GEMINI_API_KEY"],
@@ -67,4 +73,5 @@ class Config:
             skills_cache_ttl=int(
                 os.environ.get("SKILLS_CACHE_TTL", "300")
             ),
+            approve_plan=approve_plan,
         )
