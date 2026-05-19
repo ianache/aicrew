@@ -1,0 +1,15 @@
+[llmwikidoc]
+model = "gemini-2.5-flash"
+wiki_dir = "wiki"
+context_depth = 2
+
+[llmwikidoc.confidence]
+initial = 0.7
+reinforce_delta = 0.1
+contradict_delta = -0.2
+decay_days = 30
+
+[llmwikidoc.search]
+bm25_weight = 0.33
+vector_weight = 0.33
+graph_weight = 0.34

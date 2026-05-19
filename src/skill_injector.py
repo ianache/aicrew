@@ -239,9 +239,9 @@ class _SkillBaseTool(BaseTool):
         try:
             cache_root = Path(self._skill_def.path).parents[2]
             allow_read_flag = f"--allow-read={cache_root.as_posix()}"
-            extra_flags = [allow_read_flag]
+            extra_flags = [allow_read_flag, "--allow-env"]
         except IndexError:
-            extra_flags = []
+            extra_flags = ["--allow-env"]
 
         result = await self._runner.execute(
             self._skill_def.path,

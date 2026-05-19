@@ -1,0 +1,2928 @@
+{
+  "model::the llmwikidoc tool is configured to use 'gemini-2.5-flash' ": {
+    "statement": "The llmwikidoc tool is configured to use 'gemini-2.5-flash' as its model.",
+    "entity": "model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "wiki_dir::the llmwikidoc tool is configured to store its wiki document": {
+    "statement": "The llmwikidoc tool is configured to store its wiki documentation in the 'wiki' directory.",
+    "entity": "wiki_dir",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "context_depth::the llmwikidoc tool is configured with a context depth of 2.": {
+    "statement": "The llmwikidoc tool is configured with a context depth of 2.",
+    "entity": "context_depth",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "initial_confidence::the initial confidence score for llmwikidoc is set to 0.7.": {
+    "statement": "The initial confidence score for llmwikidoc is set to 0.7.",
+    "entity": "initial_confidence",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "reinforce_delta::confidence scores in llmwikidoc increase by 0.1 upon reinfor": {
+    "statement": "Confidence scores in llmwikidoc increase by 0.1 upon reinforcement.",
+    "entity": "reinforce_delta",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "contradict_delta::confidence scores in llmwikidoc decrease by 0.2 upon contrad": {
+    "statement": "Confidence scores in llmwikidoc decrease by 0.2 upon contradiction.",
+    "entity": "contradict_delta",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "decay_days::confidence scores in llmwikidoc decay over 30 days.": {
+    "statement": "Confidence scores in llmwikidoc decay over 30 days.",
+    "entity": "decay_days",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "bm25_weight::the bm25 search algorithm has a weight of 0.33 in llmwikidoc": {
+    "statement": "The BM25 search algorithm has a weight of 0.33 in llmwikidoc's search configuration.",
+    "entity": "bm25_weight",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "vector_weight::the vector search algorithm has a weight of 0.33 in llmwikid": {
+    "statement": "The vector search algorithm has a weight of 0.33 in llmwikidoc's search configuration.",
+    "entity": "vector_weight",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "graph_weight::the graph search algorithm has a weight of 0.34 in llmwikido": {
+    "statement": "The graph search algorithm has a weight of 0.34 in llmwikidoc's search configuration.",
+    "entity": "graph_weight",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:17:59Z",
+    "last_reinforced": "2026-05-17T06:17:59Z",
+    "contradicted_by": []
+  },
+  "github (ssot)::github is the single source of truth (ssot) for the distribu": {
+    "statement": "GitHub is the Single Source of Truth (SSOT) for the distributed skill catalog.",
+    "entity": "GitHub (SSOT)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "soluciones ag\u00e9nticas tradicionales::traditional agentic solutions suffer from architectural rigi": {
+    "statement": "Traditional agentic solutions suffer from architectural rigidity, increasing operational costs and regression risks.",
+    "entity": "soluciones ag\u00e9nticas tradicionales",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "catalog.yaml::the system centralizes capability discovery through a lightw": {
+    "statement": "The system centralizes capability discovery through a lightweight root catalog file (catalog.yaml) hosted on GitHub.",
+    "entity": "catalog.yaml",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "plataforma ag\u00e9ntica desacoplada::detailed technical logic and parameter schemas are delegated": {
+    "statement": "Detailed technical logic and parameter schemas are delegated to skill folders using Anthropic Tool Standard (skill.json) and SKILL.md.",
+    "entity": "plataforma ag\u00e9ntica desacoplada",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "plataforma ag\u00e9ntica desacoplada::the system implements a hybrid discovery pattern to hot-sear": {
+    "statement": "The system implements a hybrid discovery pattern to hot-search and inject skills at runtime securely via Sandboxing.",
+    "entity": "plataforma ag\u00e9ntica desacoplada",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "catalog.yaml::catalog.yaml is located at the root of the repository and co": {
+    "statement": "catalog.yaml is located at the root of the repository and contains first-level discovery metadata and analytical tags.",
+    "entity": "catalog.yaml",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "skill folder::each skill folder must contain a skill.json and a skill.md f": {
+    "statement": "Each skill folder must contain a skill.json and a SKILL.md file.",
+    "entity": "skill folder",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "skill.json::skill.json follows the anthropic tool definition schema and ": {
+    "statement": "skill.json follows the Anthropic Tool Definition Schema and defines input contracts for the LLM.",
+    "entity": "skill.json",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "skill.md::skill.md provides cognitive and governance guidance, busines": {
+    "statement": "SKILL.md provides cognitive and governance guidance, business constraints, and few-shot prompting examples.",
+    "entity": "SKILL.md",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "coordinating agent::if the coordinating agent calculates a local confidence scor": {
+    "statement": "If the Coordinating Agent calculates a local confidence score below 0.72, it delegates the task to the Catalog Explorer Agent.",
+    "entity": "Coordinating Agent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "sistema ag\u00e9ntica general basado en skills distribuidos::the system extracts 1 to 3 it/business tags from the user's ": {
+    "statement": "The system extracts 1 to 3 IT/Business tags from the user's request.",
+    "entity": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "catalog explorer agent::the catalog explorer agent downloads the raw catalog.yaml fr": {
+    "statement": "The Catalog Explorer Agent downloads the raw catalog.yaml from GitHub's content API.",
+    "entity": "Catalog Explorer Agent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "catalog explorer agent::the catalog explorer agent discards skill nodes whose tags d": {
+    "statement": "The Catalog Explorer Agent discards skill nodes whose tags do not intersect with the user's request.",
+    "entity": "Catalog Explorer Agent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "catalog explorer agent::upon identifying suitable skills, only the respective skill.": {
+    "statement": "Upon identifying suitable skills, only the respective skill.json is downloaded and dynamically injected into the Coordinating Agent's context.",
+    "entity": "Catalog Explorer Agent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "sistema ag\u00e9ntica general basado en skills distribuidos::after a successful hot-discovered skill execution, the syste": {
+    "statement": "After a successful hot-discovered skill execution, the system asynchronously indexes its metadata into the orchestrator's local vector cache.",
+    "entity": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "coordinating agent::the coordinating agent must be capable of orchestrating sequ": {
+    "statement": "The Coordinating Agent must be capable of orchestrating sequential multi-skill workflows based on a single broad user prompt.",
+    "entity": "Coordinating Agent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "motor de ejecuci\u00f3n::the execution engine processes llm-validated payloads under ": {
+    "statement": "The execution engine processes LLM-validated payloads under three strictly regulated channels.",
+    "entity": "motor de ejecuci\u00f3n",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "canal webassembly sandbox (c\u00f3mputo)::canal webassembly sandbox (c\u00f3mputo) is mandatory for dynamic": {
+    "statement": "Canal WebAssembly Sandbox (C\u00f3mputo) is mandatory for dynamic code and mathematical calculations, runs Extism/Wasmtime within Python, has no network access, and uses isolated memory.",
+    "entity": "Canal WebAssembly Sandbox (C\u00f3mputo)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "canal deno sandbox (i/o & apis)::canal deno sandbox (i/o & apis) is a secure environment for ": {
+    "statement": "Canal Deno Sandbox (I/O & APIs) is a secure environment for TypeScript/JavaScript scripts, invoked via subprocesses with strict network flags and 5000ms timeouts.",
+    "entity": "Canal Deno Sandbox (I/O & APIs)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "canal mcp (model context protocol)::canal mcp (model context protocol) is for native bidirection": {
+    "statement": "Canal MCP (Model Context Protocol) is for native bidirectional integration with corporate relational and vector databases via secure RPC.",
+    "entity": "Canal MCP (Model Context Protocol)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "canal docker (evoluci\u00f3n futura)::canal docker (evoluci\u00f3n futura) is architecturally prepared ": {
+    "statement": "Canal Docker (Evoluci\u00f3n Futura) is architecturally prepared for adding isolated ephemeral container execution in Oracle OKE.",
+    "entity": "Canal Docker (Evoluci\u00f3n Futura)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "motor de ejecuci\u00f3n::each agentic lifecycle must be persisted integrally and immu": {
+    "statement": "Each agentic lifecycle must be persisted integrally and immutably for ISO 27001 / BASC compliance.",
+    "entity": "motor de ejecuci\u00f3n",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "motor de ejecuci\u00f3n::the execution engine intercepts llm-generated payloads, vali": {
+    "statement": "The execution engine intercepts LLM-generated payloads, validates them against the skill's input_schema, and blocks execution if a mandatory parameter is missing.",
+    "entity": "motor de ejecuci\u00f3n",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "sistema ag\u00e9ntica general basado en skills distribuidos::aggregated latency for on-demand skill discovery, including ": {
+    "statement": "Aggregated latency for on-demand skill discovery, including fallback, must be less than 2.5 seconds.",
+    "entity": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:15Z",
+    "last_reinforced": "2026-05-17T06:19:15Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::the project name is 'aiagentscrew \u2014 distributed skills agent": {
+    "statement": "The project name is 'AIAgentsCrew \u2014 Distributed Skills Agentic Platform'.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::the platform is built on google ai adk.": {
+    "statement": "The platform is built on Google AI ADK.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "skills catalog::skills live in a github-hosted catalog.": {
+    "statement": "Skills live in a GitHub-hosted catalog.",
+    "entity": "Skills Catalog",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "skills catalog::the catalog consists of `catalog.yaml` and per-skill `skill.": {
+    "statement": "The catalog consists of `catalog.yaml` and per-skill `skill.json` files.",
+    "entity": "Skills Catalog",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "cli::interaction with the platform happens via cli.": {
+    "statement": "Interaction with the platform happens via CLI.",
+    "entity": "CLI",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "catalogexplorer::`catalogexplorer` (`src/catalog_explorer.py`) handles catalo": {
+    "statement": "`CatalogExplorer` (`src/catalog_explorer.py`) handles catalog fetching, tag filtering, and lazy-loading of `skill.json`.",
+    "entity": "CatalogExplorer",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "skilldefinition::pydantic models in `src/models/skill.py` define `catalogmani": {
+    "statement": "Pydantic models in `src/models/skill.py` define `CatalogManifest`, `CatalogSkill`, `SkillDefinition`, and `InputSchema`.",
+    "entity": "SkillDefinition",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "catalogexplorer::tests for `catalogexplorer` hit the live github repo `https:": {
+    "statement": "Tests for `CatalogExplorer` hit the live GitHub repo `https://github.com/ianache/skills-catalog`.",
+    "entity": "CatalogExplorer",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "skills catalog::the skills catalog lives at `https://github.com/ianache/skil": {
+    "statement": "The skills catalog lives at `https://github.com/ianache/skills-catalog`.",
+    "entity": "Skills Catalog",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "skill.json::`skill.json` files follow the anthropic tool definition sche": {
+    "statement": "`skill.json` files follow the Anthropic Tool Definition Schema.",
+    "entity": "skill.json",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "python 3.11::the core tech stack includes python 3.11 and google ai adk (": {
+    "statement": "The core tech stack includes Python 3.11 and Google AI ADK (`google-genai`).",
+    "entity": "Python 3.11",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "deno sandbox::deno sandbox execution has a strict 5000ms timeout.": {
+    "statement": "Deno sandbox execution has a strict 5000ms timeout.",
+    "entity": "Deno Sandbox",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "reli-01::`catalog.yaml` responses are ttl-cached in-memory for 5 minu": {
+    "statement": "`catalog.yaml` responses are TTL-cached in-memory for 5 minutes.",
+    "entity": "RELI-01",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "disc-01::the default confidence threshold for `disc-01` is 0.72.": {
+    "statement": "The default confidence threshold for `DISC-01` is 0.72.",
+    "entity": "DISC-01",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "reli-02::`github_token` environment variable supports authenticated g": {
+    "statement": "`GITHUB_TOKEN` environment variable supports authenticated GitHub fetches, providing a rate limit of 5000 requests/hour.",
+    "entity": "RELI-02",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "mode::the `mode` configuration parameter is set to 'yolo'.": {
+    "statement": "The `mode` configuration parameter is set to 'yolo'.",
+    "entity": "mode",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "commit_docs::the `commit_docs` configuration parameter is set to `true`.": {
+    "statement": "The `commit_docs` configuration parameter is set to `true`.",
+    "entity": "commit_docs",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "model_profile::the `model_profile` configuration parameter is set to 'balan": {
+    "statement": "The `model_profile` configuration parameter is set to 'balanced'.",
+    "entity": "model_profile",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "workflow::the `workflow` configuration enables 'research', 'plan_check": {
+    "statement": "The `workflow` configuration enables 'research', 'plan_check', and 'verifier' stages.",
+    "entity": "workflow",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "depth::the `depth` configuration parameter is set to 'standard'.": {
+    "statement": "The `depth` configuration parameter is set to 'standard'.",
+    "entity": "depth",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "parallelization::the `parallelization` configuration parameter is set to `tru": {
+    "statement": "The `parallelization` configuration parameter is set to `true`.",
+    "entity": "parallelization",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:19:51Z",
+    "last_reinforced": "2026-05-17T06:19:51Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::the project aims to build the missing agent layer on top of ": {
+    "statement": "The project aims to build the missing agent layer on top of CatalogExplorer.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "roadmap build order decision::the delivery order for the project is architecturally mandat": {
+    "statement": "The delivery order for the project is architecturally mandated, starting with DenoRunner and ending with a CLI.",
+    "entity": "Roadmap Build Order Decision",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::each phase of the roadmap produces an independently testable": {
+    "statement": "Each phase of the roadmap produces an independently testable artifact, with end-to-end wiring occurring in Phase 5.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "phase 1: deno execution channel::phase 1 focuses on building an isolated denorunner with time": {
+    "statement": "Phase 1 focuses on building an isolated DenoRunner with timeout enforcement, process cleanup, and typed error results, without ADK dependency.",
+    "entity": "Phase 1: Deno Execution Channel",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "denorunner::the denorunner must enforce a hard 5000ms timeout for skill ": {
+    "statement": "The DenoRunner must enforce a hard 5000ms timeout for skill execution.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "denorunner::the denorunner is responsible for ensuring no zombie deno pr": {
+    "statement": "The DenoRunner is responsible for ensuring no zombie Deno processes remain after execution or crashes.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "skillinjector::the skillinjector converts a skilldefinition into an adk fun": {
+    "statement": "The SkillInjector converts a SkillDefinition into an ADK FunctionTool that performs JSON Schema validation on LLM-supplied parameters.",
+    "entity": "SkillInjector",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "coordinating agent + two-pass routing::phase 3 establishes the coordinatingagent, which handles con": {
+    "statement": "Phase 3 establishes the CoordinatingAgent, which handles confidence-gated routing, tag extraction, and JSONL logging.",
+    "entity": "Coordinating Agent + Two-Pass Routing",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "coordinatingagent::a prompt with confidence less than 0.72 triggers tag extract": {
+    "statement": "A prompt with confidence less than 0.72 triggers tag extraction and routing to CatalogExplorer.",
+    "entity": "CoordinatingAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "coordinatingagent::the confidence threshold (e.g., 0.72) is read from configura": {
+    "statement": "The confidence threshold (e.g., 0.72) is read from configuration (env var or config file) and does not require code edits to change.",
+    "entity": "CoordinatingAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "jsonl logging::every routing decision by the coordinatingagent writes a jso": {
+    "statement": "Every routing decision by the CoordinatingAgent writes a JSONL record containing prompt hash, extracted tags, confidence score, routing decision, and matched skill name.",
+    "entity": "JSONL logging",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "catalogexplorer integration + caching::phase 4 integrates the agent with the github-hosted skill ca": {
+    "statement": "Phase 4 integrates the agent with the GitHub-hosted skill catalog, using in-memory caching, GITHUB_TOKEN support, and rate-limit protection.",
+    "entity": "CatalogExplorer Integration + Caching",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "ttl cache::a ttl cache ensures that a second catalog fetch within 5 min": {
+    "statement": "A TTL cache ensures that a second catalog fetch within 5 minutes returns a cached result without a GitHub network call.",
+    "entity": "TTL cache",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "github_token::when github_token is set, catalog fetches use authenticated ": {
+    "statement": "When GITHUB_TOKEN is set, catalog fetches use authenticated requests, increasing the rate limit to 5000 requests/hour.",
+    "entity": "GITHUB_TOKEN",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "cli entry point + end-to-end validation::phase 5 provides a cli entry point that starts an interactiv": {
+    "statement": "Phase 5 provides a CLI entry point that starts an interactive prompt session and displays a progress indicator during Deno execution.",
+    "entity": "CLI Entry Point + End-to-End Validation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "cli shell::the cli must provide distinct, user-readable error messages ": {
+    "statement": "The CLI must provide distinct, user-readable error messages for timeouts, validation failures, and execution errors, avoiding raw Python tracebacks.",
+    "entity": "CLI shell",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "cli entry point + end-to-end validation::at least one real typescript skill (evaluar-test-case or esp": {
+    "statement": "At least one real TypeScript skill (evaluar-test-case or especificar_user_story) must complete successfully end-to-end.",
+    "entity": "CLI Entry Point + End-to-End Validation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "project state::the project's current focus is phase 1 \u2014 deno execution chan": {
+    "statement": "The project's current focus is Phase 1 \u2014 Deno Execution Channel.",
+    "entity": "Project State",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "windows subprocess cleanup decision::for windows 11, subprocess cleanup in phase 1 must use 'task": {
+    "statement": "For Windows 11, subprocess cleanup in Phase 1 must use 'taskkill /F /T /PID' because 'os.killpg' is unavailable.",
+    "entity": "Windows Subprocess Cleanup Decision",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "proc.communicate preference decision::to prevent pipe deadlock on large deno stdout in phase 1, 'p": {
+    "statement": "To prevent pipe deadlock on large Deno stdout in Phase 1, 'proc.communicate()' must always be used instead of 'proc.wait()'.",
+    "entity": "Proc.communicate Preference Decision",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "skill injection bridge::dynamic callable construction for adk functiontool in phase ": {
+    "statement": "Dynamic callable construction for ADK FunctionTool in Phase 2 has medium confidence and requires live ADK experimentation.",
+    "entity": "Skill Injection Bridge",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "coordinating agent + two-pass routing::confidence score extraction in phase 3 requires an explicit ": {
+    "statement": "Confidence score extraction in Phase 3 requires an explicit Gemini structured JSON output design.",
+    "entity": "Coordinating Agent + Two-Pass Routing",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "phase 1: deno execution channel::deno redirect behavior with '--allow-net' in phase 1 has low": {
+    "statement": "Deno redirect behavior with '--allow-net' in Phase 1 has low confidence and needs verification against Deno 2.6.7 changelog.",
+    "entity": "Phase 1: Deno Execution Channel",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "core value::the core value of the project is that a user types any promp": {
+    "statement": "The core value of the project is that a user types any prompt and the right skill executes automatically, with dynamic discovery and execution.",
+    "entity": "Core value",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "project state::the project status is 'ready to plan' for phase 1.": {
+    "statement": "The project status is 'Ready to plan' for Phase 1.",
+    "entity": "Project State",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "project state::the last project activity was on 2026-05-17, focused on road": {
+    "statement": "The last project activity was on 2026-05-17, focused on roadmap creation and requirements mapping.",
+    "entity": "Project State",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:20:41Z",
+    "last_reinforced": "2026-05-17T06:20:41Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner invokes typescript skill files via deno.": {
+    "statement": "DenoRunner invokes TypeScript skill files via Deno.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner enforces strict permission flags.": {
+    "statement": "DenoRunner enforces strict permission flags.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner has a hard, non-configurable 5000ms timeout for p": {
+    "statement": "DenoRunner has a hard, non-configurable 5000ms timeout for Phase 1.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner includes clean process cleanup.": {
+    "statement": "DenoRunner includes clean process cleanup.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner provides typed error results.": {
+    "statement": "DenoRunner provides typed error results.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner has zero adk dependency.": {
+    "statement": "DenoRunner has zero ADK dependency.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::python passes parameters to the deno subprocess as json via ": {
+    "statement": "Python passes parameters to the Deno subprocess as JSON via stdin.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::typescript skills receive input by reading deno.stdin and pa": {
+    "statement": "TypeScript skills receive input by reading Deno.stdin and parsing JSON.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::skills return their result as a single json object written t": {
+    "statement": "Skills return their result as a single JSON object written to stdout.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.8,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::stderr is reserved exclusively for error output.": {
+    "statement": "Stderr is reserved exclusively for error output.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::if stdout cannot be parsed as valid json, denorunner returns": {
+    "statement": "If stdout cannot be parsed as valid JSON, DenoRunner returns an `execution_error`.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "permission model::the caller passes `--allow-net` domains explicitly to `denor": {
+    "statement": "The caller passes `--allow-net` domains explicitly to `DenoRunner.execute()` as a list of domain strings.",
+    "entity": "Permission model",
+    "confidence": 0.8,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "permission model::denorunner does not read `skill.json` internally.": {
+    "statement": "DenoRunner does NOT read `skill.json` internally.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "permission model::domain validation uses the strict hostname regex `^[a-za-z0-": {
+    "statement": "Domain validation uses the strict hostname regex `^[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$`.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "permission model::an invalid domain string returns a `validation_failure` befo": {
+    "statement": "An invalid domain string returns a `validation_failure` before a Deno subprocess is created.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "permission model::the caller (phase 2 skillinjector) is responsible for specif": {
+    "statement": "The caller (Phase 2 SkillInjector) is responsible for specifying all Deno permission flags.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "result type design::typed results are modeled as pydantic models.": {
+    "statement": "Typed results are modeled as Pydantic models.",
+    "entity": "Result type design",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "executionsuccess::executionsuccess contains the parsed json from stdout.": {
+    "statement": "ExecutionSuccess contains the parsed JSON from stdout.",
+    "entity": "ExecutionSuccess",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "result type design::errors are designed as a discriminated union.": {
+    "statement": "Errors are designed as a discriminated union.",
+    "entity": "Result type design",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner.execute()::`denorunner.execute()` always returns one of `executionsucce": {
+    "statement": "`DenoRunner.execute()` always returns one of `ExecutionSuccess | TimeoutError | ExecutionError | ValidationFailure`.",
+    "entity": "DenoRunner.execute()",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::denorunner lives at `src/execution/deno_runner.py`.": {
+    "statement": "DenoRunner lives at `src/execution/deno_runner.py`.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::tests for denorunner are located at `tests/execution/test_de": {
+    "statement": "Tests for DenoRunner are located at `tests/execution/test_deno_runner.py`.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "tests/fixtures/skills/echo_skill.ts::`tests/fixtures/skills/echo_skill.ts` is used for timeout, s": {
+    "statement": "`tests/fixtures/skills/echo_skill.ts` is used for timeout, success, and error tests without network dependency.",
+    "entity": "tests/fixtures/skills/echo_skill.ts",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "pydantic::pydantic is already listed in `requirements.txt`.": {
+    "statement": "Pydantic is already listed in `requirements.txt`.",
+    "entity": "Pydantic",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "pytest::`pytest` and `pytest-asyncio` are already in the project's s": {
+    "statement": "`pytest` and `pytest-asyncio` are already in the project's stack.",
+    "entity": "pytest",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "prd::the prd explicitly calls out 'aislamiento v8 con timeouts in": {
+    "statement": "The PRD explicitly calls out 'aislamiento V8 con timeouts innegociables de 5000ms'.",
+    "entity": "PRD",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "tc-03::tc-03 requires the orchestrator to kill the process at the s": {
+    "statement": "TC-03 requires the orchestrator to kill the process at the strict 5000ms timeout and return a controlled error.",
+    "entity": "TC-03",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:10Z",
+    "last_reinforced": "2026-05-17T06:21:10Z",
+    "contradicted_by": []
+  },
+  "denorunner::the `denorunner` is a greenfield python 3.13 module.": {
+    "statement": "The `DenoRunner` is a greenfield Python 3.13 module.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::python passes parameters to the deno subprocess as json writ": {
+    "statement": "Python passes parameters to the Deno subprocess as JSON written to `stdin`.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::typescript skills receive input by reading `deno.stdin` and ": {
+    "statement": "TypeScript skills receive input by reading `Deno.stdin` and parsing JSON.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::`stderr` is reserved exclusively for error output.": {
+    "statement": "`Stderr` is reserved exclusively for error output.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "skill i/o protocol::if `stdout` cannot be parsed as valid json, `denorunner` ret": {
+    "statement": "If `stdout` cannot be parsed as valid JSON, `DenoRunner` returns an `execution_error`.",
+    "entity": "Skill I/O protocol",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "permission model::`denorunner` does not read `skill.json` internally.": {
+    "statement": "`DenoRunner` does NOT read `skill.json` internally.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "permission model::domain validation uses a strict hostname regex: `^[a-za-z0-9": {
+    "statement": "Domain validation uses a strict hostname regex: `^[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$`.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "permission model::an invalid domain string returns a `validationfailure` befor": {
+    "statement": "An invalid domain string returns a `ValidationFailure` before the subprocess is created.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "permission model::the caller is responsible for specifying all deno permission": {
+    "statement": "The caller is responsible for specifying all Deno permission flags.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "result type design::typed results are modeled as pydantic models (v2).": {
+    "statement": "Typed results are modeled as Pydantic models (v2).",
+    "entity": "Result type design",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "result type design::`denorunner.execute()` always returns `executionsuccess | ti": {
+    "statement": "`DenoRunner.execute()` always returns `ExecutionSuccess | TimeoutError | ExecutionError | ValidationFailure`.",
+    "entity": "Result type design",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "result type design::callers use `isinstance()` checks for results, not `try/exce": {
+    "statement": "Callers use `isinstance()` checks for results, not `try/except`.",
+    "entity": "Result type design",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`denorunner` lives at `src/execution/deno_runner.py`.": {
+    "statement": "`DenoRunner` lives at `src/execution/deno_runner.py`.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::tests for `denorunner` are located at `tests/execution/test_": {
+    "statement": "Tests for `DenoRunner` are located at `tests/execution/test_deno_runner.py`.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::the `denorunner` has a hard 5000ms timeout.": {
+    "statement": "The `DenoRunner` has a hard 5000ms timeout.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "asyncio subprocess with timeout and cleanup::process group killing on windows uses `taskkill /f /t /pid`.": {
+    "statement": "Process group killing on Windows uses `taskkill /F /T /PID`.",
+    "entity": "asyncio Subprocess with Timeout and Cleanup",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`asyncio.create_subprocess_exec` is used for spawning deno p": {
+    "statement": "`asyncio.create_subprocess_exec` is used for spawning Deno processes.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner.execute()::`asyncio.wait_for` is used to enforce the timeout on `proc.c": {
+    "statement": "`asyncio.wait_for` is used to enforce the timeout on `proc.communicate()`.",
+    "entity": "DenoRunner.execute()",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "asyncio subprocess with timeout and cleanup::`proc.kill()` alone only kills the direct deno child, not it": {
+    "statement": "`proc.kill()` alone only kills the direct Deno child, not its full process tree on Windows.",
+    "entity": "asyncio Subprocess with Timeout and Cleanup",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "permission model::`deno 2`'s `--allow-net` flag accepts a comma-separated list": {
+    "statement": "`Deno 2`'s `--allow-net` flag accepts a comma-separated list of hostnames.",
+    "entity": "Permission model",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner.execute()::the `--no-prompt` deno flag is used to suppress interactive ": {
+    "statement": "The `--no-prompt` Deno flag is used to suppress interactive permission prompts.",
+    "entity": "DenoRunner.execute()",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`asyncio` (stdlib) is used for subprocess creation and timeo": {
+    "statement": "`asyncio` (stdlib) is used for subprocess creation and timeout.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "result type design::`pydantic` (`>=2.12,<3`) is used for result type models.": {
+    "statement": "`Pydantic` (`>=2.12,<3`) is used for result type models.",
+    "entity": "Result type design",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`re` (stdlib) is used for domain hostname regex validation.": {
+    "statement": "`re` (stdlib) is used for domain hostname regex validation.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`json` (stdlib) is used to serialize parameters and parse st": {
+    "statement": "`json` (stdlib) is used to serialize parameters and parse stdout.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`subprocess` (stdlib) is used for the `taskkill` call on win": {
+    "statement": "`subprocess` (stdlib) is used for the `taskkill` call on Windows.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "denorunner::`time.monotonic()` is used for `elapsed_ms` calculation in `": {
+    "statement": "`time.monotonic()` is used for `elapsed_ms` calculation in `TimeoutError`.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "tests/execution/test_deno_runner.py::`pytest` is the test runner for phase 1.": {
+    "statement": "`pytest` is the test runner for Phase 1.",
+    "entity": "tests/execution/test_deno_runner.py",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "tests/execution/test_deno_runner.py::`pytest-asyncio` is used for async test support with `asynci": {
+    "statement": "`pytest-asyncio` is used for async test support with `asyncio_mode = \"auto\"`.",
+    "entity": "tests/execution/test_deno_runner.py",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:21:34Z",
+    "last_reinforced": "2026-05-17T06:21:34Z",
+    "contradicted_by": []
+  },
+  "dynamic agentic platform::the project utilizes google adk for agentic capabilities.": {
+    "statement": "The project utilizes Google ADK for agentic capabilities.",
+    "entity": "Dynamic agentic platform",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::deno is employed for sandboxed execution of skills.": {
+    "statement": "Deno is employed for sandboxed execution of skills.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "confidence-based routing::confidence-based routing is a core architectural mechanism.": {
+    "statement": "Confidence-based routing is a core architectural mechanism.",
+    "entity": "Confidence-based routing",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "lazy tool loading::skills are dynamically and lazily loaded into the agent's co": {
+    "statement": "Skills are dynamically and lazily loaded into the agent's context.",
+    "entity": "Lazy tool loading",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "coordinatingagent::`coordinatingagent` wraps an adk `llmagent`.": {
+    "statement": "`CoordinatingAgent` wraps an ADK `LlmAgent`.",
+    "entity": "CoordinatingAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "coordinatingagent::`coordinatingagent` interacts with gemini for prompt process": {
+    "statement": "`CoordinatingAgent` interacts with Gemini for prompt processing and confidence/tag extraction.",
+    "entity": "CoordinatingAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "coordinatingagent::the confidence threshold for direct execution by `coordinati": {
+    "statement": "The confidence threshold for direct execution by `CoordinatingAgent` is 0.72.",
+    "entity": "CoordinatingAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "catalogexplorer::`catalogexplorer` fetches `catalog.yaml` from github.": {
+    "statement": "`CatalogExplorer` fetches `catalog.yaml` from GitHub.",
+    "entity": "CatalogExplorer",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "skillinjector::`skillinjector` builds `adk functiontool` wrappers from `ski": {
+    "statement": "`SkillInjector` builds `ADK FunctionTool` wrappers from `SkillDefinition` objects.",
+    "entity": "SkillInjector",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "skillinjector::`skillinjector` validates skill input parameters against the": {
+    "statement": "`SkillInjector` validates skill input parameters against the `input_schema`.",
+    "entity": "SkillInjector",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::`denorunner` utilizes `asyncio.create_subprocess_exec` for s": {
+    "statement": "`DenoRunner` utilizes `asyncio.create_subprocess_exec` for subprocess management.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::`denorunner` enforces a hard timeout of 5000ms for skill exe": {
+    "statement": "`DenoRunner` enforces a hard timeout of 5000ms for skill execution.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::`denorunner` manages the `--allow-net` flag for deno subproc": {
+    "statement": "`DenoRunner` manages the `--allow-net` flag for Deno subprocess permissions.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "pydantic models::pydantic models are located in `src/models/skill.py`.": {
+    "statement": "Pydantic models are located in `src/models/skill.py`.",
+    "entity": "Pydantic models",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "coordinatingagent::`coordinatingagent` is a newly planned component residing in": {
+    "statement": "`CoordinatingAgent` is a newly planned component residing in `src/agent.py`.",
+    "entity": "CoordinatingAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "skillinjector::`skillinjector` is a newly planned component residing in `sr": {
+    "statement": "`SkillInjector` is a newly planned component residing in `src/skill_injector.py`.",
+    "entity": "SkillInjector",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::`denorunner` is a newly planned component residing in `src/d": {
+    "statement": "`DenoRunner` is a newly planned component residing in `src/deno_runner.py`.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "main.py::`main.py` is a newly planned component for the cli entry poi": {
+    "statement": "`main.py` is a newly planned component for the CLI entry point.",
+    "entity": "main.py",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "catalogexplorer::`catalogexplorer` is an already existing component.": {
+    "statement": "`CatalogExplorer` is an already existing component.",
+    "entity": "CatalogExplorer",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "two-pass agent execution::the two-pass agent execution pattern introduces 1-3 seconds ": {
+    "statement": "The Two-Pass Agent Execution pattern introduces 1-3 seconds of latency on a cache miss due to two LLM round-trips.",
+    "entity": "Two-Pass Agent Execution",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "adk functiontool::the adk `functiontool`'s signature is derived from the `skil": {
+    "statement": "The ADK `FunctionTool`'s signature is derived from the `skill.json`'s `input_schema`.",
+    "entity": "ADK FunctionTool",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::skill parameters are passed to the deno subprocess via stdin": {
+    "statement": "Skill parameters are passed to the Deno subprocess via stdin as JSON.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::skill execution results are captured from the deno subproces": {
+    "statement": "Skill execution results are captured from the Deno subprocess's stdout.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:22:12Z",
+    "last_reinforced": "2026-05-17T06:22:12Z",
+    "contradicted_by": []
+  },
+  "cli-based agentic platform::the project's domain is a cli-based agentic platform with di": {
+    "statement": "The project's domain is a CLI-based agentic platform with distributed skill discovery (dynamic tool marketplace).",
+    "entity": "CLI-based agentic platform",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "cli-based agentic platform::research was conducted on 2026-05-16.": {
+    "statement": "Research was conducted on 2026-05-16.",
+    "entity": "CLI-based agentic platform",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "cli-based agentic platform::the confidence in the research is medium.": {
+    "statement": "The confidence in the research is MEDIUM.",
+    "entity": "CLI-based agentic platform",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "prd::primary research sources include the project's own prd and p": {
+    "statement": "Primary research sources include the project's own PRD and PROJECT.md.",
+    "entity": "PRD",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "google adk::secondary research sources include training knowledge of goo": {
+    "statement": "Secondary research sources include training knowledge of Google ADK, Anthropic Tool Schema, and Deno sandboxing patterns.",
+    "entity": "Google ADK",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "natural-language intent routing::natural-language intent routing uses a confidence threshold ": {
+    "statement": "Natural-language intent routing uses a confidence threshold of 0.72.",
+    "entity": "Natural-language intent routing",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "confidence threshold::the confidence threshold (0.72) gates when to trust local kn": {
+    "statement": "The confidence threshold (0.72) gates when to trust local knowledge vs trigger CatalogExplorer.",
+    "entity": "Confidence threshold",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "catalog fetch and tag-based pre-filter::catalog fetch and tag-based pre-filter uses catalog.yaml as ": {
+    "statement": "Catalog fetch and tag-based pre-filter uses catalog.yaml as a lightweight index.",
+    "entity": "Catalog fetch and tag-based pre-filter",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "catalog fetch and tag-based pre-filter::catalog fetch and tag-based pre-filter is already implemente": {
+    "statement": "Catalog fetch and tag-based pre-filter is already implemented in CatalogExplorer.",
+    "entity": "Catalog fetch and tag-based pre-filter",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "lazy-load skill definition (skill.json)::lazy-load skill definition (skill.json) fetches skill defini": {
+    "statement": "Lazy-load skill definition (skill.json) fetches skill definitions from GitHub raw content.",
+    "entity": "Lazy-load skill definition (skill.json)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "lazy-load skill definition (skill.json)::lazy-load skill definition (skill.json) is already implement": {
+    "statement": "Lazy-load skill definition (skill.json) is already implemented.",
+    "entity": "Lazy-load skill definition (skill.json)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "dynamic tool injection::dynamic tool injection is the bridge between catalogexplorer": {
+    "statement": "Dynamic tool injection is the bridge between CatalogExplorer output and Coordinating Agent execution.",
+    "entity": "Dynamic tool injection",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "dynamic tool injection::dynamic tool injection is the missing piece per project.md.": {
+    "statement": "Dynamic tool injection is the missing piece per PROJECT.md.",
+    "entity": "Dynamic tool injection",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "json schema parameter validation (pre-execution)::json schema parameter validation (pre-execution) is a hard b": {
+    "statement": "JSON Schema parameter validation (pre-execution) is a hard block on missing required fields.",
+    "entity": "JSON Schema parameter validation (pre-execution)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "json schema parameter validation (pre-execution)::json schema parameter validation (pre-execution) is req-08 i": {
+    "statement": "JSON Schema parameter validation (pre-execution) is REQ-08 in the PRD.",
+    "entity": "JSON Schema parameter validation (pre-execution)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "json schema parameter validation (pre-execution)::json schema parameter validation (pre-execution) uses the js": {
+    "statement": "JSON Schema parameter validation (pre-execution) uses the jsonschema Python library.",
+    "entity": "JSON Schema parameter validation (pre-execution)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "deno sandbox execution::deno sandbox execution runs typescript skills.": {
+    "statement": "Deno sandbox execution runs TypeScript skills.",
+    "entity": "Deno sandbox execution",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "deno sandbox execution::deno sandbox execution uses subprocess with '--allow-net=<do": {
+    "statement": "Deno sandbox execution uses subprocess with '--allow-net=<domain>', 5000ms timeout, and no file I/O.",
+    "entity": "Deno sandbox execution",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "deno sandbox execution::deno sandbox execution is an already decided approach.": {
+    "statement": "Deno sandbox execution is an already decided approach.",
+    "entity": "Deno sandbox execution",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution timeout enforcement::execution timeout enforcement applies a 5000ms hard kill on ": {
+    "statement": "Execution timeout enforcement applies a 5000ms hard kill on Deno subprocesses.",
+    "entity": "Execution timeout enforcement",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution timeout enforcement::execution timeout enforcement is acceptance criterion tc-03.": {
+    "statement": "Execution timeout enforcement is acceptance criterion TC-03.",
+    "entity": "Execution timeout enforcement",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution timeout enforcement::execution timeout enforcement uses python's subprocess.run(t": {
+    "statement": "Execution timeout enforcement uses Python's subprocess.run(timeout=5).",
+    "entity": "Execution timeout enforcement",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "cli entry point::cli entry point is the v1 interface.": {
+    "statement": "CLI entry point is the v1 interface.",
+    "entity": "CLI entry point",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "end-to-end happy path (one skill)::end-to-end happy path (one skill) is the v1 acceptance crite": {
+    "statement": "End-to-end happy path (one skill) is the v1 acceptance criterion.",
+    "entity": "End-to-end happy path (one skill)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "end-to-end happy path (one skill)::target skills for the end-to-end happy path include 'evaluar": {
+    "statement": "Target skills for the end-to-end happy path include 'evaluar-test-case' or 'especificar_user_story'.",
+    "entity": "End-to-end happy path (one skill)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "zero-redeploy skill addition::zero-redeploy skill addition means adding a skill to the git": {
+    "statement": "Zero-redeploy skill addition means adding a skill to the GitHub catalog makes it available without touching agent code.",
+    "entity": "Zero-redeploy skill addition",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "confidence-gated fallback routing::the confidence threshold of 0.72 is a key design parameter f": {
+    "statement": "The confidence threshold of 0.72 is a key design parameter for Confidence-gated fallback routing.",
+    "entity": "Confidence-gated fallback routing",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "tag-based semantic pre-filtering (in-memory)::tag-based semantic pre-filtering (in-memory) involves 1-3 ta": {
+    "statement": "Tag-based semantic pre-filtering (in-memory) involves 1-3 tags extracted from the prompt, intersected with catalog tags in Python code.",
+    "entity": "Tag-based semantic pre-filtering (in-memory)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "tag-based semantic pre-filtering (in-memory)::tag-based semantic pre-filtering (in-memory) is already impl": {
+    "statement": "Tag-based semantic pre-filtering (in-memory) is already implemented.",
+    "entity": "Tag-based semantic pre-filtering (in-memory)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "catalog.yaml::catalog.yaml is approximately 100 bytes per skill.": {
+    "statement": "catalog.yaml is approximately 100 bytes per skill.",
+    "entity": "catalog.yaml",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "skill.md cognitive guide::skill.md cognitive guide is injected alongside skill.json.": {
+    "statement": "SKILL.md cognitive guide is injected alongside skill.json.",
+    "entity": "SKILL.md cognitive guide",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "skill.md cognitive guide::skill.md cognitive guide acts as the prompt engineering laye": {
+    "statement": "SKILL.md cognitive guide acts as the prompt engineering layer per skill.",
+    "entity": "SKILL.md cognitive guide",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution channel routing by skill type::execution channel routing by skill type will use deno for ty": {
+    "statement": "Execution channel routing by skill type will use Deno for TypeScript I/O skills.",
+    "entity": "Execution channel routing by skill type",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution channel routing by skill type::execution channel routing by skill type will use webassembly": {
+    "statement": "Execution channel routing by skill type will use WebAssembly/Extism for compute skills.",
+    "entity": "Execution channel routing by skill type",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution channel routing by skill type::execution channel routing by skill type will use mcp for vec": {
+    "statement": "Execution channel routing by skill type will use MCP for vector DB skills.",
+    "entity": "Execution channel routing by skill type",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "execution channel routing by skill type::only the deno channel is needed for v1 of execution channel ": {
+    "statement": "Only the Deno channel is needed for v1 of Execution channel routing by skill type.",
+    "entity": "Execution channel routing by skill type",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "immutable audit log (full lifecycle)::immutable audit log (full lifecycle) is req-07.": {
+    "statement": "Immutable audit log (full lifecycle) is REQ-07.",
+    "entity": "Immutable audit log (full lifecycle)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "immutable audit log (full lifecycle)::immutable audit log (full lifecycle) aligns with iso 27001 /": {
+    "statement": "Immutable audit log (full lifecycle) aligns with ISO 27001 / BASC.",
+    "entity": "Immutable audit log (full lifecycle)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "web ui / fastapi endpoint::web ui / fastapi endpoint is planned for v2.": {
+    "statement": "Web UI / FastAPI endpoint is planned for v2.",
+    "entity": "Web UI / FastAPI endpoint",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "fastapi::fastapi is already in requirements.txt for future use.": {
+    "statement": "FastAPI is already in requirements.txt for future use.",
+    "entity": "FastAPI",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "multi-skill dag chaining::multi-skill dag chaining is req-06 in the prd.": {
+    "statement": "Multi-skill DAG chaining is REQ-06 in the PRD.",
+    "entity": "Multi-skill DAG chaining",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "multi-skill dag chaining::multi-skill dag chaining is planned for v2.": {
+    "statement": "Multi-skill DAG chaining is planned for v2.",
+    "entity": "Multi-skill DAG chaining",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "vector cache auto-curation::vector cache auto-curation is req-05.": {
+    "statement": "Vector cache auto-curation is REQ-05.",
+    "entity": "Vector cache auto-curation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "webassembly/extism channel::webassembly/extism channel is planned for v2 for compute-hea": {
+    "statement": "WebAssembly/Extism channel is planned for v2 for compute-heavy skills.",
+    "entity": "WebAssembly/Extism channel",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "multi-user / team support::the catalog schema is designed to be multi-user-compatible w": {
+    "statement": "The catalog schema is designed to be multi-user-compatible with namespacing (e.g., comsatel.agente.core).",
+    "entity": "Multi-user / team support",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "real-time streaming output::real-time streaming output is planned for v2 when building t": {
+    "statement": "Real-time streaming output is planned for v2 when building the web UI.",
+    "entity": "Real-time streaming output",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "skill versioning and rollback::skill versioning and rollback for v1 uses git tags on the sk": {
+    "statement": "Skill versioning and rollback for v1 uses git tags on the skills-catalog repo.",
+    "entity": "Skill versioning and rollback",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "automated skill publishing pipeline::automated skill publishing pipeline for v1 uses manual pr to": {
+    "statement": "Automated skill publishing pipeline for v1 uses manual PR to the skills-catalog repo.",
+    "entity": "Automated skill publishing pipeline",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:24Z",
+    "last_reinforced": "2026-05-17T06:23:24Z",
+    "contradicted_by": []
+  },
+  "adk::each skill injected as an adk tool carries its full `skill.j": {
+    "statement": "Each skill injected as an ADK tool carries its full `skill.json` schema in the context window.",
+    "entity": "ADK",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "gemini context window::gemini models have a fixed token budget shared between the s": {
+    "statement": "Gemini models have a fixed token budget shared between the system prompt, tool schemas, conversation history, and the user prompt.",
+    "entity": "Gemini Context Window",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "gemini context window::the tool schema payload alone can consume 20-40k tokens for ": {
+    "statement": "The tool schema payload alone can consume 20-40k tokens for ~15-20 skills.",
+    "entity": "Gemini Context Window",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "adk::adk does not automatically truncate or paginate tools.": {
+    "statement": "ADK does not automatically truncate or paginate tools.",
+    "entity": "ADK",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "github api::the gemini api returns `400 invalid_argument` for requests w": {
+    "statement": "The Gemini API returns `400 INVALID_ARGUMENT` for requests with payloads that are too large or have too many tokens.",
+    "entity": "GitHub API",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "deno::when `asyncio.create_subprocess_exec()` launches deno and ti": {
+    "statement": "When `asyncio.create_subprocess_exec()` launches Deno and times out, Deno's child processes are not killed, becoming orphaned.",
+    "entity": "Deno",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "process group termination::`asyncio.create_subprocess_exec()` with `start_new_session=t": {
+    "statement": "`asyncio.create_subprocess_exec()` with `start_new_session=True` on POSIX allows `os.killpg()` to terminate an entire process group.",
+    "entity": "Process Group Termination",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "windows job object::on windows, wrapping subprocesses in a `windows job object` ": {
+    "statement": "On Windows, wrapping subprocesses in a `Windows Job Object` is the only reliable approach for job-tree termination.",
+    "entity": "Windows Job Object",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "catalogexplorer::the 0.72 confidence threshold for `catalogexplorer` is calib": {
+    "statement": "The 0.72 confidence threshold for `CatalogExplorer` is calibrated against one specific Gemini model version.",
+    "entity": "CatalogExplorer",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "agentic platform::confidence scores from llms are not absolute probabilities, ": {
+    "statement": "Confidence scores from LLMs are not absolute probabilities, but relative logit-derived values dependent on training distribution.",
+    "entity": "Agentic platform",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "github api::unauthenticated github api requests are limited to 60 reques": {
+    "statement": "Unauthenticated GitHub API requests are limited to 60 requests per hour per IP.",
+    "entity": "GitHub API",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "raw content endpoint (github)::the `raw.githubusercontent.com` endpoint has much higher lim": {
+    "statement": "The `raw.githubusercontent.com` endpoint has much higher limits and is CDN-backed compared to `api.github.com`.",
+    "entity": "Raw Content Endpoint (GitHub)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "github pat (personal access token)::a github pat raises the github api limit to 5000 requests pe": {
+    "statement": "A GitHub PAT raises the GitHub API limit to 5000 requests per hour.",
+    "entity": "GitHub PAT (Personal Access Token)",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "json schema::json schema's default behavior allows additional properties ": {
+    "statement": "JSON Schema's default behavior allows additional properties if `additionalProperties: false` is not explicitly set.",
+    "entity": "JSON Schema",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "json schema::the anthropic tool definition schema does not mandate the `a": {
+    "statement": "The Anthropic Tool Definition Schema does not mandate the `additionalProperties: false` flag for skill authors.",
+    "entity": "JSON Schema",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:23:49Z",
+    "last_reinforced": "2026-05-17T06:23:49Z",
+    "contradicted_by": []
+  },
+  "python::python 3.11 is the recommended runtime version for this proj": {
+    "statement": "Python 3.11 is the recommended runtime version for this project.",
+    "entity": "Python",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "google-adk::google-adk 1.33.0 is the recommended agent framework version": {
+    "statement": "google-adk 1.33.0 is the recommended agent framework version.",
+    "entity": "google-adk",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "google-genai::google-genai 1.75.0 is the recommended gemini api client ver": {
+    "statement": "google-genai 1.75.0 is the recommended Gemini API client version.",
+    "entity": "google-genai",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "google-genai::google-genai 2.x is a breaking major version not supported b": {
+    "statement": "google-genai 2.x is a breaking major version not supported by google-adk 1.33.0.",
+    "entity": "google-genai",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "pydantic::pydantic 2.12+ is required by google-adk.": {
+    "statement": "pydantic 2.12+ is required by google-adk.",
+    "entity": "pydantic",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "deno::deno 2.x is recommended for typescript skill execution.": {
+    "statement": "Deno 2.x is recommended for TypeScript skill execution.",
+    "entity": "Deno",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "httpx::httpx is a transitive dependency of google-genai.": {
+    "statement": "httpx is a transitive dependency of google-genai.",
+    "entity": "httpx",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "pyyaml::pyyaml is a transitive dependency of google-adk.": {
+    "statement": "pyyaml is a transitive dependency of google-adk.",
+    "entity": "pyyaml",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "python-dotenv::python-dotenv is a transitive dependency of google-adk.": {
+    "statement": "python-dotenv is a transitive dependency of google-adk.",
+    "entity": "python-dotenv",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "anyio::anyio is a transitive dependency.": {
+    "statement": "anyio is a transitive dependency.",
+    "entity": "anyio",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "jsonschema::jsonschema is a transitive dependency of google-adk.": {
+    "statement": "jsonschema is a transitive dependency of google-adk.",
+    "entity": "jsonschema",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "llmagent::llmagent's `tools` parameter accepts callables, basetools, o": {
+    "statement": "LlmAgent's `tools` parameter accepts Callables, BaseTools, or BaseToolsets.",
+    "entity": "LlmAgent",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "basetoolset::basetoolset.get_tools is called on every agent invocation.": {
+    "statement": "BaseToolset.get_tools is called on every agent invocation.",
+    "entity": "BaseToolset",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "functiondeclaration::types.functiondeclaration uses `parameters_json_schema` for ": {
+    "statement": "types.FunctionDeclaration uses `parameters_json_schema` for tool schemas.",
+    "entity": "FunctionDeclaration",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "deno subprocess invocation::deno subprocess invocation uses `--no-prompt`, `--allow-read": {
+    "statement": "Deno subprocess invocation uses `--no-prompt`, `--allow-read=none`, and `--allow-write=none`.",
+    "entity": "Deno Subprocess Invocation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "deno subprocess invocation::deno subprocess invocation uses `--allow-net=<domain>` for n": {
+    "statement": "Deno subprocess invocation uses `--allow-net=<domain>` for network control.",
+    "entity": "Deno Subprocess Invocation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "proc.kill::proc.kill() is the correct action for deno subprocess timeou": {
+    "statement": "proc.kill() is the correct action for Deno subprocess timeout.",
+    "entity": "proc.kill",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "asyncio::asyncio.run() should not be mixed inside an already-running ": {
+    "statement": "asyncio.run() should not be mixed inside an already-running event loop.",
+    "entity": "asyncio",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "pytest.asyncio_mode = auto::pytest-asyncio requires `asyncio_mode = auto` configuration.": {
+    "statement": "pytest-asyncio requires `asyncio_mode = auto` configuration.",
+    "entity": "pytest.asyncio_mode = auto",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "gemini_api_key::gemini_api_key should be loaded from .env and .env must be i": {
+    "statement": "GEMINI_API_KEY should be loaded from .env and .env must be in .gitignore.",
+    "entity": "GEMINI_API_KEY",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "yaml.safe_load::yaml.safe_load() should always be used over yaml.load().": {
+    "statement": "yaml.safe_load() should always be used over yaml.load().",
+    "entity": "yaml.safe_load",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "anyio.move_on_after::anyio.move_on_after() is the canonical timeout primitive wit": {
+    "statement": "anyio.move_on_after() is the canonical timeout primitive within anyio contexts.",
+    "entity": "anyio.move_on_after",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "google-adk::google-adk 1.33.0 ships llmagent, runner, basetoolset, funct": {
+    "statement": "google-adk 1.33.0 ships LlmAgent, Runner, BaseToolset, FunctionTool, and InMemorySessionService.",
+    "entity": "google-adk",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "google-adk::google-adk supports python 3.10-3.13, with 3.11 being the st": {
+    "statement": "google-adk supports Python 3.10-3.13, with 3.11 being the stability sweet spot.",
+    "entity": "google-adk",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "google-genai::google-genai >=1.72 is the minimum compatible version with g": {
+    "statement": "google-genai >=1.72 is the minimum compatible version with google-adk 1.33.0.",
+    "entity": "google-genai",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:24:27Z",
+    "last_reinforced": "2026-05-17T06:24:27Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::aiagentscrew is a personal cli tool.": {
+    "statement": "AIAgentsCrew is a personal CLI tool.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::the project uses a google adk-powered gemini agent.": {
+    "statement": "The project uses a Google ADK-powered Gemini agent.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "aiagentscrew::the architecture is built around a two-pass routing pattern.": {
+    "statement": "The architecture is built around a two-pass routing pattern.",
+    "entity": "AIAgentsCrew",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "google-adk::google-adk 1.33.0 hard-pins google-genai versions >=1.72 and": {
+    "statement": "google-adk 1.33.0 hard-pins google-genai versions >=1.72 and <2.",
+    "entity": "google-adk",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "google-genai::installing google-genai 2.x silently breaks google-adk funct": {
+    "statement": "Installing google-genai 2.x silently breaks google-adk functionality.",
+    "entity": "google-genai",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "deno 2.x::deno 2.6.7 is confirmed as the installed version for skill e": {
+    "statement": "Deno 2.6.7 is confirmed as the installed version for skill execution.",
+    "entity": "Deno 2.x",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "basetoolset::basetoolset.get_tools() is the correct adk api for dynamic t": {
+    "statement": "BaseToolset.get_tools() is the correct ADK API for dynamic tool injection per invocation.",
+    "entity": "BaseToolset",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "dynamic tool injection::dynamic tool injection is the primary build target and criti": {
+    "statement": "Dynamic tool injection is the primary build target and critical missing piece for v1.",
+    "entity": "Dynamic tool injection",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "pipe deadlock mitigation::pipe deadlock is prevented by using `proc.communicate()` ins": {
+    "statement": "Pipe deadlock is prevented by using `proc.communicate()` instead of `proc.wait()` for subprocess output.",
+    "entity": "Pipe deadlock mitigation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "zombie process prevention::zombie deno processes are prevented by implementing process ": {
+    "statement": "Zombie Deno processes are prevented by implementing process group kill on timeout.",
+    "entity": "Zombie process prevention",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "tool schema bloat mitigation::tool schema bloat is mitigated by tag pre-filtering and a ha": {
+    "statement": "Tool schema bloat is mitigated by tag pre-filtering and a hard cap of 8-12 tools maximum.",
+    "entity": "Tool schema bloat mitigation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "github rate limit mitigation::github api rate limiting is mitigated by using raw.githubuse": {
+    "statement": "GitHub API rate limiting is mitigated by using raw.githubusercontent.com, an in-memory TTL cache, and GITHUB_TOKEN support.",
+    "entity": "GitHub rate limit mitigation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "confidence threshold stability::confidence threshold drift is mitigated by pinning the gemin": {
+    "statement": "Confidence threshold drift is mitigated by pinning the Gemini model version and externalizing the threshold to configuration.",
+    "entity": "Confidence threshold stability",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "tag vocabulary constraint::tag extraction open vocabulary mismatch is mitigated by incl": {
+    "statement": "Tag extraction open vocabulary mismatch is mitigated by including the actual catalog tag list in the Pass 1 system prompt.",
+    "entity": "Tag vocabulary constraint",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "allow_net validation::`allow_net` flag injection is prevented by validating the do": {
+    "statement": "`allow_net` flag injection is prevented by validating the domain format against a regex before subprocess command construction.",
+    "entity": "allow_net validation",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "denorunner::the denorunner module has zero dependencies on google adk.": {
+    "statement": "The DenoRunner module has zero dependencies on Google ADK.",
+    "entity": "DenoRunner",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "models/skill.py::the models/skill.py module (catalogmanifest, catalogskill, s": {
+    "statement": "The models/skill.py module (CatalogManifest, CatalogSkill, SkillDefinition) must not take ADK or Deno dependencies.",
+    "entity": "models/skill.py",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  },
+  "cli::the cli entry point uses `asyncio.run()` and has minimal sur": {
+    "statement": "The CLI entry point uses `asyncio.run()` and has minimal surface area.",
+    "entity": "CLI",
+    "confidence": 0.7,
+    "sources": [
+      "snapshot-20260517-061744"
+    ],
+    "created": "2026-05-17T06:25:12Z",
+    "last_reinforced": "2026-05-17T06:25:12Z",
+    "contradicted_by": []
+  }
+}

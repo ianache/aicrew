@@ -43,7 +43,7 @@ def config_stub() -> Config:
         gemini_api_key="test-key-stub",
         github_token=None,
         confidence_threshold=0.72,
-        model_version="gemini-2.5-flash-001",
+        model_version="gemini-2.5-flash",
         skills_cache_dir=Path(".skills-cache"),
         skills_cache_ttl=300,
     )
@@ -97,6 +97,18 @@ async def test_agent_run_contract(config_stub: Config) -> None:
 # Live E2E test — requires real .env with GEMINI_API_KEY
 # ---------------------------------------------------------------------------
 
+def _seed_cache(tmp_path) -> None:
+    """Helper to seed the temporary git cache from the workspace .skills-cache.
+    This avoids slow or failing git clones in network-constrained environments.
+    """
+    workspace_cache = Path(__file__).parents[1] / ".skills-cache"
+    temp_cache_dir = tmp_path / ".skills-cache"
+    if workspace_cache.exists():
+        import shutil
+        shutil.copytree(workspace_cache, temp_cache_dir, ignore=shutil.ignore_patterns(".git"))
+        (temp_cache_dir / ".git").mkdir(parents=True, exist_ok=True)
+
+
 @pytest.mark.live
 async def test_e2e_live_skill(live_config: Config, tmp_path: Path) -> None:
     """Full pipeline: real Gemini + real GitHub catalog + real Deno execution.
@@ -115,10 +127,18 @@ async def test_e2e_live_skill(live_config: Config, tmp_path: Path) -> None:
     agent_module._LOG_PATH = tmp_path / "routing.jsonl"
 
     try:
+        # Seed cache to bypass git clone network latency/restrictions
+        _seed_cache(tmp_path)
         # Construct full real component stack
+        from src.skill_cache import SkillCache
+        skill_cache = SkillCache(
+            repo_url="https://github.com/ianache/skills-catalog",
+            cache_dir=tmp_path / ".skills-cache",
+            ttl_seconds=300,
+        )
         runner = DenoRunner()
         injector = SkillInjector(runner)
-        explorer = CatalogExplorer(live_config)
+        explorer = CatalogExplorer(live_config, skill_cache)
         agent = CoordinatingAgent(explorer, injector, live_config)
 
         # Domain-specific Spanish QA prompt — reliably triggers catalog_route

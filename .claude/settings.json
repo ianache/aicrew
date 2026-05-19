@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv *)",
+      "Bash(deno *)",
+      "Bash(git *)",
+      "Bash(python *)",
+      "Bash(pytest *)"
+    ]
+  }
+}

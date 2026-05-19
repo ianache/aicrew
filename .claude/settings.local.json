@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node *)",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"open\\('.planning/research/SUMMARY.md','w'\\).write\\('test'\\)\")",
+      "Bash(python write_summary.py)",
+      "Bash(python -)",
+      "Bash(powershell -Command \"Get-Location\")",
+      "Bash(python -c \"exec\\(open\\('C:/Users/ianache/AppData/Local/Temp/write_summary.py'\\).read\\(\\)\\)\")",
+      "Bash(python \"C:\\\\Users\\\\ianache\\\\AppData\\\\Local\\\\Temp\\\\write_summary.py\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "WebSearch",
+      "Skill(gsd:discuss-phase)",
+      "Bash(Get-Content logs/routing.jsonl -Tail 5)",
+      "Skill(gsd:pause-work)"
+    ]
+  }
+}

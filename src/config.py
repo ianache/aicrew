@@ -8,7 +8,7 @@ and inject it into CoordinatingAgent.__init__ — never read env vars directly i
 Design constraints:
 - GEMINI_API_KEY is required — from_env() raises KeyError if absent (fail-fast at startup)
 - CONFIDENCE_THRESHOLD defaults to 0.72 — recalibrate without code change via env var
-- MODEL_VERSION defaults to 'gemini-2.5-flash-001' — pinned per ADK 1.33.0 requirements
+- MODEL_VERSION defaults to 'gemini-2.5-flash' — pinned per ADK 1.33.0 requirements
 - GITHUB_TOKEN is optional — raises catalog fetch rate limit from 60 to 5000 req/hr
 
 Anti-patterns avoided:
@@ -47,6 +47,11 @@ class Config:
         Raises:
             KeyError: If GEMINI_API_KEY is not set in the environment.
         """
+        # Defensive: google-genai defaults to GOOGLE_API_KEY if both are set, which might
+        # be a non-Gemini key globally set on the host machine. We pop it so GEMINI_API_KEY is used.
+        import os
+        os.environ.pop("GOOGLE_API_KEY", None)
+
         return cls(
             gemini_api_key=os.environ["GEMINI_API_KEY"],
             github_token=os.environ.get("GITHUB_TOKEN"),
@@ -54,7 +59,7 @@ class Config:
                 os.environ.get("CONFIDENCE_THRESHOLD", "0.72")
             ),
             model_version=os.environ.get(
-                "MODEL_VERSION", "gemini-2.5-flash-001"
+                "MODEL_VERSION", "gemini-2.5-flash"
             ),
             skills_cache_dir=Path(
                 os.environ.get("SKILLS_CACHE_DIR", ".skills-cache")

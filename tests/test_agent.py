@@ -118,7 +118,7 @@ class TestConfig:
 
         assert config.gemini_api_key == "test-key-123"
         assert config.confidence_threshold == 0.72
-        assert config.model_version == "gemini-2.5-flash-001"
+        assert config.model_version == "gemini-2.5-flash"
         assert config.github_token is None
 
     def test_config_reads_env_overrides(self, monkeypatch):
@@ -326,7 +326,7 @@ class TestStatusCallback:
         mock_status_cb = MagicMock()
         await agent.run("Evaluate this test case", status_cb=mock_status_cb)
 
-        mock_status_cb.update.assert_called_once_with("Running skill...")
+        mock_status_cb.update.assert_called_once_with("Running skill: evaluar_test_case...")
 
     async def test_status_cb_not_called_on_high_confidence(
         self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path
@@ -379,3 +379,35 @@ class TestToolIsolation:
 
         # build_tool() must be called once per low-confidence run — not shared
         assert mock_skill_injector.build_tool.call_count == 2
+
+
+# ---------------------------------------------------------------------------
+# TestPlanningRouting — routes to PlanAndExecuteOrchestrator based on keywords
+# ---------------------------------------------------------------------------
+
+class TestPlanningRouting:
+
+    async def test_planning_keyword_routes_to_orchestrator(
+        self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path
+    ):
+        """A prompt containing a planning keyword routes directly to the PlanAndExecuteOrchestrator."""
+        agent = _build_agent_with_mocks(
+            mock_catalog_explorer, mock_skill_injector, sample_config,
+            confidence=0.5, tags=["scrum"],
+        )
+
+        # Mock the orchestrator run method
+        agent._orchestrator.run = AsyncMock(return_value="Synthesized Plan Output")
+
+        prompt = "Orquestar plan de ejecución para refinar requerimiento"
+        result = await agent.run(prompt)
+
+        assert result == "Synthesized Plan Output"
+        agent._orchestrator.run.assert_called_once_with(prompt, status_cb=None)
+
+        # Check routing log
+        with open(log_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        assert len(lines) == 1
+        record = json.loads(lines[0])
+        assert record["decision"] == "plan_and_execute"

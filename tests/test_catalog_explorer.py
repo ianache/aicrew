@@ -35,7 +35,7 @@ def config_with_token() -> Config:
         gemini_api_key="test-key",
         github_token="fake-token-abc123",
         confidence_threshold=0.72,
-        model_version="gemini-2.5-flash-001",
+        model_version="gemini-2.5-flash",
         skills_cache_dir=Path(".skills-cache"),
         skills_cache_ttl=300,
     )
@@ -50,7 +50,7 @@ def config_no_token() -> Config:
         gemini_api_key="test-key",
         github_token=None,
         confidence_threshold=0.72,
-        model_version="gemini-2.5-flash-001",
+        model_version="gemini-2.5-flash",
         skills_cache_dir=Path(".skills-cache"),
         skills_cache_ttl=300,
     )
@@ -72,7 +72,7 @@ def live_config() -> Config:
         gemini_api_key=os.environ.get("GEMINI_API_KEY", "placeholder-not-needed-for-catalog"),
         github_token=os.environ.get("GITHUB_TOKEN"),
         confidence_threshold=0.72,
-        model_version="gemini-2.5-flash-001",
+        model_version="gemini-2.5-flash",
         skills_cache_dir=Path(".skills-cache"),
         skills_cache_ttl=300,
     )
@@ -218,6 +218,18 @@ class TestTagMatching:
 # find() — live GitHub integration
 # ---------------------------------------------------------------------------
 
+def _seed_cache(tmp_path) -> None:
+    """Helper to seed the temporary git cache from the workspace .skills-cache.
+    This avoids slow or failing git clones in network-constrained environments.
+    """
+    workspace_cache = Path(__file__).parents[1] / ".skills-cache"
+    temp_cache_dir = tmp_path / ".skills-cache"
+    if workspace_cache.exists():
+        import shutil
+        shutil.copytree(workspace_cache, temp_cache_dir, ignore=shutil.ignore_patterns(".git"))
+        (temp_cache_dir / ".git").mkdir(parents=True, exist_ok=True)
+
+
 @pytest.mark.live
 class TestFindLive:
     """Live GitHub hits — requires network and GITHUB_TOKEN in .env for rate limit headroom."""
@@ -226,6 +238,7 @@ class TestFindLive:
         self, live_config: Config, tmp_path
     ) -> None:
         """find() with a tag present in catalog descriptions returns a SkillDefinition."""
+        _seed_cache(tmp_path)
         from src.skill_cache import SkillCache
         skill_cache = SkillCache(
             repo_url="https://github.com/ianache/skills-catalog",
@@ -233,9 +246,9 @@ class TestFindLive:
             ttl_seconds=300,
         )
         explorer = CatalogExplorer(live_config, skill_cache)
-        # "calculator" appears in the catalog (skill name + description)
-        result = await explorer.find(["calculator"])
-        assert result is not None, "Expected a SkillDefinition for tag='calculator', got None"
+        # "calculate" is a tag in the catalog for the calculator skill
+        result = await explorer.find(["calculate"])
+        assert result is not None, "Expected a SkillDefinition for tag='calculate', got None"
         assert isinstance(result, SkillDefinition)
         assert result.name, "SkillDefinition.name must be non-empty"
         assert result.description, "SkillDefinition.description must be non-empty"
@@ -251,6 +264,7 @@ class TestFindLive:
         self, live_config: Config, tmp_path
     ) -> None:
         """find() with a tag matching nothing in the catalog returns None without raising."""
+        _seed_cache(tmp_path)
         from src.skill_cache import SkillCache
         skill_cache = SkillCache(
             repo_url="https://github.com/ianache/skills-catalog",
@@ -288,6 +302,7 @@ class TestGetAllTags:
         self, live_config: Config, tmp_path
     ) -> None:
         """Live GitHub call: get_all_tags() returns a non-empty sorted list with no duplicates."""
+        _seed_cache(tmp_path)
         from src.skill_cache import SkillCache
         skill_cache = SkillCache(
             repo_url="https://github.com/ianache/skills-catalog",

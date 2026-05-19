@@ -92,6 +92,7 @@ aiagentscrew/
 │   ├── agent.py                  # CoordinatingAgent: wraps ADK LlmAgent + Runner,
 │   │                             #   two-pass routing, tools reset per run() call,
 │   │                             #   JSONL routing log to logs/routing.jsonl
+│   ├── orchestrator.py           # PlanAndExecuteOrchestrator: deterministic Multi-Agent Coordinator (PRD-004)
 │   ├── catalog_explorer.py       # CatalogExplorer: fetch catalog.yaml (5-min TTL
 │   │                             #   in-memory cache), tag intersection, lazy-load
 │   │                             #   skill.json — uses raw.githubusercontent.com
@@ -100,16 +101,21 @@ aiagentscrew/
 │   │                             #   SKILL.md for agent context
 │   ├── execution/
 │   │   ├── __init__.py
-│   │   └── deno_runner.py        # DenoRunner: asyncio.create_subprocess_exec,
-│   │                             #   proc.communicate() (never proc.wait()),
-│   │                             #   allow_net domain regex validation,
-│   │                             #   Windows: taskkill /F /T /PID on timeout
-│   └── models/
+│   │   ├── deno_runner.py        # DenoRunner: asyncio.create_subprocess_exec,
+│   │   │                             #   proc.communicate() (never proc.wait()),
+│   │   │                             #   allow_net domain regex validation,
+│   │   │                             #   Windows: taskkill /F /T /PID on timeout
+│   │   └── subagents.py          # SubagentPool: context-isolated specialist agent pool
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── skill.py              # CatalogManifest, CatalogSkill, SkillDefinition,
+│   │   │                         #   InputSchema — zero ADK/Deno deps, shared contract
+│   │   ├── plan.py               # ExecutionPlan, TaskDefinition, statuses (Pydantic DAG validation)
+│   │   └── results.py            # ExecutionSuccess, TimeoutError, ExecutionError,
+│   │                             #   ValidationFailure — Pydantic models, Phase 1+
+│   └── skills/
 │       ├── __init__.py
-│       ├── skill.py              # CatalogManifest, CatalogSkill, SkillDefinition,
-│       │                         #   InputSchema — zero ADK/Deno deps, shared contract
-│       └── results.py            # ExecutionSuccess, TimeoutError, ExecutionError,
-│                                 #   ValidationFailure — Pydantic models, Phase 1+
+│       └── plan_management.py    # PlanManagementSkill: deterministic Create/Get/Update plan tools
 ├── tests/
 │   ├── conftest.py               # Fixtures: sample SkillDefinition, temp .ts files,
 │   │                             #   mock CatalogExplorer responses
@@ -123,7 +129,10 @@ aiagentscrew/
 │   │                             #   missing required field rejection
 │   ├── test_catalog_explorer.py  # Phase 4: live GitHub, TTL cache hit/miss,
 │   │                             #   GITHUB_TOKEN auth, raw URL confirmed
-│   └── test_agent.py             # Phase 5 E2E: prompt → skill output, routing log
+│   ├── test_agent.py             # Phase 5 E2E: prompt → skill output, routing log
+│   ├── test_orchestrator.py      # PRD-004: Parallel Execution and Fault Tolerance tests
+│   ├── test_plan_management.py   # PRD-004: State cache and skill tools unit tests
+│   └── test_subagents.py         # PRD-004: Specialist subagents execution tests
 │
 ├── logs/
 │   └── .gitkeep                  # routing.jsonl written here at runtime (gitignored)

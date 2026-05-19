@@ -43,6 +43,7 @@ from google.genai import types
 
 from src.config import Config
 from src.skill_injector import SkillInjector
+from src.orchestrator import PlanAndExecuteOrchestrator
 
 
 # ---------------------------------------------------------------------------
@@ -186,6 +187,12 @@ class CoordinatingAgent:
             session_service=self._session_service,
         )
 
+        # Plan-and-Execute Orchestrator (PRD-004)
+        self._orchestrator = PlanAndExecuteOrchestrator(
+            config=config,
+            _runner=self._runner,
+        )
+
     @staticmethod
     def _build_pass1_instruction(tag_vocabulary: list[str]) -> str:
         """Build the Pass 1 system instruction with the tag vocabulary constraint.
@@ -198,11 +205,27 @@ class CoordinatingAgent:
             f"You are a routing agent. Analyze the user prompt and extract routing metadata.\n"
             f"Return a JSON object with exactly these fields:\n"
             f"- confidence: float between 0.0 and 1.0 — how confident you are that you can "
-            f"answer the prompt DIRECTLY without needing a specialized skill\n"
+            f"answer the prompt DIRECTLY from your training knowledge, WITHOUT executing any "
+            f"external tool, API call, database query, or automated process\n"
             f"- tags: list of 1-3 tags from this vocabulary ONLY: [{vocab_str}]\n\n"
+            f"Confidence calibration:\n"
+            f"- HIGH (>= 0.72): factual questions, explanations, general knowledge "
+            f"(e.g. 'What is Python?', 'Explain REST APIs')\n"
+            f"- LOW (< 0.72): requests that require executing a process, fetching external data, "
+            f"evaluating a specific artifact, creating/registering something in a system, or "
+            f"performing domain-specific automated analysis "
+            f"(e.g. 'evalúa el test case 1', 'registra esta historia de usuario', "
+            f"'analyze issue #42', 'run the quality check')\n\n"
+            f"Tag selection rules (CRITICAL — intent determines tags):\n"
+            f"- 'evalúa', 'evaluar', 'evaluate', 'review', 'check quality' → use 'assessment' or 'quality'; do NOT use 'specification'\n"
+            f"- 'especifica', 'especificar', 'crea', 'crear', 'define', 'write', 'redacta' → use 'specification'\n"
+            f"- 'test case', 'caso de prueba' → use 'test case'\n"
+            f"- 'historia de usuario', 'user story' → use 'user story'\n"
+            f"- The ACTION verb (evaluar vs especificar) determines the intent tag — read it carefully\n\n"
             f"Rules:\n"
-            f"- If confidence >= 0.72, answer directly (no skill needed)\n"
-            f"- If confidence < 0.72, a skill from the catalog will be fetched\n"
+            f"- If the prompt asks to DO something in an external system → confidence < 0.72\n"
+            f"- If the prompt asks to EVALUATE a specific artifact → confidence < 0.72\n"
+            f"- If you can answer from knowledge alone → confidence >= 0.72\n"
             f"- Only use tags from the provided vocabulary — do not invent tags\n"
             f"- Always return valid JSON matching the schema"
         )
@@ -210,7 +233,18 @@ class CoordinatingAgent:
     @staticmethod
     def _build_pass2_instruction(skill_md: str) -> str:
         """Build the Pass 2 system instruction, optionally appending the SKILL.md guide."""
-        base = "You are an execution agent. Use the available tool to fulfill the user's request."
+        base = (
+            "You are an execution agent. Use the available tool to fulfill the user's request.\n\n"
+            "Once you execute the tool and receive the results, you MUST use that information to "
+            "fully address and answer the user's original request. If the user asked you to evaluate, "
+            "analyze, critique, or summarize the fetched data, perform a thorough, professional, "
+            "and complete evaluation or analysis in your final response rather than just outputting the "
+            "raw tool results.\n\n"
+            "IMPORTANT — error relay rule: if the tool returns a message that starts with "
+            "'Skill failed', 'Skill timed out', or 'Skill validation failed', relay that exact "
+            "message to the user WITHOUT rewording or wrapping it in a generic error explanation. "
+            "Show the technical detail as-is so the user can diagnose the problem."
+        )
         if skill_md.strip():
             return f"{base}\n\n---\n{skill_md}"
         return base
@@ -229,6 +263,13 @@ class CoordinatingAgent:
 
         JSONL log record is written at end of every run() regardless of decision.
         """
+        # Step 0: Check if the prompt has planning or multi-agent orchestrator keywords (PRD-004 / REQ-06)
+        planning_keywords = ["orquestar", "orquestacion", "orquestación", "plan", "multiagente", "crew", "flow", "flujo", "dag"]
+        prompt_lower = prompt.lower()
+        if any(kw in prompt_lower for kw in planning_keywords):
+            _write_routing_log(prompt, [], 0.0, "plan_and_execute", None)
+            return await self._orchestrator.run(prompt, status_cb=status_cb)
+
         # Step 1: Fetch tag vocabulary and update Pass 1 agent instruction
         tag_vocabulary = await self._catalog_explorer.get_all_tags()
         self._pass1_agent.instruction = self._build_pass1_instruction(tag_vocabulary)
@@ -279,7 +320,7 @@ class CoordinatingAgent:
                 decision = "catalog_route"
 
                 if status_cb is not None:
-                    status_cb.update("Running skill...")
+                    status_cb.update(f"Running skill: {skill_def.name}...")
 
                 pass2_agent = LlmAgent(
                     name="coordinating_agent_pass2",

@@ -56,7 +56,7 @@ def sample_config():
         gemini_api_key="test-api-key",
         github_token=None,
         confidence_threshold=0.72,
-        model_version="gemini-2.5-flash-001",
+        model_version="gemini-2.5-flash",
         skills_cache_dir=Path(".skills-cache"),
         skills_cache_ttl=300,
     )

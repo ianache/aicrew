@@ -1,0 +1,2819 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "type": "concept",
+      "description": "The main application or tool configured by this file, responsible for generating project wikis using LLMs.",
+      "id": "llmwikidoc"
+    },
+    {
+      "type": "concept",
+      "description": "The specific Large Language Model (LLM) to be used by llmwikidoc for generating content.",
+      "id": "model"
+    },
+    {
+      "type": "concept",
+      "description": "The directory where the generated wiki documentation will be stored.",
+      "id": "wiki_dir"
+    },
+    {
+      "type": "concept",
+      "description": "The depth of context to consider when processing information for wiki generation.",
+      "id": "context_depth"
+    },
+    {
+      "type": "concept",
+      "description": "A group of settings that define how confidence scores are managed and updated within llmwikidoc.",
+      "id": "confidence_settings"
+    },
+    {
+      "type": "concept",
+      "description": "The starting confidence score assigned to new information or statements.",
+      "id": "initial_confidence"
+    },
+    {
+      "type": "concept",
+      "description": "The amount by which a confidence score increases when information is reinforced.",
+      "id": "reinforce_delta"
+    },
+    {
+      "type": "concept",
+      "description": "The amount by which a confidence score decreases when information is contradicted.",
+      "id": "contradict_delta"
+    },
+    {
+      "type": "concept",
+      "description": "The number of days over which confidence scores decay for information.",
+      "id": "decay_days"
+    },
+    {
+      "type": "concept",
+      "description": "A group of settings that define the relative importance of different search algorithms used by llmwikidoc.",
+      "id": "search_weights"
+    },
+    {
+      "type": "concept",
+      "description": "The weighting factor for the BM25 search algorithm in the overall search relevance calculation.",
+      "id": "bm25_weight"
+    },
+    {
+      "type": "concept",
+      "description": "The weighting factor for vector-based search in the overall search relevance calculation.",
+      "id": "vector_weight"
+    },
+    {
+      "type": "concept",
+      "description": "The weighting factor for graph-based search in the overall search relevance calculation.",
+      "id": "graph_weight"
+    },
+    {
+      "type": "concept",
+      "description": "The core product, a general agentic system based on distributed skills.",
+      "id": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos"
+    },
+    {
+      "type": "concept",
+      "description": "Project Requirements Document, serving as a high-confidence source for intended functionality.",
+      "id": "PRD"
+    },
+    {
+      "type": "framework",
+      "description": "The core framework (`google-genai`) upon which the agentic platform is built, enabling tool-calling and skill injection.",
+      "id": "Google AI ADK"
+    },
+    {
+      "type": "concept",
+      "description": "GitHub acting as the Single Source of Truth for the distributed skill catalog.",
+      "id": "GitHub (SSOT)"
+    },
+    {
+      "type": "concept",
+      "description": "A JSON Schema standard used for defining skill contracts (skill.json).",
+      "id": "Anthropic Tool Standard"
+    },
+    {
+      "type": "concept",
+      "description": "Part of the core technological stack, likely for API development and runtime.",
+      "id": "uv and Python 3.11 (FastAPI)"
+    },
+    {
+      "type": "component",
+      "description": "A secure execution environment for TypeScript skills, invoked as a subprocess with strict permissions and a hard timeout.",
+      "id": "Deno Sandbox"
+    },
+    {
+      "type": "concept",
+      "description": "A secure execution channel for dynamic code and mathematical computations using Extism/Wasmtime.",
+      "id": "WebAssembly (Extism)"
+    },
+    {
+      "type": "concept",
+      "description": "Traditional agentic solutions that suffer from architectural rigidity, defining the problem statement.",
+      "id": "soluciones ag\u00e9nticas tradicionales"
+    },
+    {
+      "type": "concept",
+      "description": "The product solution: a decoupled and dynamically extensible agentic platform.",
+      "id": "plataforma ag\u00e9ntica desacoplada"
+    },
+    {
+      "type": "concept",
+      "description": "A YAML configuration file for discovering and managing skills.",
+      "id": "catalog.yaml"
+    },
+    {
+      "type": "concept",
+      "description": "A mechanism for secure, lightweight, and audited runtime injection of skills.",
+      "id": "Sandboxing"
+    },
+    {
+      "type": "concept",
+      "description": "A directory structure for each skill, containing its definition and documentation.",
+      "id": "skill folder"
+    },
+    {
+      "type": "concept",
+      "description": "A file defining an external skill, likely adhering to the Anthropic Tool Definition Schema, including an input_schema.",
+      "id": "skill.json"
+    },
+    {
+      "type": "concept",
+      "description": "Markdown content describing a skill, fetched from GitHub and injected into the agent context.",
+      "id": "SKILL.md"
+    },
+    {
+      "type": "module",
+      "description": "The central component responsible for orchestrating the overall agentic workflow, including skill discovery and execution.",
+      "id": "Coordinating Agent"
+    },
+    {
+      "type": "concept",
+      "description": "A sub-agent responsible for dynamically discovering and loading skills from the GitHub catalog.",
+      "id": "Catalog Explorer Agent"
+    },
+    {
+      "type": "concept",
+      "description": "A local indexed cache used by the orchestrator for semantic matching of skills.",
+      "id": "cache indexada localmente"
+    },
+    {
+      "type": "concept",
+      "description": "A Directed Acyclic Graph representing the dynamic chaining of multi-skill sequential workflows.",
+      "id": "Grafo de Ejecuci\u00f3n DAG"
+    },
+    {
+      "type": "concept",
+      "description": "The execution engine that processes LLM-validated payloads through regulated channels.",
+      "id": "motor de ejecuci\u00f3n"
+    },
+    {
+      "type": "concept",
+      "description": "An execution channel mandatory for closed dynamic code and mathematical utility calculations, running Extism/Wasmtime.",
+      "id": "Canal WebAssembly Sandbox (C\u00f3mputo)"
+    },
+    {
+      "type": "concept",
+      "description": "A secure execution channel for TypeScript/JavaScript scripts with granular network permissions and timeouts.",
+      "id": "Canal Deno Sandbox (I/O & APIs)"
+    },
+    {
+      "type": "concept",
+      "description": "A native bidirectional integration channel for corporate relational and vector databases using secure RPC.",
+      "id": "Canal MCP (Model Context Protocol)"
+    },
+    {
+      "type": "concept",
+      "description": "A future execution channel prepared for isolated ephemeral container execution in Oracle OKE.",
+      "id": "Canal Docker (Evoluci\u00f3n Futura)"
+    },
+    {
+      "type": "concept",
+      "description": "An example TypeScript skill mentioned for end-to-end validation.",
+      "id": "evaluar-test-case"
+    },
+    {
+      "type": "concept",
+      "description": "An example TypeScript skill mentioned for end-to-end validation.",
+      "id": "especificar_user_story"
+    },
+    {
+      "type": "concept",
+      "description": "A skill for specifying test cases based on the SCRUM methodology.",
+      "id": "especificar_testcase"
+    },
+    {
+      "type": "concept",
+      "description": "A skill to evaluate the reliability of a software system.",
+      "id": "software_realiability_engineering"
+    },
+    {
+      "type": "concept",
+      "description": "A skill for performing basic mathematical operations.",
+      "id": "calculator"
+    },
+    {
+      "type": "concept",
+      "description": "A skill for managing a vector knowledge base in Qdrant (mykb) for storage and semantic search.",
+      "id": "qdrant_kb"
+    },
+    {
+      "type": "concept",
+      "description": "A skill for managing groups, users, and issues in GitLab.",
+      "id": "gitlab_manager"
+    },
+    {
+      "type": "concept",
+      "description": "Runtime environment used by the WebAssembly Sandbox for code execution.",
+      "id": "Extism/Wasmtime"
+    },
+    {
+      "type": "concept",
+      "description": "Oracle Container Engine for Kubernetes, targeted for future Docker channel deployments.",
+      "id": "Oracle OKE"
+    },
+    {
+      "type": "concept",
+      "description": "The project name for a CLI-based agentic platform with dynamic skill discovery and execution.",
+      "id": "AIAgentsCrew"
+    },
+    {
+      "type": "concept",
+      "description": "A GitHub-hosted collection of skills, indexed by `catalog.yaml` and containing individual `skill.json` definitions.",
+      "id": "Skills Catalog"
+    },
+    {
+      "type": "module",
+      "description": "The command-line interface entry point for the application.",
+      "id": "CLI"
+    },
+    {
+      "type": "standard",
+      "description": "The JSON Schema standard that `skill.json` files must conform to, defining the contract for LLM-populated parameters.",
+      "id": "Anthropic Tool Definition Schema"
+    },
+    {
+      "type": "module",
+      "description": "An existing component responsible for fetching the catalog index, filtering by tags, and lazy-loading skill definitions.",
+      "id": "CatalogExplorer"
+    },
+    {
+      "type": "module",
+      "description": "A new component responsible for converting SkillDefinition models into ADK FunctionTool instances and validating parameters.",
+      "id": "SkillInjector"
+    },
+    {
+      "type": "class",
+      "description": "An ADK class instance representing a callable tool derived from a skill, injected dynamically into the agent.",
+      "id": "FunctionTool"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing the full definition and contract of a skill (from skill.json).",
+      "id": "SkillDefinition"
+    },
+    {
+      "type": "concept",
+      "description": "A Pydantic model defining the JSON schema for skill input parameters, used for validation.",
+      "id": "InputSchema"
+    },
+    {
+      "type": "requirement",
+      "description": "Coordinating Agent routes user prompt via confidence-gated fallback \u2014 if confidence < configurable threshold (default 0.72), delegates to CatalogExplorer.",
+      "id": "DISC-01"
+    },
+    {
+      "type": "requirement",
+      "description": "Pass 1 tag extraction constrains output to the catalog's actual tag vocabulary to prevent open-vocabulary mismatch.",
+      "id": "DISC-02"
+    },
+    {
+      "type": "requirement",
+      "description": "CatalogExplorer fetches `catalog.yaml` from GitHub SSOT and filters skills by tag intersection (already built \u2014 this requirement covers contract verification against new SkillInjector).",
+      "id": "DISC-03"
+    },
+    {
+      "type": "requirement",
+      "description": "Matched skill's `skill.json` is lazy-loaded from GitHub SSOT per request (already built \u2014 this requirement covers integration into the v1 pipeline).",
+      "id": "DISC-04"
+    },
+    {
+      "type": "requirement",
+      "description": "SkillInjector converts `SkillDefinition` (from `skill.json`) to a live ADK `FunctionTool` via `BaseToolset.get_tools()` for runtime injection into the agent's active tool context.",
+      "id": "INJS-01"
+    },
+    {
+      "type": "requirement",
+      "description": "LLM payload is validated against `skill.json` `input_schema` (JSON Schema) before Deno fires \u2014 missing required fields block the call and return a structured correction request to the agent (no infrastructure call made).",
+      "id": "INJS-02"
+    },
+    {
+      "type": "requirement",
+      "description": "`SKILL.md` cognitive guide content is fetched from GitHub and injected into agent context alongside `skill.json`.",
+      "id": "INJS-03"
+    },
+    {
+      "type": "requirement",
+      "description": "Matched skill executes via Deno subprocess with `--allow-net=<validated-domain>` (domain validated against regex before flag construction), no file I/O permissions, hard 5000ms timeout; process group killed on timeout with no zombie processes.",
+      "id": "EXEC-01"
+    },
+    {
+      "type": "requirement",
+      "description": "Execution errors return typed structured results (timeout / validation_failure / execution_error) \u2014 not generic Python exceptions propagated raw to the user.",
+      "id": "EXEC-02"
+    },
+    {
+      "type": "requirement",
+      "description": "CLI shows a progress indicator during the Deno execution window so the user knows the skill is running.",
+      "id": "EXEC-03"
+    },
+    {
+      "type": "requirement",
+      "description": "`catalog.yaml` responses are TTL-cached in-memory (5-minute TTL) to prevent GitHub rate limit exhaustion during active development.",
+      "id": "RELI-01"
+    },
+    {
+      "type": "requirement",
+      "description": "`GITHUB_TOKEN` env var supported for authenticated GitHub fetches (5000 req/hr vs 60 unauthenticated).",
+      "id": "RELI-02"
+    },
+    {
+      "type": "requirement",
+      "description": "Confidence threshold is externalized to config (env var or config file) \u2014 re-calibratable without code change.",
+      "id": "RELI-03"
+    },
+    {
+      "type": "requirement",
+      "description": "Each routing decision logged to JSONL (prompt hash, extracted tags, confidence score, routing decision, matched skill name if any).",
+      "id": "RELI-04"
+    },
+    {
+      "type": "requirement",
+      "description": "User runs `python main.py` from terminal, enters a natural-language prompt, receives a result.",
+      "id": "CLI-01"
+    },
+    {
+      "type": "requirement",
+      "description": "End-to-end happy path verified with at least one real TypeScript skill from the GitHub catalog (`evaluar-test-case` or `especificar_user_story`).",
+      "id": "CLI-02"
+    },
+    {
+      "type": "requirement",
+      "description": "Multi-skill DAG chaining \u2014 single prompt triggers sequential execution of multiple skills (user story \u2192 test case \u2192 evaluation) (v2).",
+      "id": "ORCH-01"
+    },
+    {
+      "type": "requirement",
+      "description": "WebAssembly/Extism channel for closed-compute skills (calculator) \u2014 microsecond latency, no network, fully isolated memory (v2).",
+      "id": "CHAN-01"
+    },
+    {
+      "type": "requirement",
+      "description": "ISO 27001 / BASC-aligned immutable execution logs \u2014 full lifecycle capture from prompt to output (v2).",
+      "id": "OBS-01"
+    },
+    {
+      "type": "configuration",
+      "description": "A configuration parameter related to the operational mode, set to 'yolo'.",
+      "id": "mode"
+    },
+    {
+      "type": "configuration",
+      "description": "A configuration parameter related to processing depth, set to 'standard'.",
+      "id": "depth"
+    },
+    {
+      "type": "configuration",
+      "description": "A boolean configuration parameter enabling or disabling parallel execution.",
+      "id": "parallelization"
+    },
+    {
+      "type": "configuration",
+      "description": "A boolean configuration parameter indicating whether documentation commits are enabled.",
+      "id": "commit_docs"
+    },
+    {
+      "type": "configuration",
+      "description": "A configuration parameter defining the model's performance profile, set to 'balanced'.",
+      "id": "model_profile"
+    },
+    {
+      "type": "configuration",
+      "description": "A nested configuration object defining various workflow stages (research, plan_check, verifier) and their enablement status.",
+      "id": "workflow"
+    },
+    {
+      "type": "concept",
+      "description": "The recommended runtime for the project, chosen for stability and asyncio.TaskGroup support.",
+      "id": "Python 3.11"
+    },
+    {
+      "type": "concept",
+      "description": "The platform hosting the skill catalog and individual skill definitions.",
+      "id": "GitHub"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing the index structure of the skill catalog.",
+      "id": "CatalogManifest"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing a single skill's entry in the catalog index.",
+      "id": "CatalogSkill"
+    },
+    {
+      "type": "concept",
+      "description": "The Python client library for interacting with the Gemini API.",
+      "id": "google-genai"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer adding an execution channel based on WebAssembly and Extism until v2, focusing on the Deno channel for v1.",
+      "id": "WebAssembly/Extism channel"
+    },
+    {
+      "type": "concept",
+      "description": "A planned channel for Qdrant knowledge base integration (v2).",
+      "id": "MCP channel (Qdrant)"
+    },
+    {
+      "type": "concept",
+      "description": "A future execution channel for SRE-class skills (out of scope for v1).",
+      "id": "Docker execution channel"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer complex chaining of multiple skills into directed acyclic graphs until v2, prioritizing single-skill loop validation in v1.",
+      "id": "Multi-skill DAG chaining"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "user prompts"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "Skill parameters"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "Validated skill"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "LLM payload"
+    },
+    {
+      "type": "concept",
+      "description": "The initial phase of a project focused on creating a secure and isolated execution channel for Deno-based skills.",
+      "id": "Phase 1: Deno Execution Channel"
+    },
+    {
+      "type": "module",
+      "description": "A new component that acts as an `asyncio.create_subprocess_exec` wrapper for executing Deno processes, handling timeouts and error propagation.",
+      "id": "DenoRunner"
+    },
+    {
+      "type": "concept",
+      "description": "The second milestone, converting skill definitions into callable ADK FunctionTools.",
+      "id": "Skill Injection Bridge"
+    },
+    {
+      "type": "concept",
+      "description": "Google ADK's mechanism for exposing Python callables to the LLM as tools, used by SkillInjector to wrap Deno-based skills.",
+      "id": "ADK FunctionTool"
+    },
+    {
+      "type": "concept",
+      "description": "A mechanism for validating LLM-supplied parameters against a defined schema.",
+      "id": "JSON Schema validation"
+    },
+    {
+      "type": "concept",
+      "description": "The third milestone, establishing the agent's routing logic based on confidence and tags.",
+      "id": "Coordinating Agent + Two-Pass Routing"
+    },
+    {
+      "type": "module",
+      "description": "A new orchestration component that implements the two-pass routing logic, manages confidence thresholds, and wires all sub-components.",
+      "id": "CoordinatingAgent"
+    },
+    {
+      "type": "concept",
+      "description": "A routing strategy where the agent's confidence score dictates whether to answer directly or route to an external catalog.",
+      "id": "Confidence-gated routing"
+    },
+    {
+      "type": "concept",
+      "description": "The process of identifying and extracting relevant tags from a user prompt.",
+      "id": "Tag extraction"
+    },
+    {
+      "type": "concept",
+      "description": "The practice of logging routing decisions as JSON Line records.",
+      "id": "JSONL logging"
+    },
+    {
+      "type": "concept",
+      "description": "The fourth milestone, integrating with the GitHub-hosted skill catalog with in-memory caching and rate-limit protection.",
+      "id": "CatalogExplorer Integration + Caching"
+    },
+    {
+      "type": "concept",
+      "description": "A time-to-live cache used to store catalog data from GitHub to reduce network calls.",
+      "id": "TTL cache"
+    },
+    {
+      "type": "concept",
+      "description": "An environment variable used for authenticated requests to GitHub, providing higher API rate limits.",
+      "id": "GITHUB_TOKEN"
+    },
+    {
+      "type": "concept",
+      "description": "Mechanisms to avoid exceeding GitHub API request limits.",
+      "id": "Rate-limit protection"
+    },
+    {
+      "type": "concept",
+      "description": "The fifth and final milestone, providing a user-facing command-line interface for end-to-end interaction.",
+      "id": "CLI Entry Point + End-to-End Validation"
+    },
+    {
+      "type": "class",
+      "description": "A command-line interface component enabling interactive prompt sessions, progress indicators, and user-readable error messages.",
+      "id": "CLI shell"
+    },
+    {
+      "type": "concept",
+      "description": "User input provided to the agent in an unstructured, human-readable format.",
+      "id": "Natural-language prompt"
+    },
+    {
+      "type": "concept",
+      "description": "A skill implementation written in TypeScript, intended for execution by DenoRunner.",
+      "id": "TypeScript skill file"
+    },
+    {
+      "type": "module",
+      "description": "A JavaScript/TypeScript runtime used for executing skills in a secure sandbox.",
+      "id": "Deno"
+    },
+    {
+      "type": "concept",
+      "description": "Large Language Model, which supplies parameters to ADK FunctionTools.",
+      "id": "LLM"
+    },
+    {
+      "type": "concept",
+      "description": "A project overview document, serving as a high-confidence source for project intentions.",
+      "id": "PROJECT.md"
+    },
+    {
+      "type": "concept",
+      "description": "The guiding principle of the project: dynamic skill discovery and execution from any prompt.",
+      "id": "Core value"
+    },
+    {
+      "type": "decision",
+      "description": "The architecturally mandated sequence of phases for project delivery.",
+      "id": "Roadmap Build Order Decision"
+    },
+    {
+      "type": "decision",
+      "description": "The decision to use 'taskkill /F /T /PID' for subprocess cleanup on Windows 11 in Phase 1.",
+      "id": "Windows Subprocess Cleanup Decision"
+    },
+    {
+      "type": "decision",
+      "description": "The decision to always use 'proc.communicate()' over 'proc.wait()' in Phase 1 to avoid pipe deadlock.",
+      "id": "Proc.communicate Preference Decision"
+    },
+    {
+      "type": "function",
+      "description": "A Windows command used for forcefully terminating processes by Process ID (PID).",
+      "id": "taskkill /F /T /PID"
+    },
+    {
+      "type": "function",
+      "description": "A Python function for killing a process group, noted as unavailable on Windows 11 for this project.",
+      "id": "os.killpg"
+    },
+    {
+      "type": "function",
+      "description": "A Python subprocess method recommended for interacting with process I/O to avoid pipe deadlocks.",
+      "id": "proc.communicate()"
+    },
+    {
+      "type": "function",
+      "description": "A Python subprocess method for waiting for process termination, generally avoided in this project due to potential deadlocks.",
+      "id": "proc.wait()"
+    },
+    {
+      "type": "concept",
+      "description": "A specific JSON output design required for confidence score extraction in Phase 3.",
+      "id": "Gemini structured JSON output"
+    },
+    {
+      "type": "concept",
+      "description": "An area of low confidence regarding Deno's handling of network redirects, requiring verification.",
+      "id": "Deno redirect behavior"
+    },
+    {
+      "type": "concept",
+      "description": "A specific version of the Deno runtime against which network redirect behavior will be verified.",
+      "id": "Deno 2.6.7"
+    },
+    {
+      "type": "concept",
+      "description": "A generic term referring to the intelligent component that performs discovery, injection, validation, and execution of skills.",
+      "id": "Agent"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "Nothing"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "Project State"
+    },
+    {
+      "type": "decision",
+      "description": "A locked decision outlining the communication contract between Python and Deno skills, including JSON over stdin/stdout and stderr usage.",
+      "id": "Skill I/O protocol"
+    },
+    {
+      "type": "decision",
+      "description": "A locked decision specifying how Deno permissions, particularly `--allow-net` domains, are managed and validated before subprocess creation.",
+      "id": "Permission model"
+    },
+    {
+      "type": "decision",
+      "description": "A locked decision defining the structured Pydantic models used for all execution outcomes (success, timeout, execution error, validation failure).",
+      "id": "Result type design"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing a successful skill execution result, containing parsed JSON data from stdout.",
+      "id": "ExecutionSuccess"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing a skill execution timeout, including the elapsed time in milliseconds.",
+      "id": "TimeoutError"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing a skill execution failure, including the exit code and stderr output.",
+      "id": "ExecutionError"
+    },
+    {
+      "type": "class",
+      "description": "A Pydantic model representing an error due to invalid input, specifically an invalid domain string provided for `--allow-net`.",
+      "id": "ValidationFailure"
+    },
+    {
+      "type": "concept",
+      "description": "A Python library used for data validation and settings management, adopted for modeling the typed results of DenoRunner execution.",
+      "id": "Pydantic"
+    },
+    {
+      "type": "concept",
+      "description": "Deno's standard input stream, used by DenoRunner to pass JSON parameters to skills and read by skills for input.",
+      "id": "Deno.stdin"
+    },
+    {
+      "type": "concept",
+      "description": "Deno's standard output stream, used by skills to return a single JSON result and read by DenoRunner for output.",
+      "id": "Deno.stdout"
+    },
+    {
+      "type": "concept",
+      "description": "Deno's standard error stream, exclusively reserved for error output from skill execution.",
+      "id": "Deno.stderr"
+    },
+    {
+      "type": "function",
+      "description": "The primary method of DenoRunner that spawns a Deno subprocess, passes parameters, enforces timeouts, handles process cleanup, and returns structured Pydantic results.",
+      "id": "DenoRunner.execute()"
+    },
+    {
+      "type": "module",
+      "description": "The Python module containing the `DenoRunner` class implementation.",
+      "id": "src/execution/deno_runner.py"
+    },
+    {
+      "type": "module",
+      "description": "The test suite for the `DenoRunner` class.",
+      "id": "tests/execution/test_deno_runner.py"
+    },
+    {
+      "type": "module",
+      "description": "A minimal TypeScript skill used as a test fixture, designed to read JSON from stdin and echo it to stdout.",
+      "id": "tests/fixtures/skills/echo_skill.ts"
+    },
+    {
+      "type": "module",
+      "description": "A popular test runner for Python applications.",
+      "id": "pytest"
+    },
+    {
+      "type": "module",
+      "description": "A pytest plugin for writing asynchronous tests.",
+      "id": "pytest-asyncio"
+    },
+    {
+      "type": "decision",
+      "description": "An area of implementation detail left to the discretion of the developer (Claude), concerning how to terminate Deno subprocesses effectively.",
+      "id": "Process group kill implementation"
+    },
+    {
+      "type": "decision",
+      "description": "An architectural decision point left to the discretion of the developer, regarding the choice of concurrency model for subprocess execution.",
+      "id": "asyncio vs subprocess threading"
+    },
+    {
+      "type": "decision",
+      "description": "An area left to the discretion of the developer, concerning how to identify and prevent zombie processes and ensure proper cleanup in tests.",
+      "id": "Zombie process detection"
+    },
+    {
+      "type": "decision",
+      "description": "An implementation detail concerning the specific hierarchy of Pydantic models for results, left to the discretion of the developer.",
+      "id": "Pydantic model inheritance"
+    },
+    {
+      "type": "requirement",
+      "description": "An acceptance criterion related to the enforcement of execution timeouts.",
+      "id": "TC-03"
+    },
+    {
+      "type": "concept",
+      "description": "External files containing business logic written in TypeScript, executed by the DenoRunner via Deno.",
+      "id": "TypeScript skill files"
+    },
+    {
+      "type": "concept",
+      "description": "The predefined file and directory layout for the `DenoRunner` and associated components like result models and tests.",
+      "id": "Module structure"
+    },
+    {
+      "type": "concept",
+      "description": "An architectural pattern for managing Python `asyncio` subprocesses, including creation, input/output handling, timeout enforcement, and robust process tree cleanup, especially on Windows.",
+      "id": "asyncio Subprocess with Timeout and Cleanup"
+    },
+    {
+      "type": "module",
+      "description": "The Python module containing the Pydantic result type models (`ExecutionSuccess`, `TimeoutError`, `ExecutionError`, `ValidationFailure`).",
+      "id": "src/models/results.py"
+    },
+    {
+      "type": "function",
+      "description": "An asyncio function for creating a new subprocess and executing a command.",
+      "id": "asyncio.create_subprocess_exec"
+    },
+    {
+      "type": "function",
+      "description": "An asyncio function for running a coroutine with a timeout.",
+      "id": "asyncio.wait_for"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "subprocess.run"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "Phase 2 SkillInjector"
+    },
+    {
+      "type": "concept",
+      "description": "The overarching system design allowing agents to dynamically discover and execute skills.",
+      "id": "Dynamic agentic platform"
+    },
+    {
+      "type": "concept",
+      "description": "A core mechanism where the agent's confidence in directly executing a task determines whether it triggers skill discovery and injection.",
+      "id": "Confidence-based routing"
+    },
+    {
+      "type": "concept",
+      "description": "Skills (tools) are not loaded upfront but are discovered and injected into the agent's context only when needed, reducing initial overhead.",
+      "id": "Lazy tool loading"
+    },
+    {
+      "type": "concept",
+      "description": "Execution of skills in isolated Deno subprocesses with controlled permissions and timeouts for security and stability.",
+      "id": "Subprocess sandboxing"
+    },
+    {
+      "type": "module",
+      "description": "The CLI entry point, responsible for parsing user arguments, starting the event loop, and initiating the agent's run.",
+      "id": "main.py"
+    },
+    {
+      "type": "class",
+      "description": "The underlying Google ADK agent component that CoordinatingAgent wraps and delegates LLM interactions to.",
+      "id": "ADK LlmAgent"
+    },
+    {
+      "type": "concept",
+      "description": "The Large Language Model used by the CoordinatingAgent for prompt processing, confidence evaluation, and tag extraction.",
+      "id": "Gemini"
+    },
+    {
+      "type": "concept",
+      "description": "The external JavaScript/TypeScript runtime used for executing sandboxed skills as subprocesses.",
+      "id": "Deno runtime"
+    },
+    {
+      "type": "module",
+      "description": "A group of models (CatalogManifest, CatalogSkill, SkillDefinition, InputSchema) that define the data contracts for skills and catalog entries, residing in `src/models/skill.py`.",
+      "id": "Pydantic models"
+    },
+    {
+      "type": "module",
+      "description": "Python's built-in library for writing concurrent code using the async/await syntax.",
+      "id": "asyncio"
+    },
+    {
+      "type": "decision",
+      "description": "An architectural pattern where the agent performs an initial LLM pass for confidence and tag extraction, and a second pass with injected tools if confidence is low.",
+      "id": "Two-Pass Agent Execution"
+    },
+    {
+      "type": "decision",
+      "description": "An architectural pattern where SkillInjector wraps the Deno execution logic within an ADK FunctionTool, using its signature for LLM interaction and parameter validation.",
+      "id": "FunctionTool as Execution Proxy"
+    },
+    {
+      "type": "decision",
+      "description": "An architectural pattern for skill execution using non-blocking asynchronous subprocesses (Deno) with strict time limits.",
+      "id": "Async Subprocess with Hard Timeout"
+    },
+    {
+      "type": "concept",
+      "description": "The primary domain of the project, focusing on an agent system controlled via a command-line interface.",
+      "id": "CLI-based agentic platform"
+    },
+    {
+      "type": "concept",
+      "description": "The mechanism by which the agent finds and integrates new capabilities (skills) from a dynamic marketplace.",
+      "id": "Distributed skill discovery"
+    },
+    {
+      "type": "concept",
+      "description": "A system where tools (skills) can be discovered and used on the fly.",
+      "id": "Dynamic tool marketplace"
+    },
+    {
+      "type": "feature",
+      "description": "The ability of the agent to map user prompts in natural language to the appropriate skill.",
+      "id": "Natural-language intent routing"
+    },
+    {
+      "type": "feature",
+      "description": "A method to efficiently identify relevant skills using a lightweight catalog index and pre-filtering based on tags.",
+      "id": "Catalog fetch and tag-based pre-filter"
+    },
+    {
+      "type": "feature",
+      "description": "The mechanism to load the full contract of a skill (from its skill.json file) only when it has been matched by pre-filtering.",
+      "id": "Lazy-load skill definition (skill.json)"
+    },
+    {
+      "type": "concept",
+      "description": "The critical missing piece and primary build target for v1, enabling runtime skill loading into the agent.",
+      "id": "Dynamic tool injection"
+    },
+    {
+      "type": "feature",
+      "description": "Validation of LLM-generated skill parameters against a defined JSON schema before skill execution.",
+      "id": "JSON Schema parameter validation (pre-execution)"
+    },
+    {
+      "type": "concept",
+      "description": "The strategy for running TypeScript skills in an isolated and permission-controlled environment using Deno.",
+      "id": "Deno sandbox execution"
+    },
+    {
+      "type": "feature",
+      "description": "A mechanism to terminate skill execution if it exceeds a predefined time limit.",
+      "id": "Execution timeout enforcement"
+    },
+    {
+      "type": "feature",
+      "description": "Handling and returning controlled, distinct error states for different types of execution failures (validation, runtime, timeout).",
+      "id": "Structured error propagation"
+    },
+    {
+      "type": "feature",
+      "description": "The main command-line interface for interacting with and running the agent.",
+      "id": "CLI entry point"
+    },
+    {
+      "type": "feature",
+      "description": "The foundational acceptance criterion for the initial version, ensuring a complete cycle of discovery, injection, validation, and execution for a single skill.",
+      "id": "End-to-end happy path (one skill)"
+    },
+    {
+      "type": "feature",
+      "description": "Allows new skills to be made available to the agent simply by updating a catalog, without requiring agent code changes or redeployment.",
+      "id": "Zero-redeploy skill addition"
+    },
+    {
+      "type": "feature",
+      "description": "Optimizes skill discovery by using cached or local knowledge when an LLM is highly confident, and falling back to a live catalog search when uncertain.",
+      "id": "Confidence-gated fallback routing"
+    },
+    {
+      "type": "feature",
+      "description": "A method to reduce LLM token consumption by programmatically filtering skills based on tag intersections before involving the LLM.",
+      "id": "Tag-based semantic pre-filtering (in-memory)"
+    },
+    {
+      "type": "concept",
+      "description": "An architectural choice using a lightweight root index (catalog.yaml) and separate full skill contracts (skill.json) to scale efficiently.",
+      "id": "Two-level catalog structure"
+    },
+    {
+      "type": "concept",
+      "description": "A human-readable Markdown document accompanying each skill to provide business rules, examples, and constraints for LLM guidance.",
+      "id": "SKILL.md cognitive guide"
+    },
+    {
+      "type": "feature",
+      "description": "The ability to automatically route different categories of skills (e.g., compute, I/O) to appropriate, specialized sandbox environments.",
+      "id": "Execution channel routing by skill type"
+    },
+    {
+      "type": "feature",
+      "description": "A comprehensive, unalterable record of every step of an agent's request lifecycle, from prompt to execution output, for compliance and analysis.",
+      "id": "Immutable audit log (full lifecycle)"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer development of a graphical web interface or FastAPI endpoint until v2, focusing on CLI for v1 validation.",
+      "id": "Web UI / FastAPI endpoint"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer automatic caching of skill lookups using vector databases due to v1 scope and current performance expectations.",
+      "id": "Vector cache auto-curation"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer features for multiple users, permissions, and billing until v2, focusing on a personal-use CLI in v1.",
+      "id": "Multi-user / team support"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer real-time streaming of LLM responses until v2, prioritizing synchronous generation for v1 CLI.",
+      "id": "Real-time streaming output"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer formal skill versioning and rollback mechanisms until v2, using Git tags for version control in v1.",
+      "id": "Skill versioning and rollback"
+    },
+    {
+      "type": "decision",
+      "description": "A decision to defer an automated CI/CD pipeline for publishing skills until v2, relying on manual GitHub PRs for v1.",
+      "id": "Automated skill publishing pipeline"
+    },
+    {
+      "type": "concept",
+      "description": "Google's Agent Development Kit, serving as the framework for the Gemini agent.",
+      "id": "Google ADK"
+    },
+    {
+      "type": "concept",
+      "description": "A reference for defining tool schemas, influencing the project's design.",
+      "id": "Anthropic Tool Schema"
+    },
+    {
+      "type": "concept",
+      "description": "Design patterns for secure and isolated execution environments using Deno.",
+      "id": "Deno sandboxing patterns"
+    },
+    {
+      "type": "tool",
+      "description": "A Python library used for validating JSON data against a JSON schema.",
+      "id": "jsonschema Python library"
+    },
+    {
+      "type": "tool",
+      "description": "A Python function used to run external processes, specifically for Deno sandbox execution with timeout enforcement.",
+      "id": "Python's subprocess.run"
+    },
+    {
+      "type": "requirement",
+      "description": "A specific requirement from the PRD concerning JSON Schema parameter validation.",
+      "id": "REQ-08"
+    },
+    {
+      "type": "requirement",
+      "description": "A specific requirement from the PRD concerning the immutable audit log.",
+      "id": "REQ-07"
+    },
+    {
+      "type": "standard",
+      "description": "An international standard for information security management, relevant for the immutable audit log.",
+      "id": "ISO 27001"
+    },
+    {
+      "type": "standard",
+      "description": "Business Alliance for Secure Commerce, a standard relevant for the immutable audit log's compliance.",
+      "id": "BASC"
+    },
+    {
+      "type": "framework",
+      "description": "A Python web framework considered for future web UI development.",
+      "id": "FastAPI"
+    },
+    {
+      "type": "tool",
+      "description": "A vector database considered for future vector caching capabilities.",
+      "id": "Qdrant"
+    },
+    {
+      "type": "tool",
+      "description": "A WebAssembly host runtime, considered for an alternative execution channel.",
+      "id": "Extism"
+    },
+    {
+      "type": "concept",
+      "description": "A binary instruction format for a stack-based virtual machine, considered for an alternative execution channel.",
+      "id": "WebAssembly"
+    },
+    {
+      "type": "concept",
+      "description": "A platform or environment mentioned as a potential execution channel for vector DB skills.",
+      "id": "MCP"
+    },
+    {
+      "type": "tool",
+      "description": "A feature of Git used as a simple versioning mechanism for the skills catalog in v1.",
+      "id": "git tags"
+    },
+    {
+      "type": "concept",
+      "description": "A numeric value used in intent routing to determine whether to trust local knowledge or query the live catalog.",
+      "id": "Confidence threshold"
+    },
+    {
+      "type": "concept",
+      "description": "The target domain for the project, emphasizing distributed skill discovery and Deno sandbox execution.",
+      "id": "Agentic platform"
+    },
+    {
+      "type": "concept",
+      "description": "The process of providing an LLM (specifically Gemini) with definitions of available tools (skills) and their schemas.",
+      "id": "LLM Tool Injection"
+    },
+    {
+      "type": "concept",
+      "description": "The mechanism for running Deno skills in isolated subprocesses to prevent security issues and manage resources.",
+      "id": "Subprocess Sandboxing"
+    },
+    {
+      "type": "concept",
+      "description": "The fixed token budget of Gemini models that is shared among system prompts, tool schemas, conversation history, and user prompts.",
+      "id": "Gemini Context Window"
+    },
+    {
+      "type": "module",
+      "description": "Agent Development Kit, a framework that handles skill injection and execution within the agentic platform.",
+      "id": "ADK"
+    },
+    {
+      "type": "concept",
+      "description": "A standard for describing the structure and validation rules for JSON data, used for skill parameter validation.",
+      "id": "JSON Schema"
+    },
+    {
+      "type": "concept",
+      "description": "An external service used by the CatalogExplorer to fetch skill metadata and content, subject to rate limits.",
+      "id": "GitHub API"
+    },
+    {
+      "type": "function",
+      "description": "A utility function to measure the token count of a payload, specifically for Gemini model inputs, to prevent context window overflow.",
+      "id": "google.genai.types.count_tokens()"
+    },
+    {
+      "type": "concept",
+      "description": "A technique using `os.killpg` on POSIX systems to terminate a parent process and all its child processes simultaneously, preventing zombies.",
+      "id": "Process Group Termination"
+    },
+    {
+      "type": "concept",
+      "description": "A Windows-specific mechanism to group processes together, allowing for reliable termination of an entire process tree.",
+      "id": "Windows Job Object"
+    },
+    {
+      "type": "decision",
+      "description": "The practice of explicitly specifying a fixed LLM model version (e.g., `gemini-2.0-flash-001`) to ensure consistent behavior and enable threshold re-calibration upon updates.",
+      "id": "Model Version Pinning"
+    },
+    {
+      "type": "decision",
+      "description": "A testing and calibration strategy where both cached and catalog-fetched paths are executed without live traffic to compare results and tune parameters like confidence thresholds.",
+      "id": "Dry-run Mode"
+    },
+    {
+      "type": "concept",
+      "description": "The `raw.githubusercontent.com` endpoint, which is CDN-backed and has higher rate limits than the main GitHub API, suitable for fetching raw file content.",
+      "id": "Raw Content Endpoint (GitHub)"
+    },
+    {
+      "type": "concept",
+      "description": "A caching mechanism for `catalog.yaml` and `skill.json` files to reduce repeated requests to GitHub, implementing a TTL for the catalog.",
+      "id": "In-memory Cache (Catalog)"
+    },
+    {
+      "type": "concept",
+      "description": "An optional authentication token that can be provided as an environment variable (`GITHUB_TOKEN`) to raise GitHub API rate limits significantly.",
+      "id": "GitHub PAT (Personal Access Token)"
+    },
+    {
+      "type": "decision",
+      "description": "The practice of using libraries like `pytest-mock` and `responses` to simulate HTTP requests in unit and integration tests, avoiding live external service calls.",
+      "id": "HTTP Mocking (Tests)"
+    },
+    {
+      "type": "concept",
+      "description": "A JSON Schema keyword that, when set to `false`, prevents the validation from silently passing payloads with unexpected extra fields.",
+      "id": "additionalProperties: false"
+    },
+    {
+      "type": "decision",
+      "description": "A development practice involving automated checks in CI to ensure `skill.json` files conform to best practices, such as explicitly including `additionalProperties: false`.",
+      "id": "Schema Linting"
+    },
+    {
+      "type": "concept",
+      "description": "An overview of the technology investigation for the project, including domain, research date, and confidence.",
+      "id": "Stack Research"
+    },
+    {
+      "type": "concept",
+      "description": "The proposed set of core technologies, supporting libraries, and development tools.",
+      "id": "Recommended Stack"
+    },
+    {
+      "type": "concept",
+      "description": "The primary software components essential for the project's runtime and core functionality.",
+      "id": "Core Technologies"
+    },
+    {
+      "type": "concept",
+      "description": "Auxiliary libraries that provide specific functionalities, often as transitive dependencies.",
+      "id": "Supporting Libraries"
+    },
+    {
+      "type": "concept",
+      "description": "Utilities and software used for local development, testing, and pre-execution validation.",
+      "id": "Development Tools"
+    },
+    {
+      "type": "concept",
+      "description": "Recommended architectural patterns and code examples for using the google-adk library.",
+      "id": "ADK Agent Patterns"
+    },
+    {
+      "type": "class",
+      "description": "The canonical agent class from google-adk, used for orchestrating AI agent behavior and tool invocation.",
+      "id": "LlmAgent"
+    },
+    {
+      "type": "class",
+      "description": "A google-adk component responsible for managing the agent's execution flow and session services.",
+      "id": "Runner"
+    },
+    {
+      "type": "class",
+      "description": "An ADK component that provides the API for dynamic tool injection, allowing tools to be added per invocation.",
+      "id": "BaseToolset"
+    },
+    {
+      "type": "class",
+      "description": "A google-adk component for managing session state, suitable for single-instance applications.",
+      "id": "InMemorySessionService"
+    },
+    {
+      "type": "class",
+      "description": "A context object passed to toolset methods, providing read-only access to agent state.",
+      "id": "ReadonlyContext"
+    },
+    {
+      "type": "class",
+      "description": "A custom implementation of BaseToolset designed to provide dynamically discovered skills to the agent.",
+      "id": "SkillToolset"
+    },
+    {
+      "type": "class",
+      "description": "An abstract base class for defining individual tools within google-adk.",
+      "id": "BaseTool"
+    },
+    {
+      "type": "class",
+      "description": "A custom implementation of BaseTool that bridges external skill definitions (skill.json) to ADK tool declarations.",
+      "id": "SkillTool"
+    },
+    {
+      "type": "concept",
+      "description": "A type from google.genai used by ADK to declare a tool's capabilities, including its name, description, and input schema.",
+      "id": "FunctionDeclaration"
+    },
+    {
+      "type": "concept",
+      "description": "The verified pattern for executing TypeScript skills via Deno in a separate process from Python.",
+      "id": "Deno Subprocess Invocation"
+    },
+    {
+      "type": "concept",
+      "description": "Guidelines and patterns for managing asynchronous operations within the ADK and Python environment.",
+      "id": "Async Handling"
+    },
+    {
+      "type": "concept",
+      "description": "Instructions for setting up the development environment and installing required dependencies.",
+      "id": "Installation"
+    },
+    {
+      "type": "concept",
+      "description": "A comparison of recommended technologies with other options, highlighting reasons for the current choice.",
+      "id": "Alternatives Considered"
+    },
+    {
+      "type": "module",
+      "description": "The core programming language runtime for the project.",
+      "id": "Python"
+    },
+    {
+      "type": "concept",
+      "description": "The Python library providing the agent framework components (LlmAgent, Runner, BaseToolset, FunctionTool).",
+      "id": "google-adk"
+    },
+    {
+      "type": "module",
+      "description": "A library for data validation, used for schema validation (e.g., skill.json input_schema).",
+      "id": "pydantic"
+    },
+    {
+      "type": "module",
+      "description": "An asynchronous HTTP client for making network requests, e.g., fetching catalog files.",
+      "id": "httpx"
+    },
+    {
+      "type": "module",
+      "description": "A YAML parser library for handling YAML configuration files like catalog.yaml.",
+      "id": "pyyaml"
+    },
+    {
+      "type": "module",
+      "description": "A library for loading environment variables from .env files.",
+      "id": "python-dotenv"
+    },
+    {
+      "type": "module",
+      "description": "A library for async primitives, providing an abstraction over asyncio and trio.",
+      "id": "anyio"
+    },
+    {
+      "type": "module",
+      "description": "A library for validating JSON data against a JSON schema.",
+      "id": "jsonschema"
+    },
+    {
+      "type": "module",
+      "description": "Python's built-in library for working with JSON data.",
+      "id": "json"
+    },
+    {
+      "type": "module",
+      "description": "A module from google.genai containing data structures like FunctionDeclaration.",
+      "id": "types"
+    },
+    {
+      "type": "function",
+      "description": "An asynchronous method of BaseToolset that returns a list of tools for the agent.",
+      "id": "get_tools"
+    },
+    {
+      "type": "function",
+      "description": "An asynchronous method of BaseToolset for performing cleanup when the toolset is no longer needed.",
+      "id": "close"
+    },
+    {
+      "type": "function",
+      "description": "A protected method of SkillTool that generates the google.genai.types.FunctionDeclaration for the skill.",
+      "id": "_get_declaration"
+    },
+    {
+      "type": "function",
+      "description": "An asynchronous method of BaseTool (and SkillTool) that executes the tool's logic.",
+      "id": "run_async"
+    },
+    {
+      "type": "function",
+      "description": "A custom asynchronous function responsible for invoking a TypeScript skill via a Deno subprocess.",
+      "id": "execute_via_deno"
+    },
+    {
+      "type": "function",
+      "description": "A method of an asyncio subprocess object for sending input and reading output/error streams.",
+      "id": "proc.communicate"
+    },
+    {
+      "type": "function",
+      "description": "A method of an asyncio subprocess object for terminating the process abruptly.",
+      "id": "proc.kill"
+    },
+    {
+      "type": "function",
+      "description": "An asynchronous method of an asyncio subprocess object that waits for the process to terminate.",
+      "id": "proc.wait"
+    },
+    {
+      "type": "function",
+      "description": "A JSON function for serializing a Python dict to a JSON formatted string.",
+      "id": "json.dumps"
+    },
+    {
+      "type": "function",
+      "description": "A JSON function for deserializing a JSON formatted string to a Python dict.",
+      "id": "json.loads"
+    },
+    {
+      "type": "function",
+      "description": "A function from python-dotenv for loading environment variables from a .env file.",
+      "id": "load_dotenv"
+    },
+    {
+      "type": "function",
+      "description": "A pyyaml function for safely parsing a YAML string into a Python object.",
+      "id": "yaml.safe_load"
+    },
+    {
+      "type": "function",
+      "description": "An anyio primitive for running a block of code with a timeout, allowing it to complete or be cancelled.",
+      "id": "anyio.move_on_after"
+    },
+    {
+      "type": "concept",
+      "description": "A configuration setting for pytest-asyncio to automatically manage the asyncio event loop for async tests.",
+      "id": "pytest.asyncio_mode = auto"
+    },
+    {
+      "type": "decision",
+      "description": "A critical decision to restrict google-genai to major version 1 due to incompatibility with google-adk 1.33.0 and google-genai 2.x.",
+      "id": "Pin google-genai to 1.x"
+    },
+    {
+      "type": "decision",
+      "description": "The choice to use Deno as the runtime for TypeScript skills due to its security features and sandbox capabilities.",
+      "id": "Use Deno for skill execution"
+    },
+    {
+      "type": "decision",
+      "description": "The decision to use asyncio's native subprocess creation for Deno invocation, ensuring non-blocking behavior and proper timeout handling.",
+      "id": "Use asyncio.create_subprocess_exec"
+    },
+    {
+      "type": "decision",
+      "description": "The choice to use httpx as the async HTTP client, leveraging its existing presence as a transitive dependency.",
+      "id": "Use httpx for HTTP client"
+    },
+    {
+      "type": "decision",
+      "description": "The decision to exclusively use yaml.safe_load for parsing YAML files to prevent security vulnerabilities.",
+      "id": "Use yaml.safe_load"
+    },
+    {
+      "type": "concept",
+      "description": "The API key required for authenticating with the Gemini API.",
+      "id": "GEMINI_API_KEY"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "pyyaml.safe_load"
+    },
+    {
+      "type": "unknown",
+      "description": "",
+      "id": "python-dotenv.load_dotenv"
+    },
+    {
+      "type": "concept",
+      "description": "The core LLM agent, powered by Google's Gemini model, responsible for skill discovery and execution.",
+      "id": "Gemini agent"
+    },
+    {
+      "type": "concept",
+      "description": "Dynamically discoverable and executable units of functionality, hosted in a GitHub catalog.",
+      "id": "TypeScript skills"
+    },
+    {
+      "type": "concept",
+      "description": "The isolated execution environment for TypeScript skills, leveraging Deno's deny-by-default permissions.",
+      "id": "Deno subprocess sandbox"
+    },
+    {
+      "type": "concept",
+      "description": "A data validation library required by ADK for defining models and contracts.",
+      "id": "Pydantic 2.12+"
+    },
+    {
+      "type": "concept",
+      "description": "The TypeScript runtime and secure sandbox used for executing skills.",
+      "id": "Deno 2.x"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to use `proc.communicate()` instead of `proc.wait()` to prevent subprocess pipe deadlocks.",
+      "id": "Pipe deadlock mitigation"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to ensure complete cleanup of Deno subprocesses, including process groups, on timeout or completion.",
+      "id": "Zombie process prevention"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to address the issue of too many injected tool schemas exhausting the LLM's context window.",
+      "id": "Tool schema bloat mitigation"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to prevent hitting GitHub API rate limits during catalog fetches.",
+      "id": "GitHub rate limit mitigation"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to manage the confidence threshold against potential shifts from LLM model updates.",
+      "id": "Confidence threshold stability"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to constrain Gemini's tag generation to match known catalog tags.",
+      "id": "Tag vocabulary constraint"
+    },
+    {
+      "type": "decision",
+      "description": "The architectural decision to rigorously validate network permissions (`--allow-net`) injected into Deno commands to prevent security vulnerabilities.",
+      "id": "allow_net validation"
+    },
+    {
+      "type": "concept",
+      "description": "The architectural approach where the agent first extracts tags and evaluates confidence, then potentially fetches and injects tools for a second pass.",
+      "id": "Two-pass routing pattern"
+    },
+    {
+      "type": "concept",
+      "description": "The set of core features and functionalities required for the initial launch of the project.",
+      "id": "v1 deliverable"
+    },
+    {
+      "type": "module",
+      "description": "The module containing shared Pydantic data contracts (CatalogManifest, CatalogSkill, SkillDefinition) used across layers.",
+      "id": "models/skill.py"
+    }
+  ],
+  "edges": [
+    {
+      "type": "uses",
+      "source": "llmwikidoc",
+      "target": "model"
+    },
+    {
+      "type": "uses",
+      "source": "llmwikidoc",
+      "target": "wiki_dir"
+    },
+    {
+      "type": "uses",
+      "source": "llmwikidoc",
+      "target": "context_depth"
+    },
+    {
+      "type": "uses",
+      "source": "llmwikidoc",
+      "target": "confidence_settings"
+    },
+    {
+      "type": "uses",
+      "source": "llmwikidoc",
+      "target": "search_weights"
+    },
+    {
+      "type": "uses",
+      "source": "confidence_settings",
+      "target": "initial_confidence"
+    },
+    {
+      "type": "uses",
+      "source": "confidence_settings",
+      "target": "reinforce_delta"
+    },
+    {
+      "type": "uses",
+      "source": "confidence_settings",
+      "target": "contradict_delta"
+    },
+    {
+      "type": "uses",
+      "source": "confidence_settings",
+      "target": "decay_days"
+    },
+    {
+      "type": "uses",
+      "source": "search_weights",
+      "target": "bm25_weight"
+    },
+    {
+      "type": "uses",
+      "source": "search_weights",
+      "target": "vector_weight"
+    },
+    {
+      "type": "uses",
+      "source": "search_weights",
+      "target": "graph_weight"
+    },
+    {
+      "type": "uses",
+      "source": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+      "target": "Google AI ADK"
+    },
+    {
+      "type": "uses",
+      "source": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+      "target": "GitHub (SSOT)"
+    },
+    {
+      "type": "uses",
+      "source": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+      "target": "Anthropic Tool Standard"
+    },
+    {
+      "type": "uses",
+      "source": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+      "target": "uv and Python 3.11 (FastAPI)"
+    },
+    {
+      "type": "uses",
+      "source": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+      "target": "Deno Sandbox"
+    },
+    {
+      "type": "uses",
+      "source": "Sistema Ag\u00e9ntica General basado en Skills Distribuidos",
+      "target": "WebAssembly (Extism)"
+    },
+    {
+      "type": "uses",
+      "source": "plataforma ag\u00e9ntica desacoplada",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "uses",
+      "source": "plataforma ag\u00e9ntica desacoplada",
+      "target": "skill.json"
+    },
+    {
+      "type": "uses",
+      "source": "plataforma ag\u00e9ntica desacoplada",
+      "target": "SKILL.md"
+    },
+    {
+      "type": "uses",
+      "source": "plataforma ag\u00e9ntica desacoplada",
+      "target": "Sandboxing"
+    },
+    {
+      "type": "related_to",
+      "source": "catalog.yaml",
+      "target": "GitHub (SSOT)"
+    },
+    {
+      "type": "related_to",
+      "source": "catalog.yaml",
+      "target": "GitHub"
+    },
+    {
+      "type": "related_to",
+      "source": "skill folder",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "skill folder",
+      "target": "SKILL.md"
+    },
+    {
+      "type": "implements",
+      "source": "skill.json",
+      "target": "Anthropic Tool Standard"
+    },
+    {
+      "type": "related_to",
+      "source": "skill.json",
+      "target": "Anthropic Tool Definition Schema"
+    },
+    {
+      "type": "related_to",
+      "source": "skill.json",
+      "target": "GitHub"
+    },
+    {
+      "type": "related_to",
+      "source": "SKILL.md",
+      "target": "Agent"
+    },
+    {
+      "type": "related_to",
+      "source": "Coordinating Agent",
+      "target": "Catalog Explorer Agent"
+    },
+    {
+      "type": "implements",
+      "source": "Coordinating Agent",
+      "target": "Grafo de Ejecuci\u00f3n DAG"
+    },
+    {
+      "type": "related_to",
+      "source": "Coordinating Agent",
+      "target": "especificar_user_story"
+    },
+    {
+      "type": "uses",
+      "source": "Coordinating Agent",
+      "target": "gitlab_manager"
+    },
+    {
+      "type": "related_to",
+      "source": "Coordinating Agent",
+      "target": "user prompts"
+    },
+    {
+      "type": "related_to",
+      "source": "Coordinating Agent",
+      "target": "CatalogExplorer"
+    },
+    {
+      "type": "uses",
+      "source": "motor de ejecuci\u00f3n",
+      "target": "Canal WebAssembly Sandbox (C\u00f3mputo)"
+    },
+    {
+      "type": "uses",
+      "source": "motor de ejecuci\u00f3n",
+      "target": "Canal Deno Sandbox (I/O & APIs)"
+    },
+    {
+      "type": "uses",
+      "source": "motor de ejecuci\u00f3n",
+      "target": "Canal MCP (Model Context Protocol)"
+    },
+    {
+      "type": "uses",
+      "source": "motor de ejecuci\u00f3n",
+      "target": "Canal Docker (Evoluci\u00f3n Futura)"
+    },
+    {
+      "type": "uses",
+      "source": "Canal WebAssembly Sandbox (C\u00f3mputo)",
+      "target": "Extism/Wasmtime"
+    },
+    {
+      "type": "related_to",
+      "source": "Canal Docker (Evoluci\u00f3n Futura)",
+      "target": "Oracle OKE"
+    },
+    {
+      "type": "related_to",
+      "source": "evaluar-test-case",
+      "target": "qdrant_kb"
+    },
+    {
+      "type": "related_to",
+      "source": "evaluar-test-case",
+      "target": "Canal Deno Sandbox (I/O & APIs)"
+    },
+    {
+      "type": "related_to",
+      "source": "evaluar-test-case",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "especificar_user_story",
+      "target": "especificar_testcase"
+    },
+    {
+      "type": "related_to",
+      "source": "especificar_user_story",
+      "target": "Canal Deno Sandbox (I/O & APIs)"
+    },
+    {
+      "type": "related_to",
+      "source": "especificar_user_story",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "especificar_testcase",
+      "target": "evaluar-test-case"
+    },
+    {
+      "type": "related_to",
+      "source": "especificar_testcase",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "software_realiability_engineering",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "calculator",
+      "target": "Canal WebAssembly Sandbox (C\u00f3mputo)"
+    },
+    {
+      "type": "related_to",
+      "source": "calculator",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "qdrant_kb",
+      "target": "Canal MCP (Model Context Protocol)"
+    },
+    {
+      "type": "related_to",
+      "source": "qdrant_kb",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "gitlab_manager",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "uses",
+      "source": "AIAgentsCrew",
+      "target": "Google AI ADK"
+    },
+    {
+      "type": "uses",
+      "source": "AIAgentsCrew",
+      "target": "Skills Catalog"
+    },
+    {
+      "type": "uses",
+      "source": "AIAgentsCrew",
+      "target": "CLI"
+    },
+    {
+      "type": "depends_on",
+      "source": "AIAgentsCrew",
+      "target": "Python 3.11"
+    },
+    {
+      "type": "depends_on",
+      "source": "AIAgentsCrew",
+      "target": "google-genai"
+    },
+    {
+      "type": "uses",
+      "source": "AIAgentsCrew",
+      "target": "CatalogExplorer"
+    },
+    {
+      "type": "uses",
+      "source": "AIAgentsCrew",
+      "target": "Google ADK"
+    },
+    {
+      "type": "uses",
+      "source": "AIAgentsCrew",
+      "target": "Gemini agent"
+    },
+    {
+      "type": "related_to",
+      "source": "CatalogExplorer",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "CatalogExplorer",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "CatalogExplorer",
+      "target": "CatalogManifest"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer",
+      "target": "CatalogSkill"
+    },
+    {
+      "type": "related_to",
+      "source": "CatalogExplorer",
+      "target": "SkillDefinition"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer",
+      "target": "InputSchema"
+    },
+    {
+      "type": "related_to",
+      "source": "CatalogExplorer",
+      "target": "LLM Tool Injection"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer",
+      "target": "GitHub API"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer",
+      "target": "Raw Content Endpoint (GitHub)"
+    },
+    {
+      "type": "implements",
+      "source": "CatalogExplorer",
+      "target": "GitHub rate limit mitigation"
+    },
+    {
+      "type": "related_to",
+      "source": "SkillInjector",
+      "target": "SkillDefinition"
+    },
+    {
+      "type": "related_to",
+      "source": "SkillInjector",
+      "target": "FunctionTool"
+    },
+    {
+      "type": "implements",
+      "source": "SkillInjector",
+      "target": "ADK FunctionTool"
+    },
+    {
+      "type": "related_to",
+      "source": "SkillInjector",
+      "target": "DenoRunner"
+    },
+    {
+      "type": "calls",
+      "source": "SkillInjector",
+      "target": "DenoRunner.execute()"
+    },
+    {
+      "type": "uses",
+      "source": "SkillInjector",
+      "target": "InputSchema"
+    },
+    {
+      "type": "implements",
+      "source": "SkillInjector",
+      "target": "FunctionTool as Execution Proxy"
+    },
+    {
+      "type": "related_to",
+      "source": "SkillInjector",
+      "target": "JSON Schema"
+    },
+    {
+      "type": "implements",
+      "source": "SkillInjector",
+      "target": "allow_net validation"
+    },
+    {
+      "type": "implements",
+      "source": "DISC-01",
+      "target": "Coordinating Agent"
+    },
+    {
+      "type": "implements",
+      "source": "DISC-03",
+      "target": "CatalogExplorer"
+    },
+    {
+      "type": "implements",
+      "source": "INJS-01",
+      "target": "SkillInjector"
+    },
+    {
+      "type": "uses",
+      "source": "INJS-01",
+      "target": "SkillDefinition"
+    },
+    {
+      "type": "related_to",
+      "source": "INJS-01",
+      "target": "FunctionTool"
+    },
+    {
+      "type": "related_to",
+      "source": "INJS-02",
+      "target": "LLM payload"
+    },
+    {
+      "type": "related_to",
+      "source": "INJS-02",
+      "target": "InputSchema"
+    },
+    {
+      "type": "uses",
+      "source": "EXEC-01",
+      "target": "Deno Sandbox"
+    },
+    {
+      "type": "implements",
+      "source": "RELI-01",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "uses",
+      "source": "RELI-02",
+      "target": "GitHub"
+    },
+    {
+      "type": "depends_on",
+      "source": "google-genai",
+      "target": "httpx"
+    },
+    {
+      "type": "uses",
+      "source": "WebAssembly/Extism channel",
+      "target": "Extism"
+    },
+    {
+      "type": "uses",
+      "source": "WebAssembly/Extism channel",
+      "target": "WebAssembly"
+    },
+    {
+      "type": "related_to",
+      "source": "Skill parameters",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "Skill parameters",
+      "target": "InputSchema"
+    },
+    {
+      "type": "related_to",
+      "source": "Validated skill",
+      "target": "Deno Sandbox"
+    },
+    {
+      "type": "depends_on",
+      "source": "Phase 1: Deno Execution Channel",
+      "target": "Nothing"
+    },
+    {
+      "type": "uses",
+      "source": "Phase 1: Deno Execution Channel",
+      "target": "taskkill /F /T /PID"
+    },
+    {
+      "type": "related_to",
+      "source": "Phase 1: Deno Execution Channel",
+      "target": "os.killpg"
+    },
+    {
+      "type": "uses",
+      "source": "Phase 1: Deno Execution Channel",
+      "target": "proc.communicate()"
+    },
+    {
+      "type": "related_to",
+      "source": "Phase 1: Deno Execution Channel",
+      "target": "proc.wait()"
+    },
+    {
+      "type": "related_to",
+      "source": "Phase 1: Deno Execution Channel",
+      "target": "Deno redirect behavior"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner",
+      "target": "TypeScript skill file"
+    },
+    {
+      "type": "uses",
+      "source": "DenoRunner",
+      "target": "Deno"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Phase 1: Deno Execution Channel"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner",
+      "target": "TypeScript skill files"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Skill I/O protocol"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Permission model"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Result type design"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner",
+      "target": "src/execution/deno_runner.py"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner",
+      "target": "tests/execution/test_deno_runner.py"
+    },
+    {
+      "type": "depends_on",
+      "source": "DenoRunner",
+      "target": "Pydantic"
+    },
+    {
+      "type": "uses",
+      "source": "DenoRunner",
+      "target": "Deno.stdin"
+    },
+    {
+      "type": "uses",
+      "source": "DenoRunner",
+      "target": "Deno.stdout"
+    },
+    {
+      "type": "uses",
+      "source": "DenoRunner",
+      "target": "Deno.stderr"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "asyncio Subprocess with Timeout and Cleanup"
+    },
+    {
+      "type": "uses",
+      "source": "DenoRunner",
+      "target": "asyncio"
+    },
+    {
+      "type": "uses",
+      "source": "DenoRunner",
+      "target": "Deno runtime"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Async Subprocess with Hard Timeout"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner",
+      "target": "Deno subprocess sandbox"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Pipe deadlock mitigation"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner",
+      "target": "Zombie process prevention"
+    },
+    {
+      "type": "depends_on",
+      "source": "Skill Injection Bridge",
+      "target": "Phase 1: Deno Execution Channel"
+    },
+    {
+      "type": "uses",
+      "source": "ADK FunctionTool",
+      "target": "JSON Schema validation"
+    },
+    {
+      "type": "related_to",
+      "source": "ADK FunctionTool",
+      "target": "LLM"
+    },
+    {
+      "type": "calls",
+      "source": "ADK FunctionTool",
+      "target": "DenoRunner"
+    },
+    {
+      "type": "depends_on",
+      "source": "Coordinating Agent + Two-Pass Routing",
+      "target": "Skill Injection Bridge"
+    },
+    {
+      "type": "related_to",
+      "source": "Coordinating Agent + Two-Pass Routing",
+      "target": "Gemini structured JSON output"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "Confidence-gated routing"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "Tag extraction"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "JSONL logging"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "CatalogExplorer"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "ADK LlmAgent"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "Gemini"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "SkillInjector"
+    },
+    {
+      "type": "implements",
+      "source": "CoordinatingAgent",
+      "target": "Two-Pass Agent Execution"
+    },
+    {
+      "type": "implements",
+      "source": "CoordinatingAgent",
+      "target": "Two-pass routing pattern"
+    },
+    {
+      "type": "uses",
+      "source": "CoordinatingAgent",
+      "target": "DenoRunner"
+    },
+    {
+      "type": "implements",
+      "source": "CoordinatingAgent",
+      "target": "Tool schema bloat mitigation"
+    },
+    {
+      "type": "implements",
+      "source": "CoordinatingAgent",
+      "target": "Confidence threshold stability"
+    },
+    {
+      "type": "implements",
+      "source": "CoordinatingAgent",
+      "target": "Tag vocabulary constraint"
+    },
+    {
+      "type": "depends_on",
+      "source": "CatalogExplorer Integration + Caching",
+      "target": "Coordinating Agent + Two-Pass Routing"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer Integration + Caching",
+      "target": "TTL cache"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer Integration + Caching",
+      "target": "GITHUB_TOKEN"
+    },
+    {
+      "type": "uses",
+      "source": "CatalogExplorer Integration + Caching",
+      "target": "Rate-limit protection"
+    },
+    {
+      "type": "depends_on",
+      "source": "CLI Entry Point + End-to-End Validation",
+      "target": "CatalogExplorer Integration + Caching"
+    },
+    {
+      "type": "related_to",
+      "source": "CLI shell",
+      "target": "Natural-language prompt"
+    },
+    {
+      "type": "related_to",
+      "source": "CLI shell",
+      "target": "AIAgentsCrew"
+    },
+    {
+      "type": "related_to",
+      "source": "Deno redirect behavior",
+      "target": "Deno 2.6.7"
+    },
+    {
+      "type": "related_to",
+      "source": "Agent",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "Agent",
+      "target": "GitHub"
+    },
+    {
+      "type": "related_to",
+      "source": "Agent",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "Project State",
+      "target": "PROJECT.md"
+    },
+    {
+      "type": "extends",
+      "source": "ExecutionSuccess",
+      "target": "Pydantic"
+    },
+    {
+      "type": "extends",
+      "source": "TimeoutError",
+      "target": "Pydantic"
+    },
+    {
+      "type": "extends",
+      "source": "ExecutionError",
+      "target": "Pydantic"
+    },
+    {
+      "type": "extends",
+      "source": "ValidationFailure",
+      "target": "Pydantic"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner.execute()",
+      "target": "ExecutionSuccess"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner.execute()",
+      "target": "TimeoutError"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner.execute()",
+      "target": "ExecutionError"
+    },
+    {
+      "type": "related_to",
+      "source": "DenoRunner.execute()",
+      "target": "ValidationFailure"
+    },
+    {
+      "type": "implements",
+      "source": "DenoRunner.execute()",
+      "target": "TC-03"
+    },
+    {
+      "type": "calls",
+      "source": "DenoRunner.execute()",
+      "target": "asyncio.create_subprocess_exec"
+    },
+    {
+      "type": "calls",
+      "source": "DenoRunner.execute()",
+      "target": "asyncio.wait_for"
+    },
+    {
+      "type": "calls",
+      "source": "DenoRunner.execute()",
+      "target": "subprocess.run"
+    },
+    {
+      "type": "related_to",
+      "source": "src/execution/deno_runner.py",
+      "target": "DenoRunner"
+    },
+    {
+      "type": "uses",
+      "source": "tests/execution/test_deno_runner.py",
+      "target": "pytest"
+    },
+    {
+      "type": "uses",
+      "source": "tests/execution/test_deno_runner.py",
+      "target": "pytest-asyncio"
+    },
+    {
+      "type": "uses",
+      "source": "tests/execution/test_deno_runner.py",
+      "target": "tests/fixtures/skills/echo_skill.ts"
+    },
+    {
+      "type": "related_to",
+      "source": "tests/execution/test_deno_runner.py",
+      "target": "DenoRunner"
+    },
+    {
+      "type": "related_to",
+      "source": "pytest-asyncio",
+      "target": "pytest"
+    },
+    {
+      "type": "uses",
+      "source": "TypeScript skill files",
+      "target": "Deno.stdin"
+    },
+    {
+      "type": "uses",
+      "source": "TypeScript skill files",
+      "target": "Deno.stdout"
+    },
+    {
+      "type": "related_to",
+      "source": "src/models/results.py",
+      "target": "ExecutionSuccess"
+    },
+    {
+      "type": "related_to",
+      "source": "src/models/results.py",
+      "target": "TimeoutError"
+    },
+    {
+      "type": "related_to",
+      "source": "src/models/results.py",
+      "target": "ExecutionError"
+    },
+    {
+      "type": "related_to",
+      "source": "src/models/results.py",
+      "target": "ValidationFailure"
+    },
+    {
+      "type": "calls",
+      "source": "Phase 2 SkillInjector",
+      "target": "DenoRunner.execute()"
+    },
+    {
+      "type": "calls",
+      "source": "main.py",
+      "target": "CoordinatingAgent"
+    },
+    {
+      "type": "related_to",
+      "source": "Pydantic models",
+      "target": "CatalogManifest"
+    },
+    {
+      "type": "related_to",
+      "source": "Pydantic models",
+      "target": "CatalogSkill"
+    },
+    {
+      "type": "related_to",
+      "source": "Pydantic models",
+      "target": "SkillDefinition"
+    },
+    {
+      "type": "related_to",
+      "source": "Pydantic models",
+      "target": "InputSchema"
+    },
+    {
+      "type": "related_to",
+      "source": "asyncio",
+      "target": "Deno"
+    },
+    {
+      "type": "related_to",
+      "source": "Natural-language intent routing",
+      "target": "Catalog fetch and tag-based pre-filter"
+    },
+    {
+      "type": "uses",
+      "source": "Natural-language intent routing",
+      "target": "Confidence threshold"
+    },
+    {
+      "type": "related_to",
+      "source": "Catalog fetch and tag-based pre-filter",
+      "target": "Lazy-load skill definition (skill.json)"
+    },
+    {
+      "type": "uses",
+      "source": "Catalog fetch and tag-based pre-filter",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "Lazy-load skill definition (skill.json)",
+      "target": "Dynamic tool injection"
+    },
+    {
+      "type": "uses",
+      "source": "Lazy-load skill definition (skill.json)",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "Dynamic tool injection",
+      "target": "JSON Schema parameter validation (pre-execution)"
+    },
+    {
+      "type": "related_to",
+      "source": "Dynamic tool injection",
+      "target": "CatalogExplorer"
+    },
+    {
+      "type": "related_to",
+      "source": "Dynamic tool injection",
+      "target": "Coordinating Agent"
+    },
+    {
+      "type": "related_to",
+      "source": "JSON Schema parameter validation (pre-execution)",
+      "target": "Deno sandbox execution"
+    },
+    {
+      "type": "uses",
+      "source": "JSON Schema parameter validation (pre-execution)",
+      "target": "jsonschema Python library"
+    },
+    {
+      "type": "implements",
+      "source": "JSON Schema parameter validation (pre-execution)",
+      "target": "REQ-08"
+    },
+    {
+      "type": "related_to",
+      "source": "Deno sandbox execution",
+      "target": "Execution timeout enforcement"
+    },
+    {
+      "type": "related_to",
+      "source": "Deno sandbox execution",
+      "target": "Structured error propagation"
+    },
+    {
+      "type": "uses",
+      "source": "Deno sandbox execution",
+      "target": "Deno sandboxing patterns"
+    },
+    {
+      "type": "uses",
+      "source": "Deno sandbox execution",
+      "target": "Deno"
+    },
+    {
+      "type": "uses",
+      "source": "Execution timeout enforcement",
+      "target": "Python's subprocess.run"
+    },
+    {
+      "type": "implements",
+      "source": "Execution timeout enforcement",
+      "target": "TC-03"
+    },
+    {
+      "type": "related_to",
+      "source": "CLI entry point",
+      "target": "Natural-language intent routing"
+    },
+    {
+      "type": "uses",
+      "source": "Confidence-gated fallback routing",
+      "target": "Confidence threshold"
+    },
+    {
+      "type": "uses",
+      "source": "Two-level catalog structure",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "uses",
+      "source": "Two-level catalog structure",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "SKILL.md cognitive guide",
+      "target": "Dynamic tool injection"
+    },
+    {
+      "type": "uses",
+      "source": "Execution channel routing by skill type",
+      "target": "MCP"
+    },
+    {
+      "type": "implements",
+      "source": "Immutable audit log (full lifecycle)",
+      "target": "REQ-07"
+    },
+    {
+      "type": "related_to",
+      "source": "Immutable audit log (full lifecycle)",
+      "target": "ISO 27001"
+    },
+    {
+      "type": "related_to",
+      "source": "Immutable audit log (full lifecycle)",
+      "target": "BASC"
+    },
+    {
+      "type": "related_to",
+      "source": "Web UI / FastAPI endpoint",
+      "target": "FastAPI"
+    },
+    {
+      "type": "uses",
+      "source": "Vector cache auto-curation",
+      "target": "Qdrant"
+    },
+    {
+      "type": "uses",
+      "source": "Skill versioning and rollback",
+      "target": "git tags"
+    },
+    {
+      "type": "related_to",
+      "source": "LLM Tool Injection",
+      "target": "Gemini Context Window"
+    },
+    {
+      "type": "implements",
+      "source": "ADK",
+      "target": "LLM Tool Injection"
+    },
+    {
+      "type": "uses",
+      "source": "ADK",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "JSON Schema",
+      "target": "skill.json"
+    },
+    {
+      "type": "related_to",
+      "source": "google.genai.types.count_tokens()",
+      "target": "Gemini Context Window"
+    },
+    {
+      "type": "fixes",
+      "source": "Process Group Termination",
+      "target": "Deno"
+    },
+    {
+      "type": "fixes",
+      "source": "Windows Job Object",
+      "target": "Deno"
+    },
+    {
+      "type": "related_to",
+      "source": "Model Version Pinning",
+      "target": "Agentic platform"
+    },
+    {
+      "type": "related_to",
+      "source": "Dry-run Mode",
+      "target": "Agentic platform"
+    },
+    {
+      "type": "related_to",
+      "source": "In-memory Cache (Catalog)",
+      "target": "GitHub API"
+    },
+    {
+      "type": "related_to",
+      "source": "GitHub PAT (Personal Access Token)",
+      "target": "GitHub API"
+    },
+    {
+      "type": "related_to",
+      "source": "HTTP Mocking (Tests)",
+      "target": "GitHub API"
+    },
+    {
+      "type": "related_to",
+      "source": "additionalProperties: false",
+      "target": "JSON Schema"
+    },
+    {
+      "type": "related_to",
+      "source": "Schema Linting",
+      "target": "skill.json"
+    },
+    {
+      "type": "uses",
+      "source": "LlmAgent",
+      "target": "Runner"
+    },
+    {
+      "type": "uses",
+      "source": "LlmAgent",
+      "target": "InMemorySessionService"
+    },
+    {
+      "type": "uses",
+      "source": "LlmAgent",
+      "target": "BaseToolset"
+    },
+    {
+      "type": "uses",
+      "source": "Runner",
+      "target": "LlmAgent"
+    },
+    {
+      "type": "related_to",
+      "source": "BaseToolset",
+      "target": "FunctionTool"
+    },
+    {
+      "type": "extends",
+      "source": "SkillToolset",
+      "target": "BaseToolset"
+    },
+    {
+      "type": "uses",
+      "source": "SkillToolset",
+      "target": "BaseTool"
+    },
+    {
+      "type": "extends",
+      "source": "SkillTool",
+      "target": "BaseTool"
+    },
+    {
+      "type": "implements",
+      "source": "SkillTool",
+      "target": "FunctionDeclaration"
+    },
+    {
+      "type": "calls",
+      "source": "SkillTool",
+      "target": "execute_via_deno"
+    },
+    {
+      "type": "uses",
+      "source": "SkillTool",
+      "target": "skill.json"
+    },
+    {
+      "type": "depends_on",
+      "source": "google-adk",
+      "target": "google-genai"
+    },
+    {
+      "type": "uses",
+      "source": "google-adk",
+      "target": "pydantic"
+    },
+    {
+      "type": "uses",
+      "source": "google-adk",
+      "target": "pyyaml"
+    },
+    {
+      "type": "uses",
+      "source": "google-adk",
+      "target": "python-dotenv"
+    },
+    {
+      "type": "uses",
+      "source": "google-adk",
+      "target": "jsonschema"
+    },
+    {
+      "type": "related_to",
+      "source": "google-adk",
+      "target": "Pydantic 2.12+"
+    },
+    {
+      "type": "related_to",
+      "source": "httpx",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "jsonschema",
+      "target": "skill.json"
+    },
+    {
+      "type": "uses",
+      "source": "execute_via_deno",
+      "target": "Deno"
+    },
+    {
+      "type": "uses",
+      "source": "execute_via_deno",
+      "target": "asyncio.create_subprocess_exec"
+    },
+    {
+      "type": "uses",
+      "source": "execute_via_deno",
+      "target": "asyncio.wait_for"
+    },
+    {
+      "type": "uses",
+      "source": "execute_via_deno",
+      "target": "json"
+    },
+    {
+      "type": "modifies",
+      "source": "Pin google-genai to 1.x",
+      "target": "google-genai"
+    },
+    {
+      "type": "implements",
+      "source": "Use Deno for skill execution",
+      "target": "Deno"
+    },
+    {
+      "type": "implements",
+      "source": "Use asyncio.create_subprocess_exec",
+      "target": "asyncio.create_subprocess_exec"
+    },
+    {
+      "type": "implements",
+      "source": "Use httpx for HTTP client",
+      "target": "httpx"
+    },
+    {
+      "type": "implements",
+      "source": "Use yaml.safe_load",
+      "target": "pyyaml.safe_load"
+    },
+    {
+      "type": "related_to",
+      "source": "pyyaml.safe_load",
+      "target": "catalog.yaml"
+    },
+    {
+      "type": "related_to",
+      "source": "python-dotenv.load_dotenv",
+      "target": "GEMINI_API_KEY"
+    },
+    {
+      "type": "related_to",
+      "source": "Gemini agent",
+      "target": "TypeScript skills"
+    },
+    {
+      "type": "related_to",
+      "source": "models/skill.py",
+      "target": "CatalogManifest"
+    },
+    {
+      "type": "related_to",
+      "source": "models/skill.py",
+      "target": "CatalogSkill"
+    },
+    {
+      "type": "related_to",
+      "source": "models/skill.py",
+      "target": "SkillDefinition"
+    }
+  ]
+}
