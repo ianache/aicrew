@@ -122,13 +122,13 @@ async def test_orchestrator_task_failure_and_replanning_loop(sample_config, samp
     task_01_runs = 0
     original_dispatch = subagent_pool.dispatch
     
-    async def faulty_dispatch(agent_type, task_id, prompt, inputs):
+    async def faulty_dispatch(agent_type, task_id, prompt, inputs, telemetry=None, *args, **kwargs):
         nonlocal task_01_runs
         if task_id == "task_01":
             task_01_runs += 1
             if task_01_runs == 1:
                 raise ValueError("GitLab connection error (simulated)")
-        return await original_dispatch(agent_type, task_id, prompt, inputs)
+        return await original_dispatch(agent_type, task_id, prompt, inputs, telemetry=telemetry, *args, **kwargs)
         
     subagent_pool.dispatch = faulty_dispatch
 

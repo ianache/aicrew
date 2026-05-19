@@ -11,9 +11,26 @@ class MockSubagent:
     def __init__(self, name: str) -> None:
         self.name = name
 
-    async def execute_task(self, task_id: str, prompt: str, input_data: Dict[str, Any]) -> Dict[str, Any]:
+    async def execute_task(self, task_id: str, prompt: str, input_data: Dict[str, Any], telemetry=None) -> Dict[str, Any]:
         """Simulate task execution with a short delay to model context processing."""
-        await asyncio.sleep(0.05)  # Simulate network/inference latency
+        if telemetry:
+            telemetry.update_agent_step(task_id, "Iniciando", f"{self.name}: Inicializando contexto de ejecución...")
+            await asyncio.sleep(0.6)
+            
+            # Map subagent to its skill
+            skill_map = {
+                "DataAnalystAgent": "GitLabMetricsTool",
+                "ReporterAgent": "PolicyAuditTool"
+            }
+            skill = skill_map.get(self.name, "DefaultExecutionTool")
+            
+            telemetry.update_agent_step(task_id, skill, f"{self.name}: Analizando inputs y aplicando {skill}...")
+            await asyncio.sleep(0.9)
+            
+            telemetry.update_agent_step(task_id, skill, f"{self.name}: Procesando y estructurando resultados de la tarea...")
+            await asyncio.sleep(0.6)
+        else:
+            await asyncio.sleep(0.05)  # Simulate network/inference latency
         
         prompt_lower = prompt.lower()
         
@@ -26,7 +43,7 @@ class MockSubagent:
                 }
             elif "summary" in prompt_lower or "consolidate" in prompt_lower or "resumen" in prompt_lower:
                 # Merge telemetry data if provided in input
-                telemetry = input_data.get("telemetry_data", "No telemetry data found")
+                telemetry_data = input_data.get("telemetry_data", "No telemetry data found")
                 policies = input_data.get("policy_audit", "No policies data found")
                 return {
                     "status": "SUCCESS",
@@ -34,7 +51,7 @@ class MockSubagent:
                         f"Executive Summary:\n"
                         f"- Telemetry Status: GitLab metrics are green (94.5% test coverage).\n"
                         f"- Audit Status: Passed policies checks successfully.\n"
-                        f"- Combined Details: {telemetry} | {policies}"
+                        f"- Combined Details: {telemetry_data} | {policies}"
                     )
                 }
             return {"status": "SUCCESS", "result": f"DataAnalystAgent processed: {prompt}"}
@@ -60,11 +77,11 @@ class SubagentPool:
             "ReporterAgent": MockSubagent("ReporterAgent")
         }
 
-    async def dispatch(self, agent_type: str, task_id: str, prompt: str, inputs: Dict[str, Any]) -> Dict[str, Any]:
+    async def dispatch(self, agent_type: str, task_id: str, prompt: str, inputs: Dict[str, Any], telemetry=None) -> Dict[str, Any]:
         """Dispatch task to target isolated subagent context."""
         agent = self._agents.get(agent_type)
         if not agent:
             raise ValueError(f"Subagent of type '{agent_type}' is not registered in the pool.")
         
         # Isolated context execution (FR-3.2, FR-3.3)
-        return await agent.execute_task(task_id, prompt, inputs)
+        return await agent.execute_task(task_id, prompt, inputs, telemetry=telemetry)

@@ -15,6 +15,7 @@ from google.genai import types
 
 from src.config import Config
 from src.models.plan import ExecutionPlan, TaskDefinition, TaskStatus, PlanStatus, PlannerTask, PlannerPlan
+from src.telemetry import CrewTelemetry
 from src.skills.plan_management import InMemoryPlanStore, CreatePlanTool, GetNextTasksTool, UpdateTaskStatusTool
 from src.execution.subagents import SubagentPool
 
@@ -249,6 +250,21 @@ class PlanAndExecuteOrchestrator:
             
         logger.info(f"Initialized plan {plan_id} with {len(plan.tasks)} tasks.")
 
+        # Stop global status_cb to prevent conflicts with rich.live TUI screen
+        if status_cb is not None:
+            status_cb.stop()
+
+        # Initialize and start execution telemetry dashboard
+        telemetry = CrewTelemetry(target_goal=prompt)
+        for i, t in enumerate(plan.tasks):
+            telemetry.register_task(
+                task_id=t.task_id,
+                step_num=i + 1,
+                task_name=t.name,
+                agent_role=t.agent_type
+            )
+        telemetry.start()
+
         # 3. Deterministic execution loop
         while True:
             # Check for executable tasks
@@ -271,9 +287,6 @@ class PlanAndExecuteOrchestrator:
                 await asyncio.sleep(0.1)
                 continue
 
-            if status_cb is not None:
-                task_names = ", ".join(t["name"] for t in tasks_to_run)
-                status_cb.update(f"Orquestador: Ejecutando en paralelo: {task_names}...")
             logger.info(f"Dispatching {len(tasks_to_run)} tasks in parallel...")
             
             # Dispatch all executable tasks in parallel using asyncio.gather (NFR-1.1)
@@ -282,6 +295,9 @@ class PlanAndExecuteOrchestrator:
                 agent_type = task_dict["agent_type"]
                 desc = task_dict["description"]
                 inputs = task_dict.get("input_data", {})
+
+                # Update telemetry task start
+                telemetry.start_task(t_id)
 
                 # FR-3.2: Gather outputs from completed dependency tasks to feed as input
                 # Fetch fresh plan state to read completed parent outputs
@@ -299,6 +315,7 @@ class PlanAndExecuteOrchestrator:
                         task_id=t_id,
                         prompt=desc,
                         inputs=inputs,
+                        telemetry=telemetry,
                     )
                     
                     # Update status to COMPLETED
@@ -312,6 +329,7 @@ class PlanAndExecuteOrchestrator:
                         tool_context=tool_ctx,
                     )
                     logger.info(f"[{t_id}] Task completed successfully.")
+                    telemetry.complete_task(t_id)
 
                 except Exception as ex:
                     logger.warning(f"[{t_id}] Task failed with error: {str(ex)}")
@@ -322,8 +340,7 @@ class PlanAndExecuteOrchestrator:
                     if failed_task.retry_count < 3:
                         # Attempt automatic micro-replanning recovery (FR-4.1, FR-4.2)
                         failed_task.retry_count += 1
-                        if status_cb is not None:
-                            status_cb.update(f"Orquestador: Replanificando tarea fallida {t_id} (Intento {failed_task.retry_count}/3)...")
+                        telemetry.add_log(f"⚠️ Reintentando tarea fallida {t_id} (Intento {failed_task.retry_count}/3)...")
                         logger.info(f"[{t_id}] Attempting replanning retry {failed_task.retry_count}/3...")
                         
                         replanned = await self._replan_failed_task(failed_task, str(ex))
@@ -343,15 +360,29 @@ class PlanAndExecuteOrchestrator:
                             tool_context=tool_ctx,
                         )
                         logger.error(f"[{t_id}] Task failed permanently after 3 retries.")
+                        telemetry.fail_task(t_id, str(ex))
 
             # Concurrently await all independent tasks
             await asyncio.gather(*(run_single_task(t) for t in tasks_to_run))
 
         # 4. Pass 2: Final response synthesis
-        if status_cb is not None:
-            status_cb.update("Orquestador: Sintetizando reporte ejecutivo final (Pass 2)...")
         final_plan = await self._store.get_plan(plan_id)
         logger.info(f"Execution finished with global status: {final_plan.global_status}")
+
+        # Finalize and stop telemetry dashboard
+        telemetry.status = "COMPLETED" if final_plan.global_status == PlanStatus.COMPLETED else "FAILED"
+        telemetry.refresh()
+
+        import sys
+        if "pytest" not in sys.modules:
+            await asyncio.sleep(2.5)  # Keep final dashboard on screen for a moment
+
+        telemetry.stop()
+
+        # Resume global status_cb for executive synthesis
+        if status_cb is not None:
+            status_cb.start()
+            status_cb.update("Orquestador: Sintetizando reporte ejecutivo final (Pass 2)...")
         
         synthesis_agent = self._build_synthesis_agent()
         synth_session = await self._session_service.create_session(
