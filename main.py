@@ -87,6 +87,13 @@ async def main() -> None:
 
     # Banner
     console.print("AI Agents Crew v1.0")
+    # Mask the API key (first 5 and last 5 characters, middle masked with *)
+    key = config.gemini_api_key
+    if len(key) >= 10:
+        masked_key = key[:5] + "*" * (len(key) - 10) + key[-5:]
+    else:
+        masked_key = "*" * len(key)
+    console.print(f"API Key: {masked_key}")
     console.print("Type exit to quit.")
 
     # REPL loop
