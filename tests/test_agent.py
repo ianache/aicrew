@@ -411,3 +411,30 @@ class TestPlanningRouting:
         assert len(lines) == 1
         record = json.loads(lines[0])
         assert record["decision"] == "plan_and_execute"
+
+    async def test_approve_plan_true_always_routes_to_orchestrator(
+        self, mock_catalog_explorer, mock_skill_injector, sample_config, log_path
+    ):
+        """When Config has approve_plan=True, any prompt is routed directly to the PlanAndExecuteOrchestrator."""
+        import dataclasses
+        custom_config = dataclasses.replace(sample_config, approve_plan=True)
+
+        agent = _build_agent_with_mocks(
+            mock_catalog_explorer, mock_skill_injector, custom_config,
+            confidence=0.9, tags=["general"],
+        )
+
+        agent._orchestrator.run = AsyncMock(return_value="Synthesized Plan Output")
+
+        prompt = "generar una especificacion de una user story para login con OAuth2"
+        result = await agent.run(prompt)
+
+        assert result == "Synthesized Plan Output"
+        agent._orchestrator.run.assert_called_once_with(prompt, status_cb=None)
+
+        # Check routing log
+        with open(log_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        assert len(lines) == 1
+        record = json.loads(lines[0])
+        assert record["decision"] == "plan_and_execute"

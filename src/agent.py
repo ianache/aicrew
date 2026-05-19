@@ -263,10 +263,10 @@ class CoordinatingAgent:
 
         JSONL log record is written at end of every run() regardless of decision.
         """
-        # Step 0: Check if the prompt has planning or multi-agent orchestrator keywords (PRD-004 / REQ-06)
+        # Step 0: Route to orchestrator if approve_plan is enabled OR if prompt has planning/multi-agent keywords
         planning_keywords = ["orquestar", "orquestacion", "orquestación", "plan", "multiagente", "crew", "flow", "flujo", "dag"]
         prompt_lower = prompt.lower()
-        if any(kw in prompt_lower for kw in planning_keywords):
+        if self._config.approve_plan or any(kw in prompt_lower for kw in planning_keywords):
             _write_routing_log(prompt, [], 0.0, "plan_and_execute", None)
             return await self._orchestrator.run(prompt, status_cb=status_cb)
 
