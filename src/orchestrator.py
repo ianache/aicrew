@@ -14,7 +14,7 @@ from google.adk.tools.tool_context import ToolContext
 from google.genai import types
 
 from src.config import Config
-from src.models.plan import ExecutionPlan, TaskDefinition, TaskStatus, PlanStatus
+from src.models.plan import ExecutionPlan, TaskDefinition, TaskStatus, PlanStatus, PlannerTask, PlannerPlan
 from src.skills.plan_management import InMemoryPlanStore, CreatePlanTool, GetNextTasksTool, UpdateTaskStatusTool
 from src.execution.subagents import SubagentPool
 
@@ -62,7 +62,7 @@ class PlanAndExecuteOrchestrator:
             )
 
     def _build_planner_agent(self) -> LlmAgent:
-        """Create the Pass 1 planning agent with structured ExecutionPlan output."""
+        """Create the Pass 1 planning agent with structured PlannerPlan output."""
         instruction = (
             "You are an expert project planner and software architect.\n"
             "Analyze the user's request and break it down into a highly optimized Directed Acyclic Graph (DAG) "
@@ -74,15 +74,14 @@ class PlanAndExecuteOrchestrator:
             "   - Use 'DataAnalystAgent' for extracting metrics, consolidation, summarizing, and telemetry.\n"
             "   - Use 'ReporterAgent' for policy audits, compliance checks, or detailed rule validation.\n"
             "4. Specify realistic instructions in the 'description' field of each task.\n"
-            "5. Generate a unique 'plan_id' (e.g. plan_<random_hex>) and realistic 'task_id's (e.g. task_01, task_02).\n"
-            "6. Populate 'input_data' with any inputs extracted from the user's prompt.\n\n"
-            "Ensure the generated plan strictly conforms to the ExecutionPlan JSON schema."
+            "5. Generate a unique 'plan_id' (e.g. plan_<random_hex>) and realistic 'task_id's (e.g. task_01, task_02).\n\n"
+            "Ensure the generated plan strictly conforms to the PlannerPlan JSON schema."
         )
         return LlmAgent(
             name="planner_agent",
             model=self._config.model_version,
             instruction=instruction,
-            output_schema=ExecutionPlan,
+            output_schema=PlannerPlan,
             output_key="plan",
             include_contents="none",
         )
@@ -93,13 +92,13 @@ class PlanAndExecuteOrchestrator:
             "You are a project recovery agent. A subagent failed to execute a task in the plan.\n"
             "Your job is to analyze the error message and the original task details, then output a modified "
             "task description or instruction that can bypass the issue or achieve the goal.\n"
-            "Return the updated TaskDefinition matching the schema."
+            "Return the updated PlannerTask matching the schema."
         )
         return LlmAgent(
             name="replanner_agent",
             model=self._config.model_version,
             instruction=instruction,
-            output_schema=TaskDefinition,
+            output_schema=PlannerTask,
             output_key="replanned_task",
             include_contents="none",
         )
@@ -157,10 +156,31 @@ class PlanAndExecuteOrchestrator:
             raise ValueError("Failed to generate plan structure from LLM.")
             
         # Force/inject correct timestamps and statuses
-        plan = ExecutionPlan.model_validate(plan_dict)
-        plan.global_status = PlanStatus.PENDING
-        plan.created_at = datetime.now(timezone.utc).isoformat()
-        plan.updated_at = datetime.now(timezone.utc).isoformat()
+        planner_plan = PlannerPlan.model_validate(plan_dict)
+        tasks = []
+        for t in planner_plan.tasks:
+            tasks.append(
+                TaskDefinition(
+                    task_id=t.task_id,
+                    name=t.name,
+                    description=t.description,
+                    agent_type=t.agent_type,
+                    dependencies=t.dependencies,
+                    status=TaskStatus.PENDING,
+                    input_data={},
+                    output_data=None,
+                    error_message=None,
+                    retry_count=0,
+                )
+            )
+        
+        plan = ExecutionPlan(
+            plan_id=planner_plan.plan_id,
+            global_status=PlanStatus.PENDING,
+            tasks=tasks,
+            created_at=datetime.now(timezone.utc).isoformat(),
+            updated_at=datetime.now(timezone.utc).isoformat(),
+        )
         return plan
 
     async def run(self, prompt: str, *, status_cb=None) -> str:
@@ -411,4 +431,6 @@ class PlanAndExecuteOrchestrator:
             # Fallback to original task details on replanning error
             return task
             
-        return TaskDefinition.model_validate(replanned_dict)
+        planner_task = PlannerTask.model_validate(replanned_dict)
+        task.description = planner_task.description
+        return task

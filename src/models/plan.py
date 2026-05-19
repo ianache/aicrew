@@ -45,3 +45,19 @@ class ExecutionPlan(BaseModel):
     tasks: List[TaskDefinition] = Field(..., description="Directed Acyclic Graph (DAG) of task definitions")
     created_at: str = Field(..., description="ISO timestamp")
     updated_at: str = Field(..., description="ISO timestamp")
+
+
+class PlannerTask(BaseModel):
+    task_id: str = Field(..., description="Unique alphanumeric identifier (e.g. task_01)")
+    name: str = Field(..., description="Short, descriptive title of the task")
+    description: str = Field(..., description="Detailed instructions for the subagent explaining what to achieve")
+    agent_type: str = Field(..., description="Target specialist subagent type (e.g. DataAnalystAgent, ReporterAgent)")
+    dependencies: List[str] = Field(
+        default_factory=list,
+        description="List of task_ids that MUST be COMPLETED before this task can start execution"
+    )
+
+
+class PlannerPlan(BaseModel):
+    plan_id: str = Field(..., description="Unique identifier representing the execution plan (e.g. plan_01)")
+    tasks: List[PlannerTask] = Field(..., description="Directed Acyclic Graph (DAG) of task definitions")
